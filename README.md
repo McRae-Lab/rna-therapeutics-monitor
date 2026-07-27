@@ -114,6 +114,26 @@ are in `data/state.json`. Initial updates use the requested lookback. Later
 updates recheck a seven-day overlap by default to catch late indexing,
 corrections, and revisions.
 
+For the initial one-year harvest into an empty data directory:
+
+```bash
+python -m rna_monitor update --days 365 --no-llm
+python -m rna_monitor build
+```
+
+If the data directory already contains incremental-update state, specify the
+backfill boundaries explicitly so that the saved source checkpoint does not
+shorten the harvest:
+
+```bash
+python -m rna_monitor update --since 2025-07-27 --until 2026-07-27 --no-llm
+python -m rna_monitor build
+```
+
+Do not pass `--limit` for a complete harvest. API adapters paginate until their
+result sets are exhausted. A source failure is isolated and does not erase
+records collected previously.
+
 ## Configuration
 
 - `config/queries.yml`: high-precision, broad, and exclusion term groups plus

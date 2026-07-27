@@ -37,6 +37,8 @@ def test_site_contains_required_controls_and_presets() -> None:
         "reset-filters",
     ):
         assert f'id="{identifier}"' in html
+    for days in ("7", "30", "365", "all"):
+        assert f'data-date-days="{days}"' in html
     for preset in (
         "latest",
         "clinical",

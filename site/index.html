@@ -64,6 +64,12 @@
 
         <details open>
           <summary>Date and score</summary>
+          <div class="date-shortcuts" role="group" aria-label="Date window">
+            <button type="button" data-date-days="7">Last week</button>
+            <button type="button" data-date-days="30" class="active">Last month</button>
+            <button type="button" data-date-days="365">Last year</button>
+            <button type="button" data-date-days="all">All dates</button>
+          </div>
           <div class="filter-body two-column">
             <label>From <input id="date-from" type="date"></label>
             <label>To <input id="date-to" type="date"></label>

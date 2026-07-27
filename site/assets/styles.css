@@ -77,6 +77,9 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
 .filter-body select, .filter-body input { margin-top: 5px; font-size: .8rem; }
 .filter-note { color: var(--muted); font-size: .78rem; line-height: 1.45; margin: 9px 0 0; }
 .filter-note a { color: var(--ink); }
+.date-shortcuts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 13px; }
+.date-shortcuts button { border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--muted); font-size: .72rem; padding: 6px 9px; }
+.date-shortcuts button:hover, .date-shortcuts button.active { border-color: var(--forest); background: var(--forest); color: #fff; }
 .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .select-stack { display: grid; gap: 12px; }
 #min-score { min-height: auto; accent-color: var(--forest); }

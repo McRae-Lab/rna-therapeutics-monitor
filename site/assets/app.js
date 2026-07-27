@@ -5,6 +5,7 @@ const state = {
   visible: PAGE_SIZE,
   preset: "latest",
   loadedFull: false,
+  asOfDate: "",
 };
 
 const byId = (id) => document.getElementById(id);
@@ -55,6 +56,43 @@ function normalize(value) {
 
 function recordDate(record) {
   return record.updated_date || record.published_date || record.first_date || "";
+}
+
+function isoDate(date) {
+  return date.toISOString().slice(0, 10);
+}
+
+function shiftDate(value, days) {
+  const date = new Date(`${value}T00:00:00Z`);
+  date.setUTCDate(date.getUTCDate() + days);
+  return isoDate(date);
+}
+
+function updateDateShortcutState() {
+  const asOfDate = state.asOfDate || isoDate(new Date());
+  document.querySelectorAll("[data-date-days]").forEach((button) => {
+    const days = button.dataset.dateDays;
+    const expectedFrom = days === "all" ? "" : shiftDate(asOfDate, -(Number(days) - 1));
+    const expectedTo = days === "all" ? "" : asOfDate;
+    button.classList.toggle(
+      "active",
+      controls.dateFrom.value === expectedFrom && controls.dateTo.value === expectedTo,
+    );
+  });
+}
+
+function setDateWindow(days) {
+  const asOfDate = state.asOfDate || isoDate(new Date());
+  if (days === "all") {
+    controls.dateFrom.value = "";
+    controls.dateTo.value = "";
+  } else {
+    controls.dateFrom.value = shiftDate(asOfDate, -(Number(days) - 1));
+    controls.dateTo.value = asOfDate;
+  }
+  state.visible = PAGE_SIZE;
+  updateDateShortcutState();
+  applyFilters();
 }
 
 function searchable(record) {
@@ -357,7 +395,7 @@ function resetFilters() {
   state.preset = "latest";
   state.visible = PAGE_SIZE;
   document.querySelectorAll(".preset").forEach((button) => button.classList.toggle("active", button.dataset.preset === "latest"));
-  applyFilters();
+  setDateWindow("30");
 }
 
 function download(format) {
@@ -392,8 +430,12 @@ function bindEvents() {
   Object.values(controls).forEach((control) => {
     control.addEventListener(control === controls.search ? "input" : "change", () => {
       state.visible = PAGE_SIZE;
+      if (control === controls.dateFrom || control === controls.dateTo) updateDateShortcutState();
       applyFilters();
     });
+  });
+  document.querySelectorAll("[data-date-days]").forEach((button) => {
+    button.addEventListener("click", () => setDateWindow(button.dataset.dateDays));
   });
   document.querySelectorAll(".preset").forEach((button) => {
     button.addEventListener("click", () => {
@@ -438,9 +480,10 @@ async function load() {
     const time = byId("last-updated");
     time.textContent = updated.generated_at ? new Date(updated.generated_at).toLocaleString() : "unknown";
     time.dateTime = updated.generated_at || "";
+    state.asOfDate = updated.generated_at?.slice(0, 10) || isoDate(new Date());
+    setDateWindow("30");
     populateFacets(state.records);
     byId("loading").hidden = true;
-    applyFilters();
 
     const fullResponse = await fetch("./data/records.min.json");
     if (!fullResponse.ok) throw new Error(`Full dataset HTTP ${fullResponse.status}`);
