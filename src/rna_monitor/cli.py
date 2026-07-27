@@ -15,6 +15,7 @@ from rna_monitor.export import export_static_data, validate_public_artifacts
 from rna_monitor.logging_utils import configure_logging
 from rna_monitor.pipeline import UpdateOptions, build_default_pipeline
 from rna_monitor.scoring import score_records
+from rna_monitor.security import scan_public_site
 from rna_monitor.storage import load_records, save_records
 
 
@@ -101,6 +102,7 @@ def main(argv: list[str] | None = None) -> int:
             }
             if args.command == "build":
                 build_result["validation"] = validate_public_artifacts(args.site_dir / "data")
+                build_result["secret_scan"] = scan_public_site(args.site_dir)
             print(json.dumps(build_result, sort_keys=True))
         elif args.command == "enrich":
             records = load_records(records_path)
@@ -133,6 +135,7 @@ def main(argv: list[str] | None = None) -> int:
             }
             if (args.site_dir / "data").exists():
                 result["public"] = validate_public_artifacts(args.site_dir / "data")
+                result["secret_scan"] = scan_public_site(args.site_dir)
             print(json.dumps(result, sort_keys=True))
         return 0
     except Exception as exc:

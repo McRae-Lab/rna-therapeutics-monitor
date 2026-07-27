@@ -180,12 +180,49 @@ class CategoriesConfig(StrictModel):
         return values
 
 
+class WatchedPerson(StrictModel):
+    """One Society for RNA Therapeutics person monitored in PubMed."""
+
+    id: str = Field(pattern=r"^srt-\d{4}$")
+    display_name: str
+    role: Literal["board", "member", "staff"]
+    organization: str | None = None
+    orcid: str | None = Field(default=None, pattern=r"^\d{4}-\d{4}-\d{4}-\d{3}[\dX]$")
+    aliases: list[str] = Field(min_length=1)
+    pubmed_query: str = Field(min_length=3)
+    affiliation_terms: list[str] = Field(default_factory=list)
+    require_affiliation: bool = False
+    active: bool = True
+    note: str | None = None
+
+
+class PeopleConfig(StrictModel):
+    """Versioned SRT author-watch configuration."""
+
+    schema_version: int = Field(ge=1)
+    roster_checked_at: str
+    people: list[WatchedPerson]
+
+    @model_validator(mode="after")
+    def validate_unique_people(self) -> PeopleConfig:
+        """Reject duplicate person IDs and ORCIDs."""
+
+        ids = [person.id for person in self.people]
+        if len(ids) != len(set(ids)):
+            raise ValueError("people IDs must be unique")
+        orcids = [person.orcid for person in self.people if person.orcid]
+        if len(orcids) != len(set(orcids)):
+            raise ValueError("non-empty ORCIDs must be unique")
+        return self
+
+
 class AppConfig(StrictModel):
     """Complete validated application configuration."""
 
     queries: QueriesConfig
     sources: SourcesConfig
     categories: CategoriesConfig
+    people: PeopleConfig
 
 
 def _read_yaml(path: Path) -> dict[str, Any]:
@@ -210,4 +247,5 @@ def load_config(config_dir: Path | str = "config") -> AppConfig:
         queries=QueriesConfig.model_validate(_read_yaml(root / "queries.yml")),
         sources=SourcesConfig.model_validate(_read_yaml(root / "sources.yml")),
         categories=CategoriesConfig.model_validate(_read_yaml(root / "categories.yml")),
+        people=PeopleConfig.model_validate(_read_yaml(root / "people.yml")),
     )

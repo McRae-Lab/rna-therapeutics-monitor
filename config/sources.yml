@@ -52,7 +52,17 @@ rss:
       attribution: U.S. Food and Drug Administration
       terms_url: "https://www.fda.gov/about-fda/about-website/website-policies"
     - name: EMA News
-      url: "https://www.ema.europa.eu/en/news-events/news/rss"
+      url: "https://www.ema.europa.eu/en/news.xml"
       source_type: regulatory
       attribution: European Medicines Agency
       terms_url: "https://www.ema.europa.eu/en/about-us/legal/copyright"
+    - name: Nature Biotechnology
+      url: "https://www.nature.com/nbt.rss"
+      source_type: journal
+      attribution: Springer Nature
+      terms_url: "https://www.nature.com/info/terms-and-conditions"
+    - name: Fierce Biotech
+      url: "https://www.fiercebiotech.com/rss/xml"
+      source_type: biotechnology_news
+      attribution: Questex LLC
+      terms_url: "https://questex.com/terms-and-conditions/"

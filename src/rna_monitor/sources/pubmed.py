@@ -11,11 +11,12 @@ from typing import Any
 
 from pydantic import HttpUrl
 
-from rna_monitor.config import PubMedSettings, QueryGroup, SourceQuery
+from rna_monitor.config import PubMedSettings, QueryGroup, SourceQuery, WatchedPerson
 from rna_monitor.dates import ParsedDate, parse_date_parts
 from rna_monitor.http import HttpClient
 from rna_monitor.identifiers import canonical_id, normalize_doi
 from rna_monitor.models import Author, Organization, ProvenanceEntry, Record
+from rna_monitor.people import match_watched_people
 from rna_monitor.sources.base import RetrievalWindow, SourceResult
 
 
@@ -45,24 +46,22 @@ def build_pubmed_query(
     source_query: SourceQuery,
     groups: dict[str, QueryGroup],
     window: RetrievalWindow,
+    people: list[WatchedPerson] | None = None,
 ) -> str:
     """Combine editable PubMed syntax with inclusive publication/modification windows."""
 
     discovery = " OR ".join(f"({query})" for query in source_query.queries)
-    exclusions = [
-        term
-        for name in source_query.exclusion_groups
-        if groups[name].enabled
-        for term in groups[name].terms
-    ]
-    exclusion_clause = ""
-    if exclusions:
-        quoted = " OR ".join(f'"{term}"[Title/Abstract]' for term in exclusions)
-        exclusion_clause = f" NOT ({quoted})"
+    # Configured negative terms are applied after normalization so excluded
+    # candidates remain stored with an auditable reason.
     since = window.since.strftime("%Y/%m/%d")
     until = window.until.strftime("%Y/%m/%d")
     dates = f'("{since}"[PDAT] : "{until}"[PDAT] OR "{since}"[MDAT] : "{until}"[MDAT])'
-    return f"({discovery}){exclusion_clause} AND {dates}"
+    topical = f"({discovery})"
+    author_queries = " OR ".join(
+        f"({person.pubmed_query})" for person in people or [] if person.active
+    )
+    scope = f"({topical} OR ({author_queries}))" if author_queries else topical
+    return f"{scope} AND {dates}"
 
 
 def _parse_authors(article: ET.Element) -> list[Author]:
@@ -255,11 +254,13 @@ class PubMedAdapter:
         source_query: SourceQuery,
         groups: dict[str, QueryGroup],
         http: HttpClient,
+        people: list[WatchedPerson] | None = None,
     ) -> None:
         self.settings = settings
         self.source_query = source_query
         self.groups = groups
         self.http = http
+        self.people = people or []
 
     def _common_params(self) -> dict[str, str]:
         return {
@@ -273,7 +274,7 @@ class PubMedAdapter:
     def search_ids(self, window: RetrievalWindow, limit: int | None = None) -> list[str]:
         """Return all matching PMIDs from ESearch pagination."""
 
-        query = build_pubmed_query(self.source_query, self.groups, window)
+        query = build_pubmed_query(self.source_query, self.groups, window, self.people)
         ids: list[str] = []
         retstart = 0
         batch_size = min(self.settings.batch_size, limit or self.settings.batch_size)
@@ -286,6 +287,7 @@ class PubMedAdapter:
                 "retmax": batch_size,
                 "term": query,
             }
+            self.http.pace("ncbi", self.settings.requests_per_second)
             payload = self.http.get(
                 str(self.settings.base_url) + "esearch.fcgi", params=params
             ).json()
@@ -310,8 +312,12 @@ class PubMedAdapter:
                 "retmode": "xml",
                 "id": ",".join(batch),
             }
+            self.http.pace("ncbi", self.settings.requests_per_second)
             response = self.http.get(str(self.settings.base_url) + "efetch.fcgi", params=params)
-            records.extend(parse_pubmed_xml(response.text))
+            parsed = parse_pubmed_xml(response.text)
+            for record in parsed:
+                record.watched_people = match_watched_people(record, self.people)
+            records.extend(parsed)
         return SourceResult(source=self.name, records=records, raw_count=len(ids))
 
 

@@ -7,6 +7,8 @@ import httpx
 
 from rna_monitor.config import load_config
 from rna_monitor.http import HttpClient
+from rna_monitor.models import Author, Record
+from rna_monitor.people import match_watched_people
 from rna_monitor.sources.base import RetrievalWindow
 from rna_monitor.sources.pubmed import PubMedAdapter, build_pubmed_query, parse_pubmed_xml
 
@@ -49,8 +51,70 @@ def test_pubmed_query_uses_publication_and_modification_windows() -> None:
 
     assert '"2026/07/20"[PDAT] : "2026/07/27"[PDAT]' in query
     assert '"2026/07/20"[MDAT] : "2026/07/27"[MDAT]' in query
-    assert '"RNA sequencing"[Title/Abstract]' in query
+    assert 'NOT ("RNA sequencing"[Title/Abstract]' not in query
     assert query != "RNA"
+
+
+def test_pubmed_query_includes_srt_bibliographic_fallbacks() -> None:
+    config = load_config(ROOT / "config")
+    query = build_pubmed_query(
+        config.queries.source_queries["pubmed"],
+        config.queries.groups,
+        RetrievalWindow(date(2026, 7, 20), date(2026, 7, 27)),
+        config.people.people,
+    )
+
+    assert "Cullis PR[Author]" in query
+    assert "Hastings ML[Author]" in query
+    assert "Yu TW[Author]" in query
+
+
+def _identity_record(author: Author) -> Record:
+    return Record(
+        id="pmid:1",
+        record_type="publication",
+        source_types=["pubmed"],
+        source_ids={"pubmed": "1"},
+        title="Identity fixture",
+        authors=[author],
+        url="https://pubmed.ncbi.nlm.nih.gov/1/",
+        retrieved_at=datetime(2026, 7, 27, tzinfo=UTC),
+        evidence_level="peer-reviewed publication",
+    )
+
+
+def test_srt_identity_matching_rejects_similar_given_names() -> None:
+    people = load_config(ROOT / "config").people.people
+    meredith = _identity_record(
+        Author(
+            name="Meredith L Hastings",
+            given_name="Meredith L",
+            family_name="Hastings",
+            initials="ML",
+            affiliations=["Brown University, Providence, Rhode Island"],
+        )
+    )
+    tianlun = _identity_record(
+        Author(
+            name="Tianlun Yu",
+            given_name="Tianlun",
+            family_name="Yu",
+            initials="T",
+            affiliations=["Synchrotron physics institute"],
+        )
+    )
+    michelle = _identity_record(
+        Author(
+            name="Michelle L Hastings",
+            given_name="Michelle L",
+            family_name="Hastings",
+            affiliations=["University of Michigan"],
+        )
+    )
+
+    assert match_watched_people(meredith, people) == []
+    assert match_watched_people(tianlun, people) == []
+    assert match_watched_people(michelle, people) == ["Michelle L. Hastings"]
 
 
 def test_pubmed_adapter_esearch_then_efetch() -> None:

@@ -1,0 +1,200 @@
+schema_version: 1
+roster_checked_at: "2026-07-27"
+
+# The editable author watchlist inherited from the Society for RNA Therapeutics
+# roster audit. ORCID is preferred, but PubMed searches remain necessary because
+# an ORCID profile can be valid while exposing no works.
+people:
+  - id: srt-0001
+    display_name: Jeff Coller
+    role: board
+    organization: Johns Hopkins University
+    orcid: 0000-0001-5662-8110
+    aliases: [Jeff Coller, Jeffrey Coller]
+    pubmed_query: 'Coller J[Author] AND (Johns Hopkins[Affiliation] OR Case Western[Affiliation])'
+    affiliation_terms: [Johns Hopkins, Case Western]
+    require_affiliation: true
+
+  - id: srt-0002
+    display_name: John P. Cooke
+    role: board
+    organization: Houston Methodist Research Institute
+    orcid: 0000-0003-0033-9138
+    aliases: [John P Cooke, John Cooke]
+    pubmed_query: 'Cooke JP[Author] AND (Houston Methodist[Affiliation] OR Stanford[Affiliation])'
+    affiliation_terms: [Houston Methodist, Stanford]
+    require_affiliation: true
+
+  - id: srt-0003
+    display_name: Pieter R. Cullis
+    role: board
+    organization: University of British Columbia
+    orcid: 0000-0001-9586-2508
+    aliases: [Pieter R Cullis, Pieter Cullis]
+    pubmed_query: 'Cullis PR[Author]'
+    affiliation_terms: [British Columbia, UBC]
+    note: Verified ORCID profile exposed no works when checked; use PubMed fallback.
+
+  - id: srt-0004
+    display_name: Michelle L. Hastings
+    role: board
+    organization: University of Michigan
+    orcid: 0000-0002-4253-9261
+    aliases: [Michelle L Hastings, Michelle Hastings]
+    pubmed_query: 'Hastings ML[Author] AND (Michigan[Affiliation] OR Rosalind Franklin[Affiliation])'
+    affiliation_terms: [Michigan, Rosalind Franklin]
+    require_affiliation: true
+
+  - id: srt-0005
+    display_name: Adrian Krainer
+    role: board
+    organization: Cold Spring Harbor Laboratory
+    orcid: 0000-0001-9024-9501
+    aliases: [Adrian R Krainer, Adrian Krainer]
+    pubmed_query: 'Krainer A[Author] AND "Cold Spring Harbor"[Affiliation]'
+    affiliation_terms: [Cold Spring Harbor]
+    require_affiliation: true
+
+  - id: srt-0006
+    display_name: Dan Peer
+    role: board
+    organization: Tel Aviv University
+    orcid: 0000-0001-8238-0673
+    aliases: [Dan Peer]
+    pubmed_query: 'Peer D[Author] AND (Tel Aviv[Affiliation] OR Shmunis[Affiliation])'
+    affiliation_terms: [Tel Aviv, Shmunis]
+    require_affiliation: true
+
+  - id: srt-0007
+    display_name: Anna Marie Pyle
+    role: board
+    organization: Yale University
+    orcid: 0000-0001-9045-8872
+    aliases: [Anna Marie Pyle, Anna Pyle]
+    pubmed_query: 'Pyle AM[Author] AND Yale[Affiliation]'
+    affiliation_terms: [Yale]
+    require_affiliation: true
+
+  - id: srt-0008
+    display_name: John J. Rossi
+    role: board
+    organization: City of Hope
+    orcid:
+    aliases: [John J Rossi, John Rossi]
+    pubmed_query: 'Rossi JJ[Author] AND ("City of Hope"[Affiliation] OR Beckman[Affiliation])'
+    affiliation_terms: [City of Hope, Beckman]
+    require_affiliation: true
+    note: No confirmed ORCID; bibliographic identity checks are mandatory.
+
+  - id: srt-0009
+    display_name: Bruce A. Sullenger
+    role: board
+    organization: Duke University
+    orcid: 0000-0002-5113-5541
+    aliases: [Bruce A Sullenger, Bruce Sullenger]
+    pubmed_query: 'Sullenger BA[Author] AND Duke[Affiliation]'
+    affiliation_terms: [Duke]
+    require_affiliation: true
+
+  - id: srt-0010
+    display_name: Andrew Varley
+    role: board
+    organization: University of British Columbia
+    orcid: 0000-0002-1518-2703
+    aliases: [Andrew Varley]
+    pubmed_query: 'Varley A[Author] AND "British Columbia"[Affiliation]'
+    affiliation_terms: [British Columbia, UBC]
+    require_affiliation: true
+
+  - id: srt-0011
+    display_name: Drew Weissman
+    role: board
+    organization: University of Pennsylvania
+    orcid: 0000-0002-1501-6510
+    aliases: [Drew Weissman]
+    pubmed_query: 'Weissman D[Author] AND Pennsylvania[Affiliation]'
+    affiliation_terms: [Pennsylvania, Penn]
+    require_affiliation: true
+
+  - id: srt-0012
+    display_name: Jeremy E. Wilusz
+    role: board
+    organization: Baylor College of Medicine
+    orcid: 0000-0001-6929-8755
+    aliases: [Jeremy E Wilusz, Jeremy Wilusz]
+    pubmed_query: 'Wilusz JE[Author]'
+    affiliation_terms: [Baylor, Pennsylvania]
+
+  - id: srt-0013
+    display_name: Timothy Yu
+    role: board
+    organization: Boston Children's Hospital
+    orcid: 0000-0003-2988-7701
+    aliases: [Timothy W Yu, Timothy Yu]
+    pubmed_query: 'Yu TW[Author] AND ("Boston Children''s"[Affiliation] OR Harvard[Affiliation] OR "Broad Institute"[Affiliation])'
+    affiliation_terms: [Boston Children's, Harvard, Broad Institute]
+    require_affiliation: true
+
+  - id: srt-0014
+    display_name: Lior Zangi
+    role: board
+    organization: Icahn School of Medicine at Mount Sinai
+    orcid: 0000-0002-6153-9857
+    aliases: [Lior Zangi]
+    pubmed_query: 'Zangi L[Author]'
+    affiliation_terms: [Mount Sinai, Icahn]
+
+  - id: srt-0015
+    display_name: Luke Thorstenson
+    role: staff
+    organization: Society for RNA Therapeutics
+    orcid:
+    aliases: [Luke Thorstenson]
+    pubmed_query: 'Thorstenson L[Author]'
+    note: Administrative role; scholarly publications are not expected.
+
+  - id: srt-0016
+    display_name: Ewan McRae
+    role: member
+    organization: Houston Methodist Research Institute
+    orcid: 0000-0001-9105-2575
+    aliases: [Ewan McRae]
+    pubmed_query: 'McRae E[Author] AND ("Houston Methodist"[Affiliation] OR "Weill Cornell"[Affiliation])'
+    affiliation_terms: [Houston Methodist, Weill Cornell]
+    require_affiliation: true
+
+  - id: srt-0017
+    display_name: Quentin Vicentini
+    role: member
+    organization: AstraZeneca / Karolinska Institutet
+    orcid: 0009-0006-7659-6164
+    aliases: [Quentin Vicentini]
+    pubmed_query: 'Vicentini Q[Author]'
+    affiliation_terms: [Karolinska, AstraZeneca]
+
+  - id: srt-0018
+    display_name: Alan Horsager
+    role: member
+    organization: Duet BioTherapeutics
+    orcid:
+    aliases: [Alan Horsager]
+    pubmed_query: 'Horsager A[Author]'
+    affiliation_terms: [Duet BioTherapeutics]
+
+  - id: srt-0019
+    display_name: Christine Mordstein
+    role: member
+    organization: Eleven Therapeutics
+    orcid: 0000-0003-4003-2819
+    aliases: [Christine Mordstein]
+    pubmed_query: 'Mordstein C[Author]'
+    affiliation_terms: [Eleven Therapeutics]
+
+  - id: srt-0020
+    display_name: Pascal Viguié
+    role: member
+    organization: bYoRNA
+    orcid:
+    aliases: [Pascal Viguié, Pascal Viguie]
+    pubmed_query: '(Viguié P[Author] OR Viguie P[Author])'
+    affiliation_terms: [bYoRNA]

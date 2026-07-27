@@ -29,6 +29,7 @@ def test_site_contains_required_controls_and_presets() -> None:
         "evidence",
         "company",
         "institution",
+        "watched-person",
         "review-status",
         "trial-status",
         "min-score",
@@ -44,6 +45,7 @@ def test_site_contains_required_controls_and_presets() -> None:
         "aptamers",
         "nanotechnology",
         "trial-changes",
+        "srt-authors",
     ):
         assert f'data-preset="{preset}"' in html
 

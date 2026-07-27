@@ -202,6 +202,7 @@ class CrossrefEnricher:
                 self.settings.default_contact_email,
             )
         }
+        self.http.pace("crossref", self.settings.requests_per_second)
         payload = self.http.get(
             f"{str(self.settings.base_url).rstrip('/')}/works/{doi_path}",
             params=params,

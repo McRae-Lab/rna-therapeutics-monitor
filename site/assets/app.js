@@ -23,6 +23,7 @@ const controls = {
   trialStatus: byId("trial-status"),
   company: byId("company"),
   institution: byId("institution"),
+  watchedPerson: byId("watched-person"),
   sort: byId("sort"),
 };
 
@@ -66,6 +67,7 @@ function searchable(record) {
     ...organizations,
     ...(record.companies || []),
     ...(record.institutions || []),
+    ...(record.watched_people || []),
     ...(record.therapeutic_targets || []),
     ...(record.modalities || []),
     ...(record.delivery_systems || []),
@@ -99,6 +101,8 @@ function presetMatch(record) {
       return (record.modalities || []).includes("RNA nanostructure");
     case "trial-changes":
       return record.record_type === "clinical_trial" && (record.change_history || []).length > 0;
+    case "srt-authors":
+      return (record.watched_people || []).length > 0;
     default:
       return true;
   }
@@ -124,7 +128,8 @@ function applyFilters() {
       (!controls.reviewStatus.value || record.evidence_level === controls.reviewStatus.value) &&
       (!controls.trialStatus.value || record.trial?.overall_status === controls.trialStatus.value) &&
       contains(record, "companies", controls.company.value) &&
-      contains(record, "institutions", controls.institution.value);
+      contains(record, "institutions", controls.institution.value) &&
+      contains(record, "watched_people", controls.watchedPerson.value);
   });
   const sorter = controls.sort.value;
   state.filtered.sort((a, b) => {
@@ -237,6 +242,9 @@ function renderCard(record) {
   card.append(heading);
   const summary = record.summary || record.abstract || record.description;
   if (summary) card.append(element("p", "summary", summary.length > 360 ? `${summary.slice(0, 357)}…` : summary));
+  if ((record.watched_people || []).length) {
+    card.append(element("p", "watched-person", `SRT author: ${record.watched_people.join(", ")}`));
+  }
   appendTags(card, record);
   const ids = element("div", "identifier-row");
   if (record.doi) ids.append(link(`https://doi.org/${record.doi}`, `DOI ${record.doi}`));
@@ -264,7 +272,7 @@ function activeLabels() {
   const names = {
     modality: "Modality", delivery: "Delivery", disease: "Disease", stage: "Stage",
     source: "Source", evidence: "Evidence", reviewStatus: "Review", trialStatus: "Trial",
-    company: "Company", institution: "Institution",
+    company: "Company", institution: "Institution", watchedPerson: "SRT author",
   };
   Object.entries(names).forEach(([key, name]) => {
     if (controls[key].value) labels.push(`${name}: ${controls[key].value}`);
@@ -320,6 +328,7 @@ function populateFacets(records) {
   populateSelect(controls.evidence, [...new Set(records.map((record) => record.evidence_level).filter(Boolean))].sort());
   populateSelect(controls.company, optionValues(records, "companies"));
   populateSelect(controls.institution, optionValues(records, "institutions"));
+  populateSelect(controls.watchedPerson, optionValues(records, "watched_people"));
   populateSelect(controls.trialStatus, optionValues(records, "", (record) => record.trial?.overall_status ? [record.trial.overall_status] : []));
 }
 
@@ -343,13 +352,14 @@ function download(format) {
     content = JSON.stringify(records, null, 2);
     type = "application/json";
   } else {
-    const columns = ["date", "title", "url", "evidence_level", "modalities", "delivery_systems", "disease_areas", "development_stages", "relevance_score", "doi", "pmid", "nct_id"];
+    const columns = ["date", "title", "url", "evidence_level", "modalities", "delivery_systems", "disease_areas", "development_stages", "watched_people", "relevance_score", "doi", "pmid", "nct_id"];
     const escape = (value) => `"${String(value ?? "").replaceAll('"', '""')}"`;
     const rows = records.map((record) => [
       recordDate(record), record.title, record.url, record.evidence_level,
       (record.modalities || []).join("; "), (record.delivery_systems || []).join("; "),
       (record.disease_areas || []).join("; "), (record.development_stages || []).join("; "),
-      record.relevance_score, record.doi, record.pmid, record.nct_id,
+      (record.watched_people || []).join("; "), record.relevance_score,
+      record.doi, record.pmid, record.nct_id,
     ].map(escape).join(","));
     content = [columns.join(","), ...rows].join("\n");
     type = "text/csv";

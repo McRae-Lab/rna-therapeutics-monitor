@@ -62,7 +62,9 @@
             A scheduled GitHub Actions workflow runs daily. Each source uses its
             own last-successful boundary and a seven-day overlap to catch late
             indexing, revisions, and corrections. A temporary failure does not
-            advance that source or erase existing records.
+            advance that source or erase existing records. Bounded retries honor
+            transient failures and fresh responses may be reused from a 24-hour
+            local build cache; stale entries are refetched.
           </p>
         </section>
         <section id="scope">
@@ -72,6 +74,13 @@
             Editable query groups cover named RNA modalities, delivery systems,
             and development or manufacturing. Broad discovery terms are separated
             from high-precision terms. The bare token “RNA” is prohibited.
+          </p>
+          <p>
+            PubMed discovery also monitors the configured Society for RNA
+            Therapeutics roster. Exact ORCID is preferred. When ORCID has no
+            works or is unavailable, a person-specific PubMed query is followed
+            by strict full-given-name and, for ambiguous identities, affiliation
+            validation. Initials or surname overlap alone cannot label a record.
           </p>
           <p>
             Routine transcriptomics, nontherapeutic RNA sequencing, unrelated
@@ -126,6 +135,8 @@
             enrichment runs during the private build from public metadata only,
             validates structured output, and never places a credential in the
             website. A malformed response cannot block deterministic publication.
+            Every build recursively scans the public site for credential-like
+            strings before it can be published.
           </p>
         </section>
         <section id="limitations">

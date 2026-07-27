@@ -265,6 +265,7 @@ def merge_records(left: Record, right: Record, reason: str) -> Record:
         "topics": _unique_strings(left.topics, right.topics),
         "companies": _unique_strings(left.companies, right.companies),
         "institutions": _unique_strings(left.institutions, right.institutions),
+        "watched_people": _unique_strings(left.watched_people, right.watched_people),
         "keywords": _unique_strings(left.keywords, right.keywords),
         "mesh_terms": _unique_strings(left.mesh_terms, right.mesh_terms),
         "publication_types": _unique_strings(left.publication_types, right.publication_types),

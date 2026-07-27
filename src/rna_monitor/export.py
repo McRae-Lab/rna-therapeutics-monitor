@@ -85,6 +85,7 @@ def _facets(records: list[Record]) -> dict[str, Any]:
         "evidence_levels": [record.evidence_level for record in records],
         "companies": [value for record in records for value in record.companies],
         "institutions": [value for record in records for value in record.institutions],
+        "watched_people": [value for record in records for value in record.watched_people],
         "topics": [value for record in records for value in record.topics],
         "trial_statuses": [
             record.trial.overall_status
@@ -109,6 +110,9 @@ def _methodology(generated_at: datetime, llm_enabled: bool) -> dict[str, Any]:
         "methodology_revision": "2026-07-27",
         "generated_at": generated_at.isoformat(),
         "classification_method": "deterministic-rules-v1",
+        "author_watch_method": "orcid-or-strict-name-and-affiliation-v1",
+        "http_cache_ttl_hours": 24,
+        "public_secret_scan": True,
         "llm_enabled": llm_enabled,
         "score_name": "relevance priority score",
         "score_range": [0, 100],
@@ -154,7 +158,10 @@ def export_static_data(
 ) -> dict[str, Any]:
     """Generate every public data artifact deterministically."""
 
-    timestamp = generated_at or datetime.now(UTC)
+    timestamp = generated_at or max(
+        (record.retrieved_at for record in records),
+        default=datetime(1970, 1, 1, tzinfo=UTC),
+    )
     if timestamp.tzinfo is None:
         raise ValueError("export timestamp must be timezone aware")
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -173,7 +180,7 @@ def export_static_data(
         "facets.json": _facets(stable_records),
         "last_updated.json": {
             "schema_version": 1,
-            "generated_at": timestamp.isoformat(),
+            "generated_at": timestamp.isoformat() if stable_records else None,
             "record_count": len(stable_records),
         },
         "methodology.json": _methodology(

@@ -111,6 +111,7 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
 .score-badge { position: absolute; top: 21px; right: 22px; display: grid; place-items: center; width: 50px; height: 50px; border-radius: 50%; color: var(--forest); background: var(--lime); font-size: .72rem; }
 .score-badge strong { display: block; font-size: 1rem; line-height: 1; }
 .summary { max-width: 790px; margin: 0; color: #52615b; font-size: .9rem; line-height: 1.58; }
+.watched-person { margin: 10px 0 0; color: #604416; font-size: .78rem; font-weight: 750; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; padding-right: 50px; }
 .tag { border: 1px solid #d8ddd8; border-radius: 5px; padding: 4px 7px; color: #40554d; background: #f8faf5; font-size: .68rem; }
 .tag.modality { border-color: #b9c9a1; background: #f0f8db; }

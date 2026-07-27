@@ -13,6 +13,7 @@ from rna_monitor.config import AppConfig, load_config
 from rna_monitor.dedup import MergeDecision, deduplicate
 from rna_monitor.http import HttpClient
 from rna_monitor.models import Record
+from rna_monitor.people import match_watched_people
 from rna_monitor.scoring import score_records
 from rna_monitor.sources.base import RetrievalWindow, SourceResult
 from rna_monitor.sources.clinical_trials import ClinicalTrialsAdapter
@@ -178,6 +179,10 @@ class UpdatePipeline:
 
         if source_names and not successful:
             raise RuntimeError(f"all requested sources failed: {sorted(failed)}")
+        for record in incoming:
+            matches = match_watched_people(record, self.config.people.people)
+            record.watched_people = list(dict.fromkeys([*record.watched_people, *matches]))
+
         enriched: list[Record] = []
         enrichment_available = self.enricher is not None
         for record in incoming:
@@ -240,34 +245,42 @@ def build_default_pipeline(
     """Construct production adapters from repository configuration."""
 
     config = load_config(config_dir)
-    http = HttpClient(config.sources.http, config.sources.user_agent)
-    adapters: dict[str, Adapter] = {
-        "pubmed": PubMedAdapter(
+    http = HttpClient(
+        config.sources.http,
+        config.sources.user_agent,
+        cache_dir=Path(".cache/http"),
+    )
+    adapters: dict[str, Adapter] = {}
+    if config.sources.pubmed.enabled:
+        adapters["pubmed"] = PubMedAdapter(
             config.sources.pubmed,
             config.queries.source_queries["pubmed"],
             config.queries.groups,
             http,
-        ),
-        "preprints": PreprintAdapter(
+            config.people.people,
+        )
+    if config.sources.preprints.enabled:
+        adapters["preprints"] = PreprintAdapter(
             config.sources.preprints,
             config.queries.source_queries["preprints"],
             config.queries.groups,
             config.queries.agriculture_enabled,
             http,
-        ),
-        "clinicaltrials": ClinicalTrialsAdapter(
+        )
+    if config.sources.clinical_trials.enabled:
+        adapters["clinicaltrials"] = ClinicalTrialsAdapter(
             config.sources.clinical_trials,
             config.queries.source_queries["clinical_trials"],
             http,
-        ),
-        "rss": RssAdapter(
+        )
+    if config.sources.rss.enabled:
+        adapters["rss"] = RssAdapter(
             config.sources.rss,
             config.queries.source_queries["rss"],
             config.queries.groups,
             config.queries.agriculture_enabled,
             http,
-        ),
-    }
+        )
     enricher = (
         CrossrefEnricher(config.sources.crossref, http) if config.sources.crossref.enabled else None
     )

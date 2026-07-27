@@ -190,6 +190,7 @@ class Record(StrictModel):
     topics: list[str] = Field(default_factory=list)
     companies: list[str] = Field(default_factory=list)
     institutions: list[str] = Field(default_factory=list)
+    watched_people: list[str] = Field(default_factory=list)
     keywords: list[str] = Field(default_factory=list)
     mesh_terms: list[str] = Field(default_factory=list)
     publication_types: list[str] = Field(default_factory=list)
