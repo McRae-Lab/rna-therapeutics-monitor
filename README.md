@@ -5,8 +5,8 @@ preprints, clinical trials, regulatory developments, and selected RSS sources.
 The pipeline normalizes, deduplicates, classifies, scores, and exports records
 for a static GitHub Pages website.
 
-> Work in progress: checkpoints 1-7 establish the typed schema, configuration,
-> API adapters, Crossref reconciliation, and generic feed ingestion.
+> Work in progress: checkpoints 1-8 establish source ingestion and conservative,
+> auditable deterministic deduplication.
 
 The default implementation targets Python 3.12 and requires no API keys.
 
@@ -78,3 +78,12 @@ Feeds are explicitly listed in `config/sources.yml` with their attribution and
 terms links. The generic adapter stores only feed-provided metadata and a
 bounded plain-text description; it never fetches article pages. Each feed fails
 independently, and malformed feeds produce warnings without erasing other data.
+
+## Deduplication
+
+Exact DOI, PMID, NCT, source identifiers, and documented
+preprint-to-journal DOI relationships are authoritative. Title matching is a
+fallback only: it requires a long near-identical normalized title, matching
+first-author identity, and compatible dates. Matching RNA vocabulary or a
+surname/initial alone is never sufficient. Merge decisions retain a reason and
+confidence, while all source IDs, URLs, provenance, and relationships survive.
