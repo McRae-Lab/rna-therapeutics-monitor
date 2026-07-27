@@ -1,0 +1,203 @@
+schema_version: 1
+
+field_weights:
+  title: 3.0
+  interventions: 3.0
+  keywords: 2.0
+  mesh_terms: 1.5
+  abstract: 1.0
+  description: 0.75
+
+global_negative_patterns:
+  - '\bRNA[- ]?seq(?:uencing)?\b(?!.*\btherap)'
+  - '\btranscriptom(?:e|ic|ics)\b(?!.*\btherap)'
+  - '\bviral RNA (?:load|surveillance|epidemiology)\b'
+
+categories:
+  modalities:
+    - label: mRNA
+      patterns:
+        - '\bmRNA (?:therap|vaccin|medicine|drug)'
+        - '\bmessenger RNA (?:therap|vaccin|medicine|drug)'
+      negative_patterns:
+        - '\bmRNA expression\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: saRNA
+      patterns:
+        - '\bself[- ]amplifying RNA\b'
+        - '\bsaRNA (?:therap|vaccin|platform)'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: circRNA
+      patterns:
+        - '\bcircular RNA (?:therap|vaccin|platform)'
+        - '\bcircRNA (?:therap|vaccin|delivery)'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: siRNA
+      patterns:
+        - '\bsmall interfering RNA\b'
+        - '\bsiRNA (?:therap|drug|delivery|treatment)'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: ASO
+      patterns:
+        - '\bantisense oligonucleotide'
+        - '\bASO (?:therap|drug|treatment)'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: aptamer
+      patterns:
+        - '\bRNA aptamer'
+        - '\btherapeutic aptamer'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: miRNA
+      patterns:
+        - '\bmicroRNA (?:therap|mimic|inhibitor|replacement)'
+        - '\bmiRNA (?:therap|mimic|drug)'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: RNA editing
+      patterns:
+        - '\bRNA editing\b'
+        - '\bADAR[- ]mediated edit'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: CRISPR RNA
+      patterns:
+        - '\bguide RNA therapeut'
+        - '\bCRISPR RNA delivery\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: RNA nanostructure
+      patterns:
+        - '\bRNA nanotechnolog'
+        - '\bRNA origami\b'
+        - '\bRNA nanostructure'
+      weight: 1.0
+      minimum_score: 1.0
+
+  delivery_systems:
+    - label: lipid nanoparticle
+      patterns:
+        - '\blipid nanoparticle'
+        - '\bLNP(?:s)?\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: GalNAc
+      patterns:
+        - '\bGalNAc\b'
+        - '\bN-acetylgalactosamine\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: extracellular vesicle
+      patterns:
+        - '\bextracellular vesicle'
+        - '\bexosome'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: virus-like particle
+      patterns:
+        - '\bvirus-like particle'
+        - '\bVLP(?:s)?\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: polymeric nanoparticle
+      patterns:
+        - '\bpolymeric nanoparticle'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: endosomal escape
+      patterns:
+        - '\bendosomal escape\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: extrahepatic delivery
+      patterns:
+        - '\bextrahepatic delivery\b'
+        - '\borgan-selective delivery\b'
+      weight: 1.0
+      minimum_score: 1.0
+
+  development_stages:
+    - label: preclinical in vitro
+      patterns:
+        - '\bin vitro\b'
+        - '\bcell(?:ular)? model\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: preclinical animal
+      patterns:
+        - '\bin vivo\b'
+        - '\bmouse model\b'
+        - '\bnonhuman primate'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: Phase 1
+      patterns:
+        - '\bphase (?:1|I)\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: Phase 2
+      patterns:
+        - '\bphase (?:2|II)\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: Phase 3
+      patterns:
+        - '\bphase (?:3|III)\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: approved
+      patterns:
+        - '\b(?:FDA|EMA) approv'
+        - '\bmarketing authori[sz]ation\b'
+      weight: 1.0
+      minimum_score: 1.0
+
+  disease_areas:
+    - label: oncology
+      patterns:
+        - '\bcancer\b'
+        - '\btumou?r\b'
+        - '\boncolog'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: infectious disease
+      patterns:
+        - '\binfectious disease'
+        - '\bviral infection'
+        - '\bvaccine against\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: rare disease
+      patterns:
+        - '\brare disease'
+        - '\borphan disease'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: neurological
+      patterns:
+        - '\bneuro(?:logical|degenerative)'
+        - '\bcentral nervous system\b'
+      weight: 1.0
+      minimum_score: 1.0
+
+  methods:
+    - label: in vitro transcription
+      patterns:
+        - '\bin vitro transcription\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: RNA capping
+      patterns:
+        - '\bRNA capp(?:ing|ed)\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: RNA purification
+      patterns:
+        - '\bRNA purification\b'
+      weight: 1.0
+      minimum_score: 1.0

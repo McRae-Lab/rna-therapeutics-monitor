@@ -1,0 +1,128 @@
+schema_version: 1
+agriculture_enabled: false
+
+groups:
+  modalities_high_precision:
+    description: Named RNA therapeutic modalities with explicit therapeutic context.
+    precision: high
+    terms:
+      - mRNA therapeutic
+      - messenger RNA therapeutic
+      - self-amplifying RNA
+      - saRNA therapeutic
+      - circular RNA therapeutic
+      - circRNA therapeutic
+      - small interfering RNA therapeutic
+      - siRNA therapeutic
+      - antisense oligonucleotide
+      - ASO therapeutic
+      - RNA aptamer
+      - therapeutic aptamer
+      - RNA editing therapeutic
+      - guide RNA therapeutic
+      - CRISPR RNA delivery
+      - microRNA therapeutic
+      - miRNA therapeutic
+      - RNA vaccine
+      - RNA nanotechnology
+      - RNA origami
+
+  delivery_high_precision:
+    description: RNA delivery systems and delivery barriers.
+    precision: high
+    terms:
+      - lipid nanoparticle RNA
+      - LNP RNA delivery
+      - GalNAc siRNA
+      - GalNAc oligonucleotide
+      - extracellular vesicle RNA delivery
+      - exosome RNA delivery
+      - virus-like particle RNA
+      - VLP RNA delivery
+      - polymeric nanoparticle RNA
+      - RNA delivery
+      - endosomal escape RNA
+      - extrahepatic RNA delivery
+      - organ-selective RNA delivery
+
+  development_high_precision:
+    description: Development and manufacturing terms coupled to RNA products.
+    precision: high
+    terms:
+      - RNA stability therapeutic
+      - RNA immunogenicity therapeutic
+      - innate immune activation RNA therapeutic
+      - RNA modification therapeutic
+      - RNA formulation
+      - RNA manufacturing
+      - in vitro transcription therapeutic RNA
+      - RNA purification manufacturing
+      - RNA capping therapeutic
+      - RNA quality control manufacturing
+
+  broad_discovery:
+    description: Broader but still contextual terms retained separately for auditing.
+    precision: broad
+    terms:
+      - oligonucleotide drug
+      - nucleic acid medicine
+      - RNA medicine
+      - programmable RNA therapeutic
+      - post-transcriptional gene therapy
+
+  nontherapeutic_exclusions:
+    description: Common nontherapeutic RNA uses retained with an exclusion reason.
+    precision: exclusion
+    terms:
+      - transcriptomic profiling
+      - RNA sequencing
+      - single-cell RNA-seq
+      - viral RNA surveillance
+      - RNA biomarker
+      - non-coding RNA expression
+      - crop
+      - plant
+      - agriculture
+
+source_queries:
+  pubmed:
+    include_groups:
+      - modalities_high_precision
+      - delivery_high_precision
+      - development_high_precision
+      - broad_discovery
+    exclusion_groups:
+      - nontherapeutic_exclusions
+    queries:
+      - '("mRNA therapeutic"[Title/Abstract] OR "messenger RNA therapeutic"[Title/Abstract] OR "self-amplifying RNA"[Title/Abstract] OR "circular RNA therapeutic"[Title/Abstract] OR "siRNA therapeutic"[Title/Abstract] OR "antisense oligonucleotide"[Title/Abstract] OR "RNA aptamer"[Title/Abstract] OR "RNA editing"[Title/Abstract] OR "microRNA therapeutic"[Title/Abstract] OR "RNA vaccine"[Title/Abstract] OR "RNA nanotechnology"[Title/Abstract] OR "RNA origami"[Title/Abstract])'
+      - '("lipid nanoparticle"[Title/Abstract] OR GalNAc[Title/Abstract] OR "extracellular vesicle"[Title/Abstract] OR "virus-like particle"[Title/Abstract] OR "endosomal escape"[Title/Abstract] OR "extrahepatic delivery"[Title/Abstract]) AND (mRNA[Title/Abstract] OR siRNA[Title/Abstract] OR oligonucleotide[Title/Abstract])'
+      - '("RNA formulation"[Title/Abstract] OR "RNA manufacturing"[Title/Abstract] OR "in vitro transcription"[Title/Abstract] OR "RNA capping"[Title/Abstract]) AND (therapeutic*[Title/Abstract] OR vaccine*[Title/Abstract] OR drug*[Title/Abstract])'
+
+  preprints:
+    include_groups:
+      - modalities_high_precision
+      - delivery_high_precision
+      - development_high_precision
+      - broad_discovery
+    exclusion_groups:
+      - nontherapeutic_exclusions
+
+  clinical_trials:
+    include_groups:
+      - modalities_high_precision
+      - delivery_high_precision
+    exclusion_groups:
+      - nontherapeutic_exclusions
+    queries:
+      - '"messenger RNA" OR mRNA OR "self-amplifying RNA" OR circRNA OR siRNA'
+      - '"antisense oligonucleotide" OR "RNA aptamer" OR "RNA editing" OR "microRNA therapeutic"'
+      - '"lipid nanoparticle" OR GalNAc OR "RNA vaccine"'
+
+  rss:
+    include_groups:
+      - modalities_high_precision
+      - delivery_high_precision
+      - development_high_precision
+      - broad_discovery
+    exclusion_groups:
+      - nontherapeutic_exclusions

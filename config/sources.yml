@@ -1,0 +1,58 @@
+schema_version: 1
+user_agent: "rna-therapeutics-monitor/0.1 (+https://github.com/USERNAME/rna-therapeutics-monitor)"
+
+http:
+  connect_timeout_seconds: 10
+  read_timeout_seconds: 30
+  max_attempts: 4
+  backoff_min_seconds: 1
+  backoff_max_seconds: 20
+  cache_ttl_hours: 24
+
+pubmed:
+  enabled: true
+  base_url: "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
+  overlap_days: 7
+  tool: "rna_therapeutics_monitor"
+  contact_email_env: "RNA_MONITOR_CONTACT_EMAIL"
+  default_contact_email: "maintainer@example.invalid"
+  requests_per_second: 3
+  batch_size: 200
+
+preprints:
+  enabled: true
+  base_url: "https://api.biorxiv.org/"
+  overlap_days: 7
+  servers:
+    - biorxiv
+    - medrxiv
+  page_size: 100
+
+clinical_trials:
+  enabled: true
+  base_url: "https://clinicaltrials.gov/api/v2/"
+  overlap_days: 7
+  page_size: 100
+
+crossref:
+  enabled: true
+  base_url: "https://api.crossref.org/"
+  overlap_days: 7
+  contact_email_env: "RNA_MONITOR_CONTACT_EMAIL"
+  default_contact_email: "maintainer@example.invalid"
+  requests_per_second: 5
+
+rss:
+  enabled: true
+  overlap_days: 7
+  feeds:
+    - name: FDA Press Announcements
+      url: "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-releases/rss.xml"
+      source_type: regulatory
+      attribution: U.S. Food and Drug Administration
+      terms_url: "https://www.fda.gov/about-fda/about-website/website-policies"
+    - name: EMA News
+      url: "https://www.ema.europa.eu/en/news-events/news/rss"
+      source_type: regulatory
+      attribution: European Medicines Agency
+      terms_url: "https://www.ema.europa.eu/en/about-us/legal/copyright"
