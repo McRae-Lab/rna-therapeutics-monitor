@@ -5,8 +5,8 @@ preprints, clinical trials, regulatory developments, and selected RSS sources.
 The pipeline normalizes, deduplicates, classifies, scores, and exports records
 for a static GitHub Pages website.
 
-> Work in progress: checkpoints 1-13 establish the complete local pipeline and
-> responsive static website.
+> Work in progress: checkpoints 1-14 establish the local system, static site,
+> and secret-free continuous integration.
 
 The default implementation targets Python 3.12 and requires no API keys.
 
@@ -151,3 +151,18 @@ such as `https://USERNAME.github.io/rna-therapeutics-monitor/`.
 Screenshot: _add a production screenshot after the first Pages deployment._
 
 Live site: `https://USERNAME.github.io/rna-therapeutics-monitor/`
+
+## Testing
+
+```bash
+ruff format --check .
+ruff check .
+mypy src
+pytest
+python scripts/build_fixture_site.py --output /tmp/rna-monitor-fixture-site/data
+```
+
+The push and pull-request workflow uses Python 3.12, exact versions from
+`requirements.lock`, no network-dependent tests, no secrets, strict type and
+style checks, configuration validation, a fixture-backed site build, and
+JavaScript syntax checks.

@@ -1,0 +1,50 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Configure Python 3.12
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.lock
+
+      - name: Install locked dependencies
+        run: |
+          python -m pip install --disable-pip-version-check -r requirements.lock
+          python -m pip install --no-deps -e .
+
+      - name: Check formatting
+        run: ruff format --check .
+
+      - name: Lint
+        run: ruff check .
+
+      - name: Type check
+        run: mypy src
+
+      - name: Run offline tests
+        run: pytest
+
+      - name: Validate configuration and canonical data
+        run: python -m rna_monitor validate
+
+      - name: Build static site with fixture data
+        run: |
+          python scripts/build_fixture_site.py --output site/data
+          python -m rna_monitor validate
+          node --check site/assets/app.js
+          node --check site/assets/methodology.js
