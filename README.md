@@ -5,8 +5,8 @@ preprints, clinical trials, regulatory developments, and selected RSS sources.
 The pipeline normalizes, deduplicates, classifies, scores, and exports records
 for a static GitHub Pages website.
 
-> Work in progress: checkpoints 1-6 establish the typed canonical schema,
-> validated configuration, primary adapters, and Crossref reconciliation.
+> Work in progress: checkpoints 1-7 establish the typed schema, configuration,
+> API adapters, Crossref reconciliation, and generic feed ingestion.
 
 The default implementation targets Python 3.12 and requires no API keys.
 
@@ -71,3 +71,10 @@ Crossref is enrichment-only. For DOI-bearing records it can fill missing
 container, publisher, author, funder, license, date, and relationship metadata.
 It records each enriched field and never replaces populated PubMed or other
 higher-quality source fields merely because Crossref differs.
+
+### RSS and Atom
+
+Feeds are explicitly listed in `config/sources.yml` with their attribution and
+terms links. The generic adapter stores only feed-provided metadata and a
+bounded plain-text description; it never fetches article pages. Each feed fails
+independently, and malformed feeds produce warnings without erasing other data.

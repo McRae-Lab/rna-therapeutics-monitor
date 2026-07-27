@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Example RNA News</title>
+    <link>https://example.org/news</link>
+    <description>Example feed</description>
+    <item>
+      <guid>release-101</guid>
+      <title>Company begins Phase 1 trial of an mRNA therapeutic in lipid nanoparticles</title>
+      <link>https://example.org/news/release-101</link>
+      <description><![CDATA[<p>A short <strong>announcement</strong> supplied by the feed.</p><script>alert("x")</script>]]></description>
+      <author>newsroom@example.org (Example Company)</author>
+      <pubDate>Mon, 27 Jul 2026 14:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid>odor-study</guid>
+      <title>Do You See What I Smell? A community arts study</title>
+      <link>https://example.org/news/odor-study</link>
+      <description>A participatory visual arts method for documenting odors.</description>
+      <pubDate>Mon, 27 Jul 2026 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
