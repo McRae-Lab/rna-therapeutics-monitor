@@ -103,13 +103,13 @@ def _facets(records: list[Record]) -> dict[str, Any]:
     }
 
 
-def _methodology(generated_at: datetime) -> dict[str, Any]:
+def _methodology(generated_at: datetime, llm_enabled: bool) -> dict[str, Any]:
     return {
         "schema_version": 1,
         "methodology_revision": "2026-07-27",
         "generated_at": generated_at.isoformat(),
         "classification_method": "deterministic-rules-v1",
-        "llm_enabled": False,
+        "llm_enabled": llm_enabled,
         "score_name": "relevance priority score",
         "score_range": [0, 100],
         "score_is_scientific_quality": False,
@@ -176,7 +176,14 @@ def export_static_data(
             "generated_at": timestamp.isoformat(),
             "record_count": len(stable_records),
         },
-        "methodology.json": _methodology(timestamp),
+        "methodology.json": _methodology(
+            timestamp,
+            any(
+                record.enrichment_metadata is not None
+                and record.enrichment_metadata.provider != "none"
+                for record in stable_records
+            ),
+        ),
     }
     for name, payload in artifacts.items():
         _write_json(output_dir / name, payload, compact=name.endswith(".min.json"))

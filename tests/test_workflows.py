@@ -43,7 +43,9 @@ def test_update_workflow_is_serialized_minimal_and_no_llm_by_default() -> None:
     assert "python -m rna_monitor build" in text
     assert "git diff --cached --quiet" in text
     assert "data: update RNA therapeutics monitor" in text
-    assert "OPENAI_API_KEY" not in text
+    assert "vars.ENABLE_LLM_ENRICHMENT == 'true'" in text
+    assert "secrets.OPENAI_API_KEY" in text
+    assert "python -m rna_monitor enrich" in text
 
 
 def test_pages_workflow_uses_official_actions_and_required_permissions() -> None:

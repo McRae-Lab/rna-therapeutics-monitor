@@ -5,8 +5,8 @@ preprints, clinical trials, regulatory developments, and selected RSS sources.
 The pipeline normalizes, deduplicates, classifies, scores, and exports records
 for a static GitHub Pages website.
 
-> Work in progress: checkpoints 1-16 establish the local system, daily data
-> update, and official GitHub Pages deployment.
+> Work in progress: checkpoints 1-17 establish the full application, including
+> optional disabled-by-default structured enrichment.
 
 The default implementation targets Python 3.12 and requires no API keys.
 
@@ -187,3 +187,29 @@ The deployment workflow uses the official `configure-pages`,
 uses the protected `github-pages` environment, and has exactly `contents: read`,
 `pages: write`, and `id-token: write`. A successful daily update also triggers a
 deployment; failed updates do not.
+
+## Optional LLM enrichment
+
+Deterministic mode is the default and calls no model:
+
+```bash
+python -m rna_monitor update --no-llm
+```
+
+Supported opt-in modes are:
+
+1. **Deterministic:** rule labels and source abstracts only.
+2. **Local enrichment:** run an OpenAI-compatible model on the maintainer's
+   computer, then commit only validated generated fields:
+   `python -m rna_monitor enrich --provider local --model MODEL --base-url http://127.0.0.1:8000/v1`.
+3. **Self-hosted runner:** use the same local-compatible command on a private
+   Actions runner.
+4. **Hosted API:** set repository secret `OPENAI_API_KEY`, repository variable
+   `OPENAI_MODEL`, and explicitly set `ENABLE_LLM_ENRICHMENT=true`.
+
+Prompts receive only public metadata and abstracts. Results are JSON-schema
+validated and cached under `.cache/enrichment` using the model, prompt version,
+title, abstract/description, and trial fields. Malformed output leaves the
+deterministic record intact. Provider, model, prompt version, timestamp, input
+hash, and validation status are exported; credentials and raw responses are
+never logged or published. The mere presence of a secret never enables calls.

@@ -10,6 +10,7 @@ from pathlib import Path
 
 from rna_monitor.classifier import classify_records
 from rna_monitor.config import load_config
+from rna_monitor.enrichment import build_summarizer, enrich_records
 from rna_monitor.export import export_static_data, validate_public_artifacts
 from rna_monitor.logging_utils import configure_logging
 from rna_monitor.pipeline import UpdateOptions, build_default_pipeline
@@ -50,6 +51,14 @@ def _parser() -> argparse.ArgumentParser:
 
     build = subparsers.add_parser("build", help="export and validate the static site")
     build.add_argument("--verbose", action="store_true")
+
+    enrich = subparsers.add_parser("enrich", help="run explicitly enabled optional enrichment")
+    enrich.add_argument("--provider", choices=("none", "openai", "local"), default="none")
+    enrich.add_argument("--model", default="")
+    enrich.add_argument("--base-url", default="")
+    enrich.add_argument("--cache-dir", type=Path, default=Path(".cache/enrichment"))
+    enrich.add_argument("--dry-run", action="store_true")
+    enrich.add_argument("--verbose", action="store_true")
 
     validate = subparsers.add_parser("validate", help="validate configuration and canonical data")
     validate.add_argument("--verbose", action="store_true")
@@ -93,6 +102,29 @@ def main(argv: list[str] | None = None) -> int:
             if args.command == "build":
                 build_result["validation"] = validate_public_artifacts(args.site_dir / "data")
             print(json.dumps(build_result, sort_keys=True))
+        elif args.command == "enrich":
+            records = load_records(records_path)
+            summarizer = build_summarizer(
+                enabled=args.provider != "none",
+                provider=args.provider,
+                model=args.model,
+                base_url=args.base_url,
+                cache_dir=args.cache_dir,
+            )
+            enriched, failures = enrich_records(records, summarizer)
+            if not args.dry_run:
+                save_records(records_path, enriched)
+            print(
+                json.dumps(
+                    {
+                        "records": len(enriched),
+                        "failures": failures,
+                        "provider": args.provider,
+                        "dry_run": args.dry_run,
+                    },
+                    sort_keys=True,
+                )
+            )
         else:
             records = load_records(records_path)
             result: dict[str, object] = {

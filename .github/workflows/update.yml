@@ -61,6 +61,15 @@ jobs:
           RNA_MONITOR_CONTACT_EMAIL: ${{ vars.RNA_MONITOR_CONTACT_EMAIL || 'maintainer@example.invalid' }}
         run: python -m rna_monitor update --days "${{ inputs.days || '14' }}" --no-llm
 
+      - name: Run explicitly enabled hosted enrichment
+        if: vars.ENABLE_LLM_ENRICHMENT == 'true'
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: >-
+          python -m rna_monitor enrich
+          --provider openai
+          --model "${{ vars.OPENAI_MODEL }}"
+
       - name: Validate targeted update behavior
         run: pytest tests/test_pipeline.py tests/test_export.py tests/test_dedup.py
 

@@ -91,6 +91,17 @@ class ScoreComponent(StrictModel):
     reason: str
 
 
+class EnrichmentMetadata(StrictModel):
+    """Audit metadata for one validated optional LLM enrichment."""
+
+    provider: str
+    model: str
+    prompt_version: str
+    enrichment_timestamp: datetime
+    input_hash: str
+    validation_status: str
+
+
 class TrialOutcome(StrictModel):
     """A primary or secondary ClinicalTrials.gov outcome."""
 
@@ -192,6 +203,8 @@ class Record(StrictModel):
     summary: str | None = None
     key_findings: list[str] = Field(default_factory=list)
     numerical_results: list[NumericalResult] = Field(default_factory=list)
+    uncertainty_notes: list[str] = Field(default_factory=list)
+    enrichment_metadata: EnrichmentMetadata | None = None
     provenance: list[ProvenanceEntry] = Field(default_factory=list)
     field_sources: dict[str, str] = Field(default_factory=dict)
     version: int = Field(default=1, ge=1)
