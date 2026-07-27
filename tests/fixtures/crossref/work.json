@@ -1,0 +1,29 @@
+{
+  "status": "ok",
+  "message": {
+    "DOI": "10.1000/RNA.2026.001",
+    "title": ["Crossref title that must not replace PubMed"],
+    "container-title": ["Crossref Journal"],
+    "publisher": "Example Science Press",
+    "published-online": {"date-parts": [[2026, 7, 18]]},
+    "author": [{
+      "given": "Ana",
+      "family": "Rivera",
+      "ORCID": "https://orcid.org/0000-0002-0000-0001",
+      "affiliation": [{"name": "Example University"}]
+    }],
+    "funder": [{
+      "name": "Example Research Foundation",
+      "DOI": "10.13039/100000001"
+    }],
+    "license": [{"URL": "https://creativecommons.org/licenses/by/4.0/"}],
+    "relation": {
+      "is-correction-of": [{
+        "id-type": "doi",
+        "id": "10.1000/OLDER.001",
+        "asserted-by": "subject"
+      }]
+    },
+    "URL": "https://doi.org/10.1000/RNA.2026.001"
+  }
+}

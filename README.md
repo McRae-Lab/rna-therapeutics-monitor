@@ -5,8 +5,8 @@ preprints, clinical trials, regulatory developments, and selected RSS sources.
 The pipeline normalizes, deduplicates, classifies, scores, and exports records
 for a static GitHub Pages website.
 
-> Work in progress: checkpoints 1-5 establish the typed canonical schema,
-> validated configuration, and publication, preprint, and trial adapters.
+> Work in progress: checkpoints 1-6 establish the typed canonical schema,
+> validated configuration, primary adapters, and Crossref reconciliation.
 
 The default implementation targets Python 3.12 and requires no API keys.
 
@@ -64,3 +64,10 @@ It captures sponsors, collaborators, conditions, intervention aliases, phases,
 status, enrollment, partial-date precision, locations, outcomes, and results
 availability. Tracked changes create an auditable history instead of a second
 trial.
+
+### Crossref
+
+Crossref is enrichment-only. For DOI-bearing records it can fill missing
+container, publisher, author, funder, license, date, and relationship metadata.
+It records each enriched field and never replaces populated PubMed or other
+higher-quality source fields merely because Crossref differs.

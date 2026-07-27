@@ -154,8 +154,11 @@ class Record(StrictModel):
     description: str | None = None
     authors: list[Author] = Field(default_factory=list)
     organizations: list[Organization] = Field(default_factory=list)
+    funders: list[Organization] = Field(default_factory=list)
     journal_or_source: str | None = None
     publisher: str | None = None
+    license_url: HttpUrl | None = None
+    relations: dict[str, list[str]] = Field(default_factory=dict)
     doi: str | None = None
     pmid: str | None = None
     nct_id: str | None = None
