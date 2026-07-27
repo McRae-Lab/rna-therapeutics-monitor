@@ -277,3 +277,46 @@ categories:
         - '\bExample University\b'
       weight: 1.0
       minimum_score: 1.0
+
+  topics:
+    - label: delivery
+      patterns:
+        - '\bdelivery\b'
+        - '\bformulation\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: manufacturing
+      patterns:
+        - '\bmanufactur'
+        - '\bquality control\b'
+        - '\bpurification\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: clinical development
+      patterns:
+        - '\bclinical trial\b'
+        - '\bphase (?:1|2|3|I|II|III)\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: regulation
+      patterns:
+        - '\bregulator'
+        - '\bFDA\b'
+        - '\bEMA\b'
+        - '\bmarketing authori[sz]ation\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: safety
+      patterns:
+        - '\bsafety\b'
+        - '\btoxicit'
+        - '\badverse event'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: efficacy
+      patterns:
+        - '\befficacy\b'
+        - '\bresponse rate\b'
+        - '\btherapeutic effect'
+      weight: 1.0
+      minimum_score: 1.0

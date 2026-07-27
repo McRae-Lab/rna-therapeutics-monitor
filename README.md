@@ -5,8 +5,8 @@ preprints, clinical trials, regulatory developments, and selected RSS sources.
 The pipeline normalizes, deduplicates, classifies, scores, and exports records
 for a static GitHub Pages website.
 
-> Work in progress: checkpoints 1-9 establish source ingestion, conservative
-> deduplication, and auditable rule-based classification.
+> Work in progress: checkpoints 1-10 establish ingestion, deduplication,
+> auditable classification, and transparent relevance scoring.
 
 The default implementation targets Python 3.12 and requires no API keys.
 
@@ -95,3 +95,12 @@ weights, and negative patterns. Title and intervention matches outweigh
 abstract or feed-description matches. Every displayed label retains confidence,
 the literal matched phrases, fields, and method; source-provided sponsor and
 affiliation classifications are marked separately as source metadata.
+
+## Relevance score
+
+The reproducible 0–100 score is the sum of exported components for direct
+therapeutic relevance, modality specificity, delivery, translational stage,
+human relevance, clinical changes, regulatory importance, methods, recency, and
+independent-source corroboration. Excluded records remain stored but are capped
+at 15. This is a prioritization score, **not a measure of scientific quality**;
+press-release claims receive no evidence-quality bonus.

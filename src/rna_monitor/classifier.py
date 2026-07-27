@@ -25,6 +25,7 @@ CATEGORY_FIELDS = {
     "development_stages": "development_stages",
     "species": "species",
     "methods": "methods",
+    "topics": "topics",
     "companies": "companies",
     "institutions": "institutions",
 }

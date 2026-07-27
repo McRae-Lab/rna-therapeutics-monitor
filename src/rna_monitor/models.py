@@ -176,6 +176,7 @@ class Record(StrictModel):
     development_stages: list[str] = Field(default_factory=list)
     species: list[str] = Field(default_factory=list)
     methods: list[str] = Field(default_factory=list)
+    topics: list[str] = Field(default_factory=list)
     companies: list[str] = Field(default_factory=list)
     institutions: list[str] = Field(default_factory=list)
     keywords: list[str] = Field(default_factory=list)

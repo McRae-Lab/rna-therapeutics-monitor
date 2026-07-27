@@ -262,6 +262,7 @@ def merge_records(left: Record, right: Record, reason: str) -> Record:
         "development_stages": _unique_strings(left.development_stages, right.development_stages),
         "species": _unique_strings(left.species, right.species),
         "methods": _unique_strings(left.methods, right.methods),
+        "topics": _unique_strings(left.topics, right.topics),
         "companies": _unique_strings(left.companies, right.companies),
         "institutions": _unique_strings(left.institutions, right.institutions),
         "keywords": _unique_strings(left.keywords, right.keywords),
