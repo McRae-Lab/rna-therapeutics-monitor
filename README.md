@@ -12,7 +12,7 @@ and vanilla JavaScript interface publishes it on GitHub Pages.
 
 Screenshot: _placeholder—add a current screenshot after first deployment._
 
-Live site: `https://USERNAME.github.io/rna-therapeutics-monitor/`
+Live site: `https://mcrae-lab.github.io/rna-therapeutics-monitor/`
 
 ## What it does
 
@@ -81,7 +81,7 @@ reject Michelle/Meredith Hastings and Timothy/Tianlun Yu collisions.
 Python 3.12 is required.
 
 ```bash
-git clone https://github.com/USERNAME/rna-therapeutics-monitor.git
+git clone https://github.com/McRae-Lab/rna-therapeutics-monitor.git
 cd rna-therapeutics-monitor
 python3.12 -m venv .venv
 . .venv/bin/activate
@@ -245,15 +245,13 @@ If there are no data changes, the updater creates no commit.
 
 ### Deploy to GitHub Pages
 
-1. Replace `USERNAME` in `README.md`, `site/index.html`, and
-   `config/sources.yml`.
-2. Create the GitHub repository and push `main`.
-3. In **Settings → Pages**, choose **GitHub Actions** as the source.
-4. Run **Deploy GitHub Pages** once, or push a `site/` change.
-5. Set repository variable `RNA_MONITOR_CONTACT_EMAIL` to a monitored address.
+1. Create `McRae-Lab/rna-therapeutics-monitor` and push `main`.
+2. In **Settings → Pages**, choose **GitHub Actions** as the source.
+3. Run **Deploy GitHub Pages** once, or push a `site/` change.
+4. Set repository variable `RNA_MONITOR_CONTACT_EMAIL` to a monitored address.
 
 The resulting project URL is
-`https://USERNAME.github.io/rna-therapeutics-monitor/`.
+`https://mcrae-lab.github.io/rna-therapeutics-monitor/`.
 
 ## Optional LLM enrichment
 
