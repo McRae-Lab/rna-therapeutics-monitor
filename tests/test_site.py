@@ -20,6 +20,7 @@ def test_site_contains_required_controls_and_presets() -> None:
     html = (SITE / "index.html").read_text(encoding="utf-8")
     for identifier in (
         "search",
+        "technology",
         "date-from",
         "source",
         "modality",

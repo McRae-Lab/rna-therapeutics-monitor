@@ -67,6 +67,7 @@ def test_pubmed_query_includes_srt_bibliographic_fallbacks() -> None:
     assert "Cullis PR[Author]" in query
     assert "Hastings ML[Author]" in query
     assert "Yu TW[Author]" in query
+    assert '"base editing"[Title/Abstract]' in query
 
 
 def _identity_record(author: Author) -> Record:

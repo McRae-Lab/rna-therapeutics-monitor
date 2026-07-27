@@ -116,10 +116,17 @@
           <p class="eyebrow">06</p>
           <h2>Relevance scoring</h2>
           <p>
-            The 0–100 score prioritizes direct therapeutic relevance, modality
-            specificity, delivery, translational stage, human relevance, trial
-            changes, regulatory importance, methods, recency, and corroborating
-            sources. Its components and reasons are visible on every record.
+            Results initially appear newest first, with relevance breaking date
+            ties. Selecting “Highest relevance” ranks the full result set by a
+            deterministic 0–100 priority score.
+          </p>
+          <p>
+            The score is the sum of the components below. Every expanded record
+            shows its awarded points and a plain-language reason. Classification
+            details also retain the matched phrase, source field, confidence, and
+            method; provenance identifies the source record. This makes the
+            ranking inspectable and reproducible rather than a hidden model
+            judgment.
           </p>
           <div id="score-table" class="score-table" aria-label="Score component maxima"></div>
           <p class="notice">

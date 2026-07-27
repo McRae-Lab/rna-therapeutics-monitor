@@ -69,7 +69,9 @@ categories:
     - label: CRISPR RNA
       patterns:
         - '\bguide RNA therapeut'
+        - '\bguide RNA\b'
         - '\bCRISPR RNA delivery\b'
+        - '\bCRISPR(?:[-/ ]Cas(?:9|12|13))?\b.{0,80}\b(?:therap|treat|deliver|edit)'
       weight: 1.0
       minimum_score: 1.0
     - label: RNA nanostructure
@@ -192,6 +194,7 @@ categories:
         - '\bin vitro transcription\b'
       weight: 1.0
       minimum_score: 1.0
+
     - label: RNA capping
       patterns:
         - '\bRNA capp(?:ing|ed)\b'
@@ -279,6 +282,24 @@ categories:
       minimum_score: 1.0
 
   topics:
+    - label: CRISPR
+      patterns:
+        - '\bCRISPR(?:[-/ ]Cas(?:9|12|13))?\b'
+        - '\bguide RNA\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: gene editing
+      patterns:
+        - '\bgene edit(?:ing|or|ors|ed)\b'
+        - '\bgenome edit(?:ing|or|ors|ed)\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: base editing
+      patterns:
+        - '\bbase edit(?:ing|or|ors|ed)\b'
+        - '\b(?:adenine|cytosine) base editor\b'
+      weight: 1.0
+      minimum_score: 1.0
     - label: delivery
       patterns:
         - '\bdelivery\b'

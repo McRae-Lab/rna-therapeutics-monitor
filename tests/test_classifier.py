@@ -86,3 +86,18 @@ def test_title_match_has_more_weight_than_abstract_match() -> None:
     title_confidence = title_record.classification_evidence["modalities"][0].confidence
     abstract_confidence = abstract_record.classification_evidence["modalities"][0].confidence
     assert title_confidence > abstract_confidence
+
+
+def test_gene_and_base_editing_topics_support_site_filters() -> None:
+    classified = classify_record(
+        _record(
+            "Lipid nanoparticle delivery of a CRISPR adenine base editor",
+            "The gene editing treatment used guide RNA and mRNA in mice.",
+        ),
+        CONFIG,
+    )
+
+    assert "CRISPR" in classified.topics
+    assert "gene editing" in classified.topics
+    assert "base editing" in classified.topics
+    assert "CRISPR RNA" in classified.modalities

@@ -75,6 +75,8 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
 .filter-body { margin-top: 13px; }
 .filter-body label { color: #52615b; font-size: .74rem; }
 .filter-body select, .filter-body input { margin-top: 5px; font-size: .8rem; }
+.filter-note { color: var(--muted); font-size: .78rem; line-height: 1.45; margin: 9px 0 0; }
+.filter-note a { color: var(--ink); }
 .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .select-stack { display: grid; gap: 12px; }
 #min-score { min-height: auto; accent-color: var(--forest); }

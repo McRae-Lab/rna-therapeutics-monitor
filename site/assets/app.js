@@ -13,6 +13,7 @@ const controls = {
   dateFrom: byId("date-from"),
   dateTo: byId("date-to"),
   minScore: byId("min-score"),
+  technology: byId("technology"),
   modality: byId("modality"),
   delivery: byId("delivery"),
   disease: byId("disease"),
@@ -82,6 +83,19 @@ function contains(record, field, value) {
   return !value || (record[field] || []).includes(value);
 }
 
+function technologyMatch(record, value) {
+  if (!value) return true;
+  const modalities = record.modalities || [];
+  const topics = record.topics || [];
+  if (["mRNA", "siRNA", "ASO"].includes(value)) return modalities.includes(value);
+  if (value === "CRISPR") return modalities.includes("CRISPR RNA") || topics.includes("CRISPR");
+  if (value === "base editing") return topics.includes("base editing");
+  if (value === "gene editing") {
+    return topics.some((topic) => ["gene editing", "base editing", "CRISPR"].includes(topic));
+  }
+  return false;
+}
+
 function presetMatch(record) {
   switch (state.preset) {
     case "clinical":
@@ -119,6 +133,7 @@ function applyFilters() {
       (!controls.dateFrom.value || recordDate(record) >= controls.dateFrom.value) &&
       (!controls.dateTo.value || recordDate(record) <= controls.dateTo.value) &&
       Number(record.relevance_score || 0) >= minimum &&
+      technologyMatch(record, controls.technology.value) &&
       contains(record, "modalities", controls.modality.value) &&
       contains(record, "delivery_systems", controls.delivery.value) &&
       contains(record, "disease_areas", controls.disease.value) &&
@@ -270,7 +285,8 @@ function activeLabels() {
   if (controls.dateTo.value) labels.push(`To ${controls.dateTo.value}`);
   if (Number(controls.minScore.value)) labels.push(`Score ≥ ${controls.minScore.value}`);
   const names = {
-    modality: "Modality", delivery: "Delivery", disease: "Disease", stage: "Stage",
+    technology: "Technology", modality: "Modality", delivery: "Delivery",
+    disease: "Disease", stage: "Stage",
     source: "Source", evidence: "Evidence", reviewStatus: "Review", trialStatus: "Trial",
     company: "Company", institution: "Institution", watchedPerson: "SRT author",
   };

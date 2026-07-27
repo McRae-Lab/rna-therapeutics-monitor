@@ -24,12 +24,11 @@
         <h1>Track what is moving RNA therapeutics forward.</h1>
         <p class="hero-copy">
           Publications, preprints, trials, regulatory updates, and industry
-          signals—normalized, deduplicated, and ranked with an auditable method.
+          signals collected from public sources and organized for review.
         </p>
         <div class="status-row" aria-label="Dataset status">
           <span><strong id="total-count">—</strong> records</span>
           <span>Updated <time id="last-updated">—</time></span>
-          <span class="status-pill"><i aria-hidden="true"></i> Static &amp; key-free</span>
         </div>
       </div>
     </header>
@@ -38,7 +37,6 @@
       <section class="presets" aria-labelledby="presets-title">
         <div>
           <p class="eyebrow" id="presets-title">Focused views</p>
-          <p class="muted">Jump into a high-signal slice, then refine it.</p>
         </div>
         <div class="preset-list" role="group" aria-label="Preset views">
           <button class="preset active" data-preset="latest" type="button">Latest</button>
@@ -73,12 +71,27 @@
           <div class="filter-body">
             <label for="min-score">Minimum relevance <output id="score-output">0</output></label>
             <input id="min-score" type="range" min="0" max="100" step="5" value="0">
+            <p class="filter-note">
+              A transparent priority score, not a measure of scientific quality.
+              <a href="./methodology.html#scoring">How scoring works</a>
+            </p>
           </div>
         </details>
 
         <details open>
           <summary>Scientific context</summary>
           <div class="filter-body select-stack">
+            <label>Therapeutic technology
+              <select id="technology">
+                <option value="">All technologies</option>
+                <option value="mRNA">mRNA</option>
+                <option value="siRNA">siRNA</option>
+                <option value="ASO">ASO</option>
+                <option value="CRISPR">CRISPR</option>
+                <option value="gene editing">Gene editing</option>
+                <option value="base editing">Base editing</option>
+              </select>
+            </label>
             <label>Modality <select id="modality"><option value="">All modalities</option></select></label>
             <label>Delivery <select id="delivery"><option value="">All delivery systems</option></select></label>
             <label>Disease area <select id="disease"><option value="">All disease areas</option></select></label>

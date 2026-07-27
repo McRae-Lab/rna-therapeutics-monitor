@@ -21,6 +21,12 @@ groups:
       - RNA editing therapeutic
       - guide RNA therapeutic
       - CRISPR RNA delivery
+      - CRISPR therapeutic
+      - CRISPR gene editing therapeutic
+      - gene editing therapeutic RNA
+      - in vivo gene editing RNA delivery
+      - base editing therapeutic
+      - base editor RNA delivery
       - microRNA therapeutic
       - miRNA therapeutic
       - RNA vaccine
@@ -97,6 +103,7 @@ source_queries:
       - '("mRNA therapeutic"[Title/Abstract] OR "messenger RNA therapeutic"[Title/Abstract] OR "self-amplifying RNA"[Title/Abstract] OR "circular RNA therapeutic"[Title/Abstract] OR "siRNA therapeutic"[Title/Abstract] OR "antisense oligonucleotide"[Title/Abstract] OR "RNA aptamer"[Title/Abstract] OR "RNA editing"[Title/Abstract] OR "microRNA therapeutic"[Title/Abstract] OR "RNA vaccine"[Title/Abstract] OR "RNA nanotechnology"[Title/Abstract] OR "RNA origami"[Title/Abstract])'
       - '("lipid nanoparticle"[Title/Abstract] OR GalNAc[Title/Abstract] OR "extracellular vesicle"[Title/Abstract] OR "virus-like particle"[Title/Abstract] OR "endosomal escape"[Title/Abstract] OR "extrahepatic delivery"[Title/Abstract]) AND (mRNA[Title/Abstract] OR siRNA[Title/Abstract] OR oligonucleotide[Title/Abstract])'
       - '("RNA formulation"[Title/Abstract] OR "RNA manufacturing"[Title/Abstract] OR "in vitro transcription"[Title/Abstract] OR "RNA capping"[Title/Abstract]) AND (therapeutic*[Title/Abstract] OR vaccine*[Title/Abstract] OR drug*[Title/Abstract])'
+      - '("CRISPR"[Title/Abstract] OR "gene editing"[Title/Abstract] OR "base editing"[Title/Abstract] OR "base editor"[Title/Abstract]) AND (therapeutic*[Title/Abstract] OR treatment[Title/Abstract] OR "guide RNA"[Title/Abstract] OR mRNA[Title/Abstract] OR "lipid nanoparticle"[Title/Abstract] OR delivery[Title/Abstract])'
 
   preprints:
     include_groups:
@@ -117,6 +124,7 @@ source_queries:
       - '"messenger RNA" OR mRNA OR "self-amplifying RNA" OR circRNA OR siRNA'
       - '"antisense oligonucleotide" OR "RNA aptamer" OR "RNA editing" OR "microRNA therapeutic"'
       - '"lipid nanoparticle" OR GalNAc OR "RNA vaccine"'
+      - '"CRISPR gene editing" OR "base editing" OR "base editor" OR "guide RNA"'
 
   rss:
     include_groups:
