@@ -1,0 +1,32 @@
+# Exact Python 3.12 environment used by tests and GitHub Actions.
+# Regenerate after intentionally changing dependencies in pyproject.toml.
+annotated-types==0.8.0
+anyio==4.14.2
+certifi==2026.7.22
+click==8.4.2
+coverage==7.15.2
+feedparser==6.0.12
+h11==0.16.0
+httpcore==1.0.9
+httpx==0.28.1
+idna==3.18
+iniconfig==2.3.0
+librt==0.13.0
+mypy==1.19.1
+mypy_extensions==1.1.0
+packaging==26.2
+pathspec==1.1.1
+pluggy==1.6.0
+pydantic==2.12.5
+pydantic_core==2.41.5
+Pygments==2.20.0
+pytest==9.0.2
+pytest-cov==7.0.0
+PyYAML==6.0.3
+respx==0.22.0
+ruff==0.15.1
+sgmllib3k==1.0.0
+tenacity==9.1.2
+types-PyYAML==6.0.12.20250915
+typing-inspection==0.4.2
+typing_extensions==4.16.0
