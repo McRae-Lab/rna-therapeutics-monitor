@@ -301,20 +301,79 @@ def deduplicate(records: list[Record]) -> DeduplicationResult:
 
     kept: list[Record] = []
     decisions: list[MergeDecision] = []
+    identifiers: dict[tuple[str, str], int] = {}
+    published_dois: dict[str, int] = {}
+    author_buckets: dict[str, list[int]] = {}
+
+    def author_keys(record: Record) -> list[str]:
+        if not record.authors:
+            return []
+        family, _, orcid = _author_parts(record.authors[0])
+        return [
+            key
+            for key in (f"orcid:{orcid}" if orcid else "", f"family:{family}" if family else "")
+            if key
+        ]
+
+    def register(record: Record, index: int) -> None:
+        if record.doi and (doi := normalize_doi(record.doi)):
+            identifiers[("doi", doi)] = index
+        if record.pmid:
+            identifiers[("pmid", record.pmid)] = index
+        if record.nct_id:
+            identifiers[("nct", record.nct_id.upper())] = index
+        for source, source_id in record.source_ids.items():
+            identifiers[(f"source:{source}", source_id)] = index
+        if (
+            record.preprint
+            and record.preprint.published_doi
+            and (published := normalize_doi(record.preprint.published_doi))
+        ):
+            published_dois[published] = index
+        for key in author_keys(record):
+            bucket = author_buckets.setdefault(key, [])
+            if index not in bucket:
+                bucket.append(index)
+
+    def candidate_indices(record: Record) -> list[int]:
+        indices: set[int] = set()
+        if record.doi and (doi := normalize_doi(record.doi)):
+            if (index := identifiers.get(("doi", doi))) is not None:
+                indices.add(index)
+            if (index := published_dois.get(doi)) is not None:
+                indices.add(index)
+        if record.pmid and (index := identifiers.get(("pmid", record.pmid))) is not None:
+            indices.add(index)
+        if record.nct_id and (index := identifiers.get(("nct", record.nct_id.upper()))) is not None:
+            indices.add(index)
+        for source, source_id in record.source_ids.items():
+            if (index := identifiers.get((f"source:{source}", source_id))) is not None:
+                indices.add(index)
+        if record.preprint and record.preprint.published_doi:
+            published = normalize_doi(record.preprint.published_doi)
+            if published and (index := identifiers.get(("doi", published))) is not None:
+                indices.add(index)
+        for key in author_keys(record):
+            indices.update(author_buckets.get(key, []))
+        return sorted(indices)
+
     for candidate in sorted(records, key=lambda record: (record.id, record.retrieved_at)):
         match_index: int | None = None
         match: tuple[str, float] | None = None
-        for index, existing in enumerate(kept):
+        for index in candidate_indices(candidate):
+            existing = kept[index]
             if result := match_reason(existing, candidate):
                 match_index = index
                 match = result
                 break
         if match_index is None or match is None:
             kept.append(candidate)
+            register(candidate, len(kept) - 1)
             continue
         existing = kept[match_index]
         merged = merge_records(existing, candidate, match[0])
         kept[match_index] = merged
+        register(merged, match_index)
         decisions.append(
             MergeDecision(
                 kept_id=merged.id,
