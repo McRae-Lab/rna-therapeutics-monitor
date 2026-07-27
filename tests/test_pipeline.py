@@ -7,7 +7,7 @@ from pydantic import HttpUrl
 
 from rna_monitor.config import load_config
 from rna_monitor.models import Record
-from rna_monitor.pipeline import UpdateOptions, UpdatePipeline
+from rna_monitor.pipeline import UpdateOptions, UpdatePipeline, retain_recent_records
 from rna_monitor.sources.base import RetrievalWindow, SourceResult
 from rna_monitor.storage import load_records, load_state
 
@@ -94,3 +94,39 @@ def test_dry_run_writes_nothing(tmp_path: Path) -> None:
     assert report.total_records == 1
     assert not (tmp_path / "records.jsonl").exists()
     assert not (tmp_path / "state.json").exists()
+
+
+def test_rolling_retention_uses_publication_date_for_publications() -> None:
+    recent = _record()
+    old_publication_with_recent_index_update = _record().model_copy(
+        update={
+            "id": "fixture:old",
+            "published_date": date(2026, 6, 1),
+            "updated_date": date(2026, 7, 27),
+        }
+    )
+
+    retained = retain_recent_records(
+        [recent, old_publication_with_recent_index_update],
+        as_of=NOW.date(),
+        days=30,
+    )
+
+    assert [record.id for record in retained] == ["fixture:1"]
+
+
+def test_pipeline_prunes_records_outside_configured_window(tmp_path: Path) -> None:
+    old = _record().model_copy(
+        update={
+            "id": "fixture:old",
+            "source_ids": {"fixture": "old"},
+            "published_date": date(2026, 6, 1),
+        }
+    )
+    adapter = FakeAdapter(SourceResult("pubmed", [old, _record()], raw_count=2))
+    report = UpdatePipeline(load_config(), tmp_path, {"pubmed": adapter}, now=NOW).run(
+        UpdateOptions()
+    )
+
+    assert report.total_records == 1
+    assert report.retention_removed == 1

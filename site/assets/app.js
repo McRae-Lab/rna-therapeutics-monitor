@@ -134,6 +134,26 @@ function technologyMatch(record, value) {
   return false;
 }
 
+function organizationText(record) {
+  return [
+    ...(record.companies || []),
+    ...(record.organizations || []).map((organization) => organization.name),
+  ].join(" ");
+}
+
+function industryMatch(record) {
+  return (record.companies || []).length > 0 ||
+    /\b(?:inc|incorporated|llc|ltd|limited|corp|corporation|company|pharma|pharmaceuticals|biotech|therapeutics)\b/i.test(organizationText(record));
+}
+
+function academicMatch(record) {
+  return (record.institutions || []).length > 0 ||
+    (record.organizations || []).some((organization) =>
+      organization.organization_type === "affiliation" &&
+      /\b(?:university|college|school|institute|hospital|medical center|academy)\b/i.test(organization.name)
+    );
+}
+
 function presetMatch(record) {
   switch (state.preset) {
     case "mrna":
@@ -146,6 +166,10 @@ function presetMatch(record) {
       return technologyMatch(record, "CRISPR");
     case "base-editing":
       return technologyMatch(record, "base editing");
+    case "industry":
+      return industryMatch(record);
+    case "academic":
+      return academicMatch(record);
     case "clinical":
       return record.record_type === "clinical_trial" ||
         (record.development_stages || []).some((stage) => stage.startsWith("Phase"));

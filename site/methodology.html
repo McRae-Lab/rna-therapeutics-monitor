@@ -67,6 +67,12 @@
             transient failures and fresh responses may be reused from a 24-hour
             local build cache; stale entries are refetched.
           </p>
+          <p>
+            This is a rolling pulse rather than a permanent archive. Canonical
+            and public data retain the latest 30 days. Publications use their
+            publication or electronic-publication date, while clinical trials
+            use their latest posted update.
+          </p>
         </section>
         <section id="scope">
           <p class="eyebrow">03</p>
@@ -113,6 +119,16 @@
             matched phrases, fields, and method. Negative patterns suppress common
             false positives.
           </p>
+          <p>
+            The Regulatory view includes formal regulatory records and
+            strongly supported regulatory-topic classifications. A lone FDA or
+            EMA mention in an abstract is insufficient; agency-only matches must
+            occur in the title, while specific phrases such as “regulatory
+            guidance” or “marketing authorization” can qualify from the
+            abstract. Industry and Academic views use source-supplied sponsor,
+            collaborator, and affiliation metadata. They may overlap when a
+            development is an industry–academic collaboration.
+          </p>
         </section>
         <section id="scoring">
           <p class="eyebrow">06</p>
@@ -120,8 +136,9 @@
           <p>
             Results initially appear newest first, with relevance breaking date
             ties. The initial view covers the 30 days ending on the dataset update
-            date. One-click windows expose the last week, month, year, or all
-            retained dates, and the From and To fields accept any custom range.
+            date. One-click windows expose the last week, month, or all retained
+            dates, and the From and To fields accept any custom range within the
+            retained data.
             Selecting “Highest relevance” ranks the filtered result set by a
             deterministic 0–100 priority score.
           </p>

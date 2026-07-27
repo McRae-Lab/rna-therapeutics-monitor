@@ -69,11 +69,41 @@ class UpdateReport:
 
     total_records: int
     new_or_changed: int
+    retention_removed: int = 0
     merge_decisions: list[MergeDecision] = field(default_factory=list)
     successful_sources: list[str] = field(default_factory=list)
     failed_sources: dict[str, str] = field(default_factory=dict)
     warnings: list[str] = field(default_factory=list)
     dry_run: bool = False
+
+
+def retention_date(record: Record) -> date | None:
+    """Return the date used for rolling database retention."""
+
+    if record.record_type == "clinical_trial":
+        return record.updated_date or record.published_date or record.first_date
+    return (
+        record.electronic_published_date
+        or record.published_date
+        or record.first_date
+        or record.updated_date
+    )
+
+
+def retain_recent_records(
+    records: list[Record],
+    *,
+    as_of: date,
+    days: int,
+) -> list[Record]:
+    """Keep records within an inclusive rolling date window."""
+
+    cutoff = as_of - timedelta(days=days - 1)
+    return [
+        record
+        for record in records
+        if (record_date := retention_date(record)) is not None and cutoff <= record_date <= as_of
+    ]
 
 
 class UpdatePipeline:
@@ -205,12 +235,19 @@ class UpdatePipeline:
         dedup_result = deduplicate([*existing, *changed])
         classified = classify_records(dedup_result.records, self.config.categories)
         scored = score_records(classified, self.now.date())
+        retained = retain_recent_records(
+            scored,
+            as_of=self.now.date(),
+            days=self.config.sources.retention_days,
+        )
+        retention_removed = len(scored) - len(retained)
         if not options.dry_run:
-            save_records(self.records_path, scored)
+            save_records(self.records_path, retained)
             save_state(self.state_path, next_state)
         return UpdateReport(
-            total_records=len(scored),
+            total_records=len(retained),
             new_or_changed=len(changed),
+            retention_removed=retention_removed,
             merge_decisions=dedup_result.decisions,
             successful_sources=successful,
             failed_sources=failed,

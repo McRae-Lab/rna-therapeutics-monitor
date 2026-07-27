@@ -103,10 +103,14 @@ def classify_record(record: Record, config: CategoriesConfig) -> Record:
 
     searchable = _searchable_fields(record)
     classifications: dict[str, list[str]] = {
-        field: list(getattr(record, field)) for field in CATEGORY_FIELDS.values()
+        field: ([] if field == "topics" else list(getattr(record, field)))
+        for field in CATEGORY_FIELDS.values()
     }
     evidence: dict[str, list[ClassificationEvidence]] = {
-        key: list(value) for key, value in record.classification_evidence.items()
+        key: [
+            item for item in value if not (key == "topics" and item.method == "deterministic-rules")
+        ]
+        for key, value in record.classification_evidence.items()
     }
     for category, rules in config.categories.items():
         target_field = CATEGORY_FIELDS.get(category)

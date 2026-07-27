@@ -13,7 +13,7 @@ from rna_monitor.config import load_config
 from rna_monitor.enrichment import build_summarizer, enrich_records
 from rna_monitor.export import export_static_data, validate_public_artifacts
 from rna_monitor.logging_utils import configure_logging
-from rna_monitor.pipeline import UpdateOptions, build_default_pipeline
+from rna_monitor.pipeline import UpdateOptions, build_default_pipeline, retain_recent_records
 from rna_monitor.scoring import score_records
 from rna_monitor.security import scan_public_site
 from rna_monitor.storage import load_records, save_records
@@ -46,6 +46,11 @@ def _parser() -> argparse.ArgumentParser:
     classify = subparsers.add_parser("classify", help="reclassify and rescore stored records")
     classify.add_argument("--dry-run", action="store_true")
     classify.add_argument("--verbose", action="store_true")
+
+    prune = subparsers.add_parser("prune", help="apply rolling date retention to stored records")
+    prune.add_argument("--days", type=int)
+    prune.add_argument("--dry-run", action="store_true")
+    prune.add_argument("--verbose", action="store_true")
 
     export = subparsers.add_parser("export", help="generate deterministic public JSON")
     export.add_argument("--verbose", action="store_true")
@@ -93,6 +98,24 @@ def main(argv: list[str] | None = None) -> int:
             if not args.dry_run:
                 save_records(records_path, output)
             print(json.dumps({"records": len(output), "dry_run": args.dry_run}))
+        elif args.command == "prune":
+            records = load_records(records_path)
+            days = args.days or config.sources.retention_days
+            output = retain_recent_records(records, as_of=date.today(), days=days)
+            if not args.dry_run:
+                save_records(records_path, output)
+            print(
+                json.dumps(
+                    {
+                        "records_before": len(records),
+                        "records_after": len(output),
+                        "removed": len(records) - len(output),
+                        "days": days,
+                        "dry_run": args.dry_run,
+                    },
+                    sort_keys=True,
+                )
+            )
         elif args.command in {"export", "build"}:
             records = load_records(records_path)
             artifacts = export_static_data(records, args.site_dir / "data")

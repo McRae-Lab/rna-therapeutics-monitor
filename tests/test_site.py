@@ -37,8 +37,9 @@ def test_site_contains_required_controls_and_presets() -> None:
         "reset-filters",
     ):
         assert f'id="{identifier}"' in html
-    for days in ("7", "30", "365", "all"):
+    for days in ("7", "30", "all"):
         assert f'data-date-days="{days}"' in html
+    assert 'data-date-days="365"' not in html
     for preset in (
         "latest",
         "mrna",
@@ -46,6 +47,8 @@ def test_site_contains_required_controls_and_presets() -> None:
         "aso",
         "crispr",
         "base-editing",
+        "industry",
+        "academic",
         "clinical",
         "preclinical",
         "delivery",

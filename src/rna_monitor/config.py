@@ -132,6 +132,7 @@ class SourcesConfig(StrictModel):
 
     schema_version: int = Field(ge=1)
     user_agent: str = Field(min_length=8)
+    retention_days: int = Field(default=30, ge=1, le=3650)
     http: HttpSettings
     pubmed: PubMedSettings
     preprints: PreprintSettings

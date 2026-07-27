@@ -102,6 +102,7 @@ python -m rna_monitor update --days 14 --no-llm
 python -m rna_monitor update --source pubmed --since 2026-07-01 --dry-run
 python -m rna_monitor update --source preprints --limit 20
 python -m rna_monitor classify
+python -m rna_monitor prune --days 30
 python -m rna_monitor enrich
 python -m rna_monitor export
 python -m rna_monitor build
@@ -115,27 +116,18 @@ canonical records or source state. The default update path never calls an LLM.
 The canonical dataset is `data/records.jsonl`; successful per-source boundaries
 are in `data/state.json`. Initial updates use the requested lookback. Later
 updates recheck a seven-day overlap by default to catch late indexing,
-corrections, and revisions.
+corrections, and revisions. After every update, the canonical database retains
+only the inclusive rolling 30-day window configured by `retention_days` in
+`config/sources.yml`. Publications use their publication or electronic
+publication date rather than a later indexing-modification date; trials use
+their last posted update date.
 
-For the initial one-year harvest into an empty data directory:
-
-```bash
-python -m rna_monitor update --days 365 --no-llm
-python -m rna_monitor build
-```
-
-If the data directory already contains incremental-update state, specify the
-backfill boundaries explicitly so that the saved source checkpoint does not
-shorten the harvest:
-
-```bash
-python -m rna_monitor update --since 2025-07-27 --until 2026-07-27 --no-llm
-python -m rna_monitor build
-```
-
-Do not pass `--limit` for a complete harvest. API adapters paginate until their
-result sets are exhausted. A source failure is isolated and does not erase
-records collected previously.
+The website opens on the full retained month and provides a last-week shortcut
+plus custom date bounds. Its Industry and Academic presets use source-supplied
+sponsor, collaborator, and affiliation metadata and can overlap for
+collaborations. The Regulatory preset accepts formal regulatory records,
+specific regulatory-action phrases, or an FDA/EMA title match; a passing agency
+mention in an abstract is deliberately insufficient.
 
 ## Configuration
 

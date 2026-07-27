@@ -110,3 +110,35 @@ def test_modrna_is_classified_as_mrna() -> None:
     )
 
     assert "mRNA" in classified.modalities
+
+
+def test_regulatory_topic_requires_policy_or_agency_context() -> None:
+    biological = classify_record(
+        _record(
+            "An RNA regulatory factor controls transcription",
+            "The regulator altered cellular expression.",
+        ),
+        CONFIG,
+    )
+    policy = classify_record(
+        _record(
+            "FDA regulatory guidance for mRNA therapeutics",
+            "The agency described a BLA submission pathway.",
+        ),
+        CONFIG,
+    )
+
+    assert "regulation" not in biological.topics
+    assert "regulation" in policy.topics
+
+
+def test_regulatory_topic_rejects_incidental_abstract_agency_mention() -> None:
+    classified = classify_record(
+        _record(
+            "Non-chromatographic purification of guide RNA",
+            "The workflow used an FDA-approved reagent for analytical validation.",
+        ),
+        CONFIG,
+    )
+
+    assert "regulation" not in classified.topics

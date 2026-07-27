@@ -1,5 +1,6 @@
 schema_version: 1
 user_agent: "rna-therapeutics-monitor/0.1 (+https://github.com/McRae-Lab/rna-therapeutics-monitor)"
+retention_days: 30
 
 http:
   connect_timeout_seconds: 10

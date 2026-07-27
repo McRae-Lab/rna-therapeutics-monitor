@@ -322,12 +322,20 @@ categories:
       minimum_score: 1.0
     - label: regulation
       patterns:
-        - '\bregulator'
-        - '\bFDA\b'
-        - '\bEMA\b'
+        - '\bregulatory (?:approval|decision|review|submission|pathway|guidance|requirement|policy|agency|agencies|affairs)\b'
         - '\bmarketing authori[sz]ation\b'
+        - '\b(?:accelerated|full|conditional) approval\b'
+        - '\b(?:IND|NDA|BLA) (?:clearance|submission|approval)\b'
+        - '\bcomplete response letter\b'
       weight: 1.0
       minimum_score: 1.0
+    - label: regulation
+      patterns:
+        - '\b(?:FDA|EMA)\b'
+      weight: 1.0
+      # Title matches receive weight 3. A passing FDA or EMA mention in an
+      # abstract is not enough to make a record regulatory.
+      minimum_score: 3.0
     - label: safety
       patterns:
         - '\bsafety\b'
