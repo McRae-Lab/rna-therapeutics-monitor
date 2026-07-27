@@ -152,3 +152,37 @@ def test_pubmed_adapter_esearch_then_efetch() -> None:
     search_params = dict(requests[0].url.params)
     assert search_params["tool"] == "rna_therapeutics_monitor"
     assert search_params["email"]
+
+
+def test_pubmed_splits_windows_above_esearch_result_ceiling() -> None:
+    config = load_config(ROOT / "config")
+    search_windows: list[str] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        term = dict(request.url.params)["term"]
+        search_windows.append(term)
+        if '"2026/01/01"[PDAT] : "2026/12/31"[PDAT]' in term:
+            result = {"count": "10001", "idlist": ["discarded-root-page"]}
+        elif '"2026/01/01"[PDAT] : "2026/07/02"[PDAT]' in term:
+            result = {"count": "2", "idlist": ["1", "2"]}
+        else:
+            result = {"count": "2", "idlist": ["2", "3"]}
+        return httpx.Response(
+            200,
+            json={"esearchresult": result},
+            request=request,
+        )
+
+    client = httpx.Client(transport=httpx.MockTransport(handler))
+    http = HttpClient(config.sources.http, config.sources.user_agent, client=client)
+    adapter = PubMedAdapter(
+        config.sources.pubmed,
+        config.queries.source_queries["pubmed"],
+        config.queries.groups,
+        http,
+    )
+
+    ids = adapter.search_ids(RetrievalWindow(date(2026, 1, 1), date(2026, 12, 31)))
+
+    assert ids == ["1", "2", "3"]
+    assert len(search_windows) == 3

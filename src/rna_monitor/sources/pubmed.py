@@ -6,7 +6,7 @@ import hashlib
 import os
 import xml.etree.ElementTree as ET
 from collections.abc import Iterable
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from typing import Any
 
 from pydantic import HttpUrl
@@ -272,8 +272,16 @@ class PubMedAdapter:
         }
 
     def search_ids(self, window: RetrievalWindow, limit: int | None = None) -> list[str]:
-        """Return all matching PMIDs from ESearch pagination."""
+        """Return PMIDs, splitting windows that exceed NCBI's 9,999-result ceiling."""
 
+        ids = self._search_window_ids(window, limit)
+        return list(dict.fromkeys(ids))[:limit] if limit is not None else list(dict.fromkeys(ids))
+
+    def _search_window_ids(
+        self,
+        window: RetrievalWindow,
+        limit: int | None,
+    ) -> list[str]:
         query = build_pubmed_query(self.source_query, self.groups, window, self.people)
         ids: list[str] = []
         retstart = 0
@@ -293,8 +301,25 @@ class PubMedAdapter:
             ).json()
             result = payload.get("esearchresult", {})
             page = [str(value) for value in result.get("idlist", [])]
-            ids.extend(page)
             total = int(result.get("count", len(ids)))
+            if total > 9_999 and (limit is None or limit > 9_999):
+                if window.since >= window.until:
+                    raise ValueError(
+                        "PubMed returned more than 9,999 matches for a single day; "
+                        "narrow the configured query"
+                    )
+                midpoint = window.since + (window.until - window.since) // 2
+                left = self._search_window_ids(
+                    RetrievalWindow(window.since, midpoint),
+                    limit,
+                )
+                remaining = None if limit is None else max(0, limit - len(left))
+                right = self._search_window_ids(
+                    RetrievalWindow(midpoint + timedelta(days=1), window.until),
+                    remaining,
+                )
+                return [*left, *right]
+            ids.extend(page)
             retstart += len(page)
             if not page or retstart >= total:
                 break
