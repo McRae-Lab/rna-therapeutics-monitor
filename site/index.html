@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="An open, auditable monitor of recent RNA therapeutics publications, trials, preprints, regulatory updates, and announcements.">
+    <title>RNA Therapeutics Monitor</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./assets/styles.css">
+    <script src="./assets/app.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#results">Skip to results</a>
+    <header class="site-header">
+      <nav class="nav shell" aria-label="Primary navigation">
+        <a class="brand" href="./">
+          <span class="brand-mark" aria-hidden="true">R</span>
+          <span>RNA Therapeutics Monitor</span>
+        </a>
+        <a href="./methodology.html">Methodology</a>
+      </nav>
+      <div class="hero shell">
+        <p class="eyebrow">Open intelligence for RNA medicine</p>
+        <h1>Track what is moving RNA therapeutics forward.</h1>
+        <p class="hero-copy">
+          Publications, preprints, trials, regulatory updates, and industry
+          signals—normalized, deduplicated, and ranked with an auditable method.
+        </p>
+        <div class="status-row" aria-label="Dataset status">
+          <span><strong id="total-count">—</strong> records</span>
+          <span>Updated <time id="last-updated">—</time></span>
+          <span class="status-pill"><i aria-hidden="true"></i> Static &amp; key-free</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="shell main-grid">
+      <section class="presets" aria-labelledby="presets-title">
+        <div>
+          <p class="eyebrow" id="presets-title">Focused views</p>
+          <p class="muted">Jump into a high-signal slice, then refine it.</p>
+        </div>
+        <div class="preset-list" role="group" aria-label="Preset views">
+          <button class="preset active" data-preset="latest" type="button">Latest</button>
+          <button class="preset" data-preset="clinical" type="button">Clinical</button>
+          <button class="preset" data-preset="preclinical" type="button">Preclinical</button>
+          <button class="preset" data-preset="delivery" type="button">Delivery</button>
+          <button class="preset" data-preset="regulatory" type="button">Regulatory</button>
+          <button class="preset" data-preset="aptamers" type="button">Aptamers</button>
+          <button class="preset" data-preset="nanotechnology" type="button">RNA nanotechnology</button>
+          <button class="preset" data-preset="trial-changes" type="button">Trials with changes</button>
+        </div>
+      </section>
+
+      <aside class="filters" aria-labelledby="filters-title">
+        <div class="filter-heading">
+          <h2 id="filters-title">Refine</h2>
+          <button id="reset-filters" class="text-button" type="button">Reset all</button>
+        </div>
+        <label class="search-label" for="search">Search the full record</label>
+        <div class="search-wrap">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.3-4.3m2.3-5.2a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
+          <input id="search" type="search" placeholder="Title, author, target, identifier…" autocomplete="off">
+        </div>
+
+        <details open>
+          <summary>Date and score</summary>
+          <div class="filter-body two-column">
+            <label>From <input id="date-from" type="date"></label>
+            <label>To <input id="date-to" type="date"></label>
+          </div>
+          <div class="filter-body">
+            <label for="min-score">Minimum relevance <output id="score-output">0</output></label>
+            <input id="min-score" type="range" min="0" max="100" step="5" value="0">
+          </div>
+        </details>
+
+        <details open>
+          <summary>Scientific context</summary>
+          <div class="filter-body select-stack">
+            <label>Modality <select id="modality"><option value="">All modalities</option></select></label>
+            <label>Delivery <select id="delivery"><option value="">All delivery systems</option></select></label>
+            <label>Disease area <select id="disease"><option value="">All disease areas</option></select></label>
+            <label>Development stage <select id="stage"><option value="">All stages</option></select></label>
+          </div>
+        </details>
+
+        <details>
+          <summary>Source and evidence</summary>
+          <div class="filter-body select-stack">
+            <label>Source <select id="source"><option value="">All sources</option></select></label>
+            <label>Evidence <select id="evidence"><option value="">All evidence</option></select></label>
+            <label>Review status
+              <select id="review-status">
+                <option value="">Preprints and peer reviewed</option>
+                <option value="preprint">Preprint only</option>
+                <option value="peer-reviewed publication">Peer reviewed only</option>
+              </select>
+            </label>
+            <label>Trial status <select id="trial-status"><option value="">All trial statuses</option></select></label>
+          </div>
+        </details>
+
+        <details>
+          <summary>Organizations</summary>
+          <div class="filter-body select-stack">
+            <label>Company <select id="company"><option value="">All companies</option></select></label>
+            <label>Institution <select id="institution"><option value="">All institutions</option></select></label>
+          </div>
+        </details>
+      </aside>
+
+      <section class="results-panel" id="results" aria-labelledby="results-title">
+        <div class="results-toolbar">
+          <div>
+            <p class="eyebrow">Results</p>
+            <h2 id="results-title"><span id="result-count">0</span> developments</h2>
+          </div>
+          <div class="toolbar-actions">
+            <label>Sort
+              <select id="sort">
+                <option value="date-desc">Newest first</option>
+                <option value="score-desc">Highest relevance</option>
+                <option value="title-asc">Title A–Z</option>
+              </select>
+            </label>
+            <div class="download-menu">
+              <button id="download-button" class="secondary-button" type="button" aria-expanded="false">Download</button>
+              <div id="download-options" class="download-options" hidden>
+                <button type="button" data-format="csv">Filtered CSV</button>
+                <button type="button" data-format="json">Filtered JSON</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="active-filters" class="active-filters" aria-live="polite"></div>
+        <div id="loading" class="loading" role="status">
+          <span aria-hidden="true"></span> Loading current records…
+        </div>
+        <div id="error" class="notice error" role="alert" hidden></div>
+        <div id="result-list" class="result-list" aria-live="polite"></div>
+        <button id="load-more" class="load-more" type="button" hidden>Load more</button>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell footer-grid">
+        <div>
+          <strong>RNA Therapeutics Monitor</strong>
+          <p>An open, reproducible discovery layer. Inclusion is not endorsement.</p>
+        </div>
+        <div>
+          <a href="./methodology.html">Methodology &amp; limitations</a>
+          <a href="https://github.com/USERNAME/rna-therapeutics-monitor">Source repository</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

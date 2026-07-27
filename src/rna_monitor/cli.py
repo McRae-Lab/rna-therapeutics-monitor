@@ -48,6 +48,9 @@ def _parser() -> argparse.ArgumentParser:
     export = subparsers.add_parser("export", help="generate deterministic public JSON")
     export.add_argument("--verbose", action="store_true")
 
+    build = subparsers.add_parser("build", help="export and validate the static site")
+    build.add_argument("--verbose", action="store_true")
+
     validate = subparsers.add_parser("validate", help="validate configuration and canonical data")
     validate.add_argument("--verbose", action="store_true")
     return parser
@@ -80,10 +83,16 @@ def main(argv: list[str] | None = None) -> int:
             if not args.dry_run:
                 save_records(records_path, output)
             print(json.dumps({"records": len(output), "dry_run": args.dry_run}))
-        elif args.command == "export":
+        elif args.command in {"export", "build"}:
             records = load_records(records_path)
             artifacts = export_static_data(records, args.site_dir / "data")
-            print(json.dumps({"artifacts": sorted(artifacts), "records": len(records)}))
+            build_result: dict[str, object] = {
+                "artifacts": sorted(artifacts),
+                "records": len(records),
+            }
+            if args.command == "build":
+                build_result["validation"] = validate_public_artifacts(args.site_dir / "data")
+            print(json.dumps(build_result, sort_keys=True))
         else:
             records = load_records(records_path)
             result: dict[str, object] = {

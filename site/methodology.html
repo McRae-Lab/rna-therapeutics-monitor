@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Methodology and limitations for the RNA Therapeutics Monitor.">
+    <title>Methodology · RNA Therapeutics Monitor</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./assets/styles.css">
+    <script src="./assets/methodology.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-header compact">
+      <nav class="nav shell" aria-label="Primary navigation">
+        <a class="brand" href="./">
+          <span class="brand-mark" aria-hidden="true">R</span>
+          <span>RNA Therapeutics Monitor</span>
+        </a>
+        <a aria-current="page" href="./methodology.html">Methodology</a>
+      </nav>
+      <div class="shell page-intro">
+        <p class="eyebrow">Methods, scope &amp; limitations</p>
+        <h1>Built to be inspected.</h1>
+        <p>Every match, merge, label, and relevance point has a deterministic explanation.</p>
+      </div>
+    </header>
+    <main id="content" class="shell prose-layout">
+      <nav class="toc" aria-label="On this page">
+        <strong>On this page</strong>
+        <a href="#sources">Data sources</a>
+        <a href="#schedule">Update schedule</a>
+        <a href="#scope">Query scope</a>
+        <a href="#deduplication">Deduplication</a>
+        <a href="#classification">Classification</a>
+        <a href="#scoring">Relevance scoring</a>
+        <a href="#llm">Optional LLM use</a>
+        <a href="#limitations">Limitations</a>
+      </nav>
+      <article class="prose">
+        <div class="method-meta">
+          <span>Revision <time id="method-revision">2026-07-27</time></span>
+          <span>Pipeline mode <strong id="llm-mode">Deterministic</strong></span>
+        </div>
+        <section id="sources">
+          <p class="eyebrow">01</p>
+          <h2>Data sources</h2>
+          <p>
+            PubMed records come from NCBI E-utilities. Preprints come from the
+            official bioRxiv API for bioRxiv and medRxiv. Interventional studies
+            come from ClinicalTrials.gov API v2. Crossref fills missing DOI
+            metadata but is not a discovery source. Configured RSS and Atom feeds
+            provide headlines and short feed descriptions only; article pages are
+            not scraped.
+          </p>
+          <p>Each public record retains source identifiers, links, retrieval time, field attribution, and merge provenance.</p>
+        </section>
+        <section id="schedule">
+          <p class="eyebrow">02</p>
+          <h2>Update schedule</h2>
+          <p>
+            A scheduled GitHub Actions workflow runs daily. Each source uses its
+            own last-successful boundary and a seven-day overlap to catch late
+            indexing, revisions, and corrections. A temporary failure does not
+            advance that source or erase existing records.
+          </p>
+        </section>
+        <section id="scope">
+          <p class="eyebrow">03</p>
+          <h2>Query scope and exclusions</h2>
+          <p>
+            Editable query groups cover named RNA modalities, delivery systems,
+            and development or manufacturing. Broad discovery terms are separated
+            from high-precision terms. The bare token “RNA” is prohibited.
+          </p>
+          <p>
+            Routine transcriptomics, nontherapeutic RNA sequencing, unrelated
+            viral epidemiology, descriptive biomarkers, and agriculture are
+            excluded by default. Excluded candidates are retained with a reason so
+            the decision remains auditable and rules can be changed.
+          </p>
+        </section>
+        <section id="deduplication">
+          <p class="eyebrow">04</p>
+          <h2>Deduplication</h2>
+          <p>
+            DOI, PMID, NCT, source-native identifiers, and documented
+            preprint-to-journal links are matched first. Fuzzy matching is a
+            conservative fallback requiring a long near-identical normalized
+            title, strong first-author identity, and compatible dates. Similar RNA
+            terminology or a surname alone can never trigger a merge.
+          </p>
+        </section>
+        <section id="classification">
+          <p class="eyebrow">05</p>
+          <h2>Classification</h2>
+          <p>
+            Weighted regular expressions classify modality, delivery, disease,
+            target, stage, species, method, topic, company, and institution.
+            Title and intervention matches carry more weight than abstract or
+            feed-description matches. Each label stores confidence, literal
+            matched phrases, fields, and method. Negative patterns suppress common
+            false positives.
+          </p>
+        </section>
+        <section id="scoring">
+          <p class="eyebrow">06</p>
+          <h2>Relevance scoring</h2>
+          <p>
+            The 0–100 score prioritizes direct therapeutic relevance, modality
+            specificity, delivery, translational stage, human relevance, trial
+            changes, regulatory importance, methods, recency, and corroborating
+            sources. Its components and reasons are visible on every record.
+          </p>
+          <div id="score-table" class="score-table" aria-label="Score component maxima"></div>
+          <p class="notice">
+            The score is not scientific quality, clinical validity, or endorsement.
+            Strong language in a press release receives no evidence-quality bonus.
+          </p>
+        </section>
+        <section id="llm">
+          <p class="eyebrow">07</p>
+          <h2>Optional LLM enrichment</h2>
+          <p>
+            The default build uses no language model. When explicitly enabled,
+            enrichment runs during the private build from public metadata only,
+            validates structured output, and never places a credential in the
+            website. A malformed response cannot block deterministic publication.
+          </p>
+        </section>
+        <section id="limitations">
+          <p class="eyebrow">08</p>
+          <h2>Known limitations</h2>
+          <ul>
+            <li>Indexing and feed publication can lag the underlying event.</li>
+            <li>Rule-based terms can miss unfamiliar products, aliases, and disease language.</li>
+            <li>Author and organization strings are not a complete identity authority.</li>
+            <li>Feed items represent source claims, not independently verified evidence.</li>
+            <li>Automated classifications, merges, summaries, and scores can contain errors.</li>
+          </ul>
+          <p><strong>Inclusion does not represent endorsement by the maintainers or the Society for RNA Therapeutics.</strong></p>
+        </section>
+      </article>
+    </main>
+    <footer>
+      <div class="shell footer-grid">
+        <div><strong>RNA Therapeutics Monitor</strong><p>Public data, transparent rules.</p></div>
+        <div><a href="./">Return to monitor</a></div>
+      </div>
+    </footer>
+  </body>
+</html>

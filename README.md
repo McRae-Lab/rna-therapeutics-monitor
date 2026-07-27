@@ -5,8 +5,8 @@ preprints, clinical trials, regulatory developments, and selected RSS sources.
 The pipeline normalizes, deduplicates, classifies, scores, and exports records
 for a static GitHub Pages website.
 
-> Work in progress: checkpoints 1-12 establish ingestion through deterministic
-> public JSON exports for a static website.
+> Work in progress: checkpoints 1-13 establish the complete local pipeline and
+> responsive static website.
 
 The default implementation targets Python 3.12 and requires no API keys.
 
@@ -112,6 +112,7 @@ python -m rna_monitor update --days 14 --no-llm
 python -m rna_monitor update --source pubmed --since 2026-07-01 --dry-run
 python -m rna_monitor classify
 python -m rna_monitor export
+python -m rna_monitor build
 python -m rna_monitor validate
 ```
 
@@ -137,3 +138,16 @@ Exports are sorted and serialized deterministically. Public records retain
 classifications, score components, source links, change history, and provenance
 but omit raw-response hashes. The browser must render all source-controlled
 strings with text nodes rather than HTML insertion.
+
+## Website
+
+`site/` is plain HTML, CSS, and modern vanilla JavaScript. It supports full-text
+token search, presets, date and categorical filters, a minimum score, sorting,
+progressive loading, expandable evidence, and in-browser CSV/JSON downloads.
+It first loads `latest.json`, then upgrades to the complete dataset. All assets
+and fetches use repository-relative paths, so the site works at a project URL
+such as `https://USERNAME.github.io/rna-therapeutics-monitor/`.
+
+Screenshot: _add a production screenshot after the first Pages deployment._
+
+Live site: `https://USERNAME.github.io/rna-therapeutics-monitor/`
