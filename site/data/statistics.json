@@ -1,12 +1,23 @@
 {
-  "average_relevance_score": 0.0,
-  "by_evidence_level": {},
-  "by_record_type": {},
-  "by_source": {},
-  "excluded_records": 0,
-  "generated_at": "1970-01-01T00:00:00+00:00",
-  "included_records": 0,
+  "average_relevance_score": 30.65,
+  "by_evidence_level": {
+    "peer-reviewed publication": 468,
+    "trial registration": 110,
+    "trial results": 1
+  },
+  "by_record_type": {
+    "clinical_trial": 111,
+    "publication": 468
+  },
+  "by_source": {
+    "clinicaltrials": 111,
+    "crossref": 32,
+    "pubmed": 467
+  },
+  "excluded_records": 49,
+  "generated_at": "2026-07-27T21:58:12.704987+00:00",
+  "included_records": 530,
   "recently_changed_records": 0,
   "schema_version": 1,
-  "total_records": 0
+  "total_records": 579
 }
