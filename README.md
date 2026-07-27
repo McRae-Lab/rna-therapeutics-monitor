@@ -1,16 +1,11 @@
 # RNA Therapeutics Monitor
 
-An auditable, key-free-by-default monitor of recent RNA-therapeutics
+An auditable monitor of recent RNA-therapeutics
 publications, preprints, clinical trials, regulatory developments, and selected
 RSS/Atom sources. Python retrieves and normalizes the data; a static HTML, CSS,
 and vanilla JavaScript interface publishes it on GitHub Pages.
 
-> **Public-site warning:** GitHub Pages and everything under `site/` are public.
-> Never put credentials, private source responses, patient information, or
-> confidential material in generated files. Every build recursively scans
-> `site/` for credential-like strings and fails if any are found.
 
-Screenshot: _placeholder—add a current screenshot after first deployment._
 
 Live site: `https://mcrae-lab.github.io/rna-therapeutics-monitor/`
 
