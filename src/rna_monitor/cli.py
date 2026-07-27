@@ -10,6 +10,7 @@ from pathlib import Path
 
 from rna_monitor.classifier import classify_records
 from rna_monitor.config import load_config
+from rna_monitor.export import export_static_data, validate_public_artifacts
 from rna_monitor.logging_utils import configure_logging
 from rna_monitor.pipeline import UpdateOptions, build_default_pipeline
 from rna_monitor.scoring import score_records
@@ -27,6 +28,7 @@ def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="rna-monitor")
     parser.add_argument("--config-dir", type=Path, default=Path("config"))
     parser.add_argument("--data-dir", type=Path, default=Path("data"))
+    parser.add_argument("--site-dir", type=Path, default=Path("site"))
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     update = subparsers.add_parser("update", help="retrieve and process incremental records")
@@ -42,6 +44,9 @@ def _parser() -> argparse.ArgumentParser:
     classify = subparsers.add_parser("classify", help="reclassify and rescore stored records")
     classify.add_argument("--dry-run", action="store_true")
     classify.add_argument("--verbose", action="store_true")
+
+    export = subparsers.add_parser("export", help="generate deterministic public JSON")
+    export.add_argument("--verbose", action="store_true")
 
     validate = subparsers.add_parser("validate", help="validate configuration and canonical data")
     validate.add_argument("--verbose", action="store_true")
@@ -75,9 +80,19 @@ def main(argv: list[str] | None = None) -> int:
             if not args.dry_run:
                 save_records(records_path, output)
             print(json.dumps({"records": len(output), "dry_run": args.dry_run}))
+        elif args.command == "export":
+            records = load_records(records_path)
+            artifacts = export_static_data(records, args.site_dir / "data")
+            print(json.dumps({"artifacts": sorted(artifacts), "records": len(records)}))
         else:
             records = load_records(records_path)
-            print(json.dumps({"configuration": "valid", "records": len(records)}))
+            result: dict[str, object] = {
+                "configuration": "valid",
+                "records": len(records),
+            }
+            if (args.site_dir / "data").exists():
+                result["public"] = validate_public_artifacts(args.site_dir / "data")
+            print(json.dumps(result, sort_keys=True))
         return 0
     except Exception as exc:
         print(f"rna-monitor: {type(exc).__name__}: {exc}", file=sys.stderr)

@@ -1,0 +1,26 @@
+{
+  "classification_method": "deterministic-rules-v1",
+  "disclaimer": "Inclusion does not represent endorsement. Automated classifications and relevance scores can contain errors.",
+  "generated_at": "2026-07-27T19:36:23.047494+00:00",
+  "llm_enabled": false,
+  "methodology_revision": "2026-07-27",
+  "schema_version": 1,
+  "score_components": {
+    "RNA modality specificity": 12,
+    "clinical status change": 8,
+    "delivery relevance": 10,
+    "direct therapeutic relevance": 25,
+    "human relevance": 10,
+    "methodological relevance": 5,
+    "recency": 5,
+    "regulatory importance": 8,
+    "source corroboration": 2,
+    "translational stage": 15
+  },
+  "score_is_scientific_quality": false,
+  "score_name": "relevance priority score",
+  "score_range": [
+    0,
+    100
+  ]
+}

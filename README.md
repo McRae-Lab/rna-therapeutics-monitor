@@ -5,8 +5,8 @@ preprints, clinical trials, regulatory developments, and selected RSS sources.
 The pipeline normalizes, deduplicates, classifies, scores, and exports records
 for a static GitHub Pages website.
 
-> Work in progress: checkpoints 1-11 establish ingestion through an
-> incremental, failure-isolated command-line pipeline.
+> Work in progress: checkpoints 1-12 establish ingestion through deterministic
+> public JSON exports for a static website.
 
 The default implementation targets Python 3.12 and requires no API keys.
 
@@ -111,6 +111,7 @@ press-release claims receive no evidence-quality bonus.
 python -m rna_monitor update --days 14 --no-llm
 python -m rna_monitor update --source pubmed --since 2026-07-01 --dry-run
 python -m rna_monitor classify
+python -m rna_monitor export
 python -m rna_monitor validate
 ```
 
@@ -120,3 +121,19 @@ default. A failed source does not advance its state or remove old records, and
 unchanged content fingerprints prevent retrieval timestamps from causing
 meaningless data diffs. Logs are structured JSON and omit bodies, secrets, and
 environment dumps.
+
+The export command writes:
+
+```text
+site/data/records.min.json
+site/data/latest.json
+site/data/statistics.json
+site/data/facets.json
+site/data/last_updated.json
+site/data/methodology.json
+```
+
+Exports are sorted and serialized deterministically. Public records retain
+classifications, score components, source links, change history, and provenance
+but omit raw-response hashes. The browser must render all source-controlled
+strings with text nodes rather than HTML insertion.

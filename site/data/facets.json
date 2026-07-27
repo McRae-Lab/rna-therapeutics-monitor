@@ -1,0 +1,16 @@
+{
+  "facets": {
+    "companies": {},
+    "delivery_systems": {},
+    "development_stages": {},
+    "disease_areas": {},
+    "evidence_levels": {},
+    "institutions": {},
+    "modalities": {},
+    "preprint_statuses": {},
+    "source_types": {},
+    "topics": {},
+    "trial_statuses": {}
+  },
+  "schema_version": 1
+}
