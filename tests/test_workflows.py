@@ -44,3 +44,20 @@ def test_update_workflow_is_serialized_minimal_and_no_llm_by_default() -> None:
     assert "git diff --cached --quiet" in text
     assert "data: update RNA therapeutics monitor" in text
     assert "OPENAI_API_KEY" not in text
+
+
+def test_pages_workflow_uses_official_actions_and_required_permissions() -> None:
+    text = (ROOT / ".github" / "workflows" / "pages.yml").read_text(encoding="utf-8")
+    workflow = _workflow("pages.yml")
+
+    assert workflow["permissions"] == {
+        "contents": "read",
+        "pages": "write",
+        "id-token": "write",
+    }
+    assert "actions/configure-pages@v5" in text
+    assert "actions/upload-pages-artifact@v3" in text
+    assert "actions/deploy-pages@v4" in text
+    assert "path: site" in text
+    assert workflow["jobs"]["deploy"]["environment"]["name"] == "github-pages"
+    assert "workflow_run" in workflow.get("on", workflow.get(True))

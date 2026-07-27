@@ -5,8 +5,8 @@ preprints, clinical trials, regulatory developments, and selected RSS sources.
 The pipeline normalizes, deduplicates, classifies, scores, and exports records
 for a static GitHub Pages website.
 
-> Work in progress: checkpoints 1-15 establish the local system, static site,
-> CI, and daily no-key data update.
+> Work in progress: checkpoints 1-16 establish the local system, daily data
+> update, and official GitHub Pages deployment.
 
 The default implementation targets Python 3.12 and requires no API keys.
 
@@ -175,3 +175,15 @@ enrichment caches, runs the incremental pipeline with LLM use explicitly off,
 runs targeted tests, builds and validates the site, and commits only changed
 canonical/state/public data. The workflow has `contents: write` and no other
 permission; absent optional secrets do not affect it.
+
+## Deploy to GitHub Pages
+
+1. Create the GitHub repository and push this `main` branch.
+2. In **Settings → Pages**, set the source to **GitHub Actions**.
+3. Run **Deploy GitHub Pages** manually once, or push a change under `site/`.
+
+The deployment workflow uses the official `configure-pages`,
+`upload-pages-artifact`, and `deploy-pages` actions. It deploys only `site/`,
+uses the protected `github-pages` environment, and has exactly `contents: read`,
+`pages: write`, and `id-token: write`. A successful daily update also triggers a
+deployment; failed updates do not.
