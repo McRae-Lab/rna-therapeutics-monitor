@@ -49,8 +49,9 @@
             PubMed records come from NCBI E-utilities. Preprints come from the
             official bioRxiv API for bioRxiv and medRxiv. Interventional studies
             come from ClinicalTrials.gov API v2. Crossref fills missing DOI
-            metadata but is not a discovery source. Configured RSS and Atom feeds
-            provide headlines and short feed descriptions only; article pages are
+            metadata and provides a narrow watched-author fallback for papers not
+            yet indexed by PubMed. Configured RSS and Atom feeds provide headlines
+            and short feed descriptions only; article pages are
             not scraped.
           </p>
           <p>Each public record retains source identifiers, links, retrieval time, field attribution, and merge provenance.</p>
@@ -78,9 +79,10 @@
           <p>
             PubMed discovery also monitors the configured Society for RNA
             Therapeutics roster. Exact ORCID is preferred. When ORCID has no
-            works or is unavailable, a person-specific PubMed query is followed
-            by strict full-given-name and, for ambiguous identities, affiliation
-            validation. Initials or surname overlap alone cannot label a record.
+            works or is unavailable, person-specific PubMed and recent Crossref
+            queries are followed by strict full-given-name and, for ambiguous
+            identities, affiliation validation. Initials or surname overlap alone
+            cannot label a record.
           </p>
           <p>
             Routine transcriptomics, nontherapeutic RNA sequencing, unrelated

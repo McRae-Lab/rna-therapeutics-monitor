@@ -12,7 +12,7 @@ Live site: `https://mcrae-lab.github.io/rna-therapeutics-monitor/`
 ## What it does
 
 - Retrieves PubMed, bioRxiv/medRxiv, ClinicalTrials.gov, and configured feeds.
-- Uses Crossref only to reconcile and fill missing DOI metadata.
+- Uses Crossref for fill-only DOI metadata and strict watched-author discovery.
 - Watches a separately configured Society for RNA Therapeutics author roster.
 - Retains normalized, typed records and source/change provenance.
 - Conservatively deduplicates identifiers, preprint relationships, and
@@ -51,7 +51,7 @@ boundary remain intact if one provider is temporarily unavailable.
 | PubMed | Primary discovery | NCBI ESearch and EFetch |
 | bioRxiv / medRxiv | Primary discovery | Official date-interval API with cursor pagination |
 | ClinicalTrials.gov | Primary discovery and trial-change tracking | API v2 |
-| Crossref | DOI reconciliation and fill-only metadata | REST API |
+| Crossref | DOI reconciliation plus strict watched-author fallback | REST API |
 | RSS / Atom | Regulatory, society, journal, company, and news metadata | Configured feed URLs |
 
 The generic feed adapter stores only feed-supplied metadata and a bounded short
@@ -65,6 +65,9 @@ notes.
 including ORCIDs where confirmed. PubMed discovery combines topical queries with
 the configured author queries. This matters for profiles such as Pieter R.
 Cullis (`0000-0001-9586-2508`), where a valid ORCID may expose no works.
+Recent Crossref author queries provide a second route for publisher-registered
+papers not yet indexed by PubMed; results are retained only after the same exact
+ORCID or full-given-name and affiliation-aware identity checks.
 
 Record attribution requires exact ORCID or conservative bibliographic identity.
 Initials or surname overlap alone is insufficient; ambiguous people require

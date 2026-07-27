@@ -20,6 +20,7 @@ categories:
       patterns:
         - '\bmRNA (?:therap|vaccin|medicine|drug)'
         - '\bmessenger RNA (?:therap|vaccin|medicine|drug)'
+        - '\bmodRNA (?:therap|vaccin|medicine|drug|deliver)'
       negative_patterns:
         - '\bmRNA expression\b'
       weight: 1.0

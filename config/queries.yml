@@ -8,6 +8,8 @@ groups:
     terms:
       - mRNA therapeutic
       - messenger RNA therapeutic
+      - modified mRNA therapeutic
+      - modRNA therapeutic
       - self-amplifying RNA
       - saRNA therapeutic
       - circular RNA therapeutic

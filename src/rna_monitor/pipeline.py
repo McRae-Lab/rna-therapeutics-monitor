@@ -17,7 +17,7 @@ from rna_monitor.people import match_watched_people
 from rna_monitor.scoring import score_records
 from rna_monitor.sources.base import RetrievalWindow, SourceResult
 from rna_monitor.sources.clinical_trials import ClinicalTrialsAdapter
-from rna_monitor.sources.crossref import CrossrefEnricher
+from rna_monitor.sources.crossref import CrossrefAuthorAdapter, CrossrefEnricher
 from rna_monitor.sources.preprints import PreprintAdapter
 from rna_monitor.sources.pubmed import PubMedAdapter
 from rna_monitor.sources.rss import RssAdapter
@@ -279,6 +279,12 @@ def build_default_pipeline(
             config.queries.source_queries["rss"],
             config.queries.groups,
             config.queries.agriculture_enabled,
+            http,
+        )
+    if config.sources.crossref.enabled:
+        adapters["crossref_authors"] = CrossrefAuthorAdapter(
+            config.sources.crossref,
+            config.people.people,
             http,
         )
     enricher = (

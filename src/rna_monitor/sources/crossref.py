@@ -11,11 +11,13 @@ from urllib.parse import quote
 
 from pydantic import HttpUrl
 
-from rna_monitor.config import CrossrefSettings
+from rna_monitor.config import CrossrefSettings, WatchedPerson
 from rna_monitor.dates import ParsedDate, parse_date_parts
 from rna_monitor.http import HttpClient
-from rna_monitor.identifiers import normalize_doi
+from rna_monitor.identifiers import canonical_id, normalize_doi
 from rna_monitor.models import Author, Organization, ProvenanceEntry, Record
+from rna_monitor.people import match_watched_people
+from rna_monitor.sources.base import RetrievalWindow, SourceResult
 
 
 def _first_text(value: Any) -> str | None:
@@ -211,3 +213,167 @@ class CrossrefEnricher:
         if not isinstance(message, dict):
             raise ValueError(f"Crossref response for {record.doi} has no message object")
         return enrich_record_from_crossref(record, message)
+
+
+def record_from_crossref(
+    message: dict[str, Any],
+    retrieved_at: datetime | None = None,
+) -> Record:
+    """Normalize one Crossref work discovered through a watched-author query."""
+
+    timestamp = retrieved_at or datetime.now(UTC)
+    doi = normalize_doi(_first_text(message.get("DOI")))
+    title = _first_text(message.get("title"))
+    if not doi or not title:
+        raise ValueError("Crossref discovery item requires DOI and title")
+    authors = _authors(message.get("author"))
+    published = (
+        _crossref_date(message.get("published-print"))
+        or _crossref_date(message.get("published-online"))
+        or _crossref_date(message.get("published"))
+        or _crossref_date(message.get("issued"))
+    )
+    container = _first_text(message.get("container-title"))
+    publisher = _first_text(message.get("publisher"))
+    resource_url = _first_text(message.get("URL")) or f"https://doi.org/{doi}"
+    organizations = list(
+        {
+            affiliation: Organization(name=affiliation, organization_type="affiliation")
+            for author in authors
+            for affiliation in author.affiliations
+        }.values()
+    )
+    raw = json.dumps(message, sort_keys=True, separators=(",", ":")).encode()
+    return Record(
+        id=canonical_id(
+            doi=doi,
+            source="crossref",
+            source_id=doi,
+            title=title,
+            first_author=authors[0].name if authors else "",
+            year=str(published.value.year) if published else "",
+        ),
+        record_type="publication",
+        source_types=["crossref"],
+        source_ids={"crossref": doi},
+        title=title,
+        authors=authors,
+        organizations=organizations,
+        journal_or_source=container,
+        publisher=publisher,
+        doi=doi,
+        url=HttpUrl(resource_url),
+        alternate_urls=[HttpUrl(f"https://doi.org/{doi}")]
+        if resource_url != f"https://doi.org/{doi}"
+        else [],
+        first_date=published.value if published else None,
+        published_date=published.value if published else None,
+        retrieved_at=timestamp,
+        institutions=[organization.name for organization in organizations],
+        evidence_level="peer-reviewed publication",
+        date_precision={"first_date": published.precision, "published_date": published.precision}
+        if published
+        else {},
+        provenance=[
+            ProvenanceEntry(
+                source="crossref",
+                source_id=doi,
+                url=HttpUrl(f"https://api.crossref.org/works/{quote(doi, safe='')}"),
+                retrieved_at=timestamp,
+                fields=[
+                    "title",
+                    "authors",
+                    "journal_or_source",
+                    "publisher",
+                    "published_date",
+                    "doi",
+                ],
+                raw_sha256=hashlib.sha256(raw).hexdigest(),
+                note="Discovered by a strict Society watched-author Crossref query.",
+            )
+        ],
+        field_sources={
+            field: "crossref"
+            for field in (
+                "title",
+                "authors",
+                "journal_or_source",
+                "publisher",
+                "published_date",
+                "doi",
+            )
+        },
+    )
+
+
+class CrossrefAuthorAdapter:
+    """Discover recently published works for strictly matched watched authors."""
+
+    name = "crossref_authors"
+
+    def __init__(
+        self,
+        settings: CrossrefSettings,
+        people: list[WatchedPerson],
+        http: HttpClient,
+    ) -> None:
+        self.settings = settings
+        self.people = people
+        self.http = http
+
+    def fetch(
+        self,
+        window: RetrievalWindow,
+        limit: int | None = None,
+    ) -> SourceResult:
+        """Query each watched author and retain only strict identity matches."""
+
+        records: dict[str, Record] = {}
+        raw_count = 0
+        for person in self.people:
+            if not person.active:
+                continue
+            cursor = "*"
+            while True:
+                params = {
+                    "query.author": person.display_name,
+                    "filter": (
+                        f"from-pub-date:{window.since.isoformat()},"
+                        f"until-pub-date:{window.until.isoformat()}"
+                    ),
+                    "rows": "100",
+                    "cursor": cursor,
+                    "mailto": os.getenv(
+                        self.settings.contact_email_env,
+                        self.settings.default_contact_email,
+                    ),
+                }
+                self.http.pace("crossref", self.settings.requests_per_second)
+                payload = self.http.get(
+                    f"{str(self.settings.base_url).rstrip('/')}/works",
+                    params=params,
+                ).json()
+                message = payload.get("message", {})
+                items = message.get("items", []) if isinstance(message, dict) else []
+                if not isinstance(items, list):
+                    break
+                raw_count += len(items)
+                for item in items:
+                    if not isinstance(item, dict):
+                        continue
+                    try:
+                        record = record_from_crossref(item)
+                    except ValueError:
+                        continue
+                    matches = match_watched_people(record, [person])
+                    if not matches:
+                        continue
+                    record.watched_people = matches
+                    records[record.id] = record
+                    if limit is not None and len(records) >= limit:
+                        return SourceResult(self.name, list(records.values()), raw_count)
+                next_cursor = message.get("next-cursor") if isinstance(message, dict) else None
+                if not items or not isinstance(next_cursor, str) or next_cursor == cursor:
+                    break
+                cursor = next_cursor
+        return SourceResult(self.name, list(records.values()), raw_count)

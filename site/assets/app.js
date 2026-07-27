@@ -136,6 +136,16 @@ function technologyMatch(record, value) {
 
 function presetMatch(record) {
   switch (state.preset) {
+    case "mrna":
+      return (record.modalities || []).includes("mRNA");
+    case "sirna":
+      return (record.modalities || []).includes("siRNA");
+    case "aso":
+      return (record.modalities || []).includes("ASO");
+    case "crispr":
+      return technologyMatch(record, "CRISPR");
+    case "base-editing":
+      return technologyMatch(record, "base editing");
     case "clinical":
       return record.record_type === "clinical_trial" ||
         (record.development_stages || []).some((stage) => stage.startsWith("Phase"));

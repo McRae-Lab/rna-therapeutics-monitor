@@ -101,3 +101,12 @@ def test_gene_and_base_editing_topics_support_site_filters() -> None:
     assert "gene editing" in classified.topics
     assert "base editing" in classified.topics
     assert "CRISPR RNA" in classified.modalities
+
+
+def test_modrna_is_classified_as_mrna() -> None:
+    classified = classify_record(
+        _record("Optimization of Therapeutic modRNA Delivery to the Lung", None),
+        CONFIG,
+    )
+
+    assert "mRNA" in classified.modalities

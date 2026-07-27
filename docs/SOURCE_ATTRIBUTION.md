@@ -33,11 +33,15 @@ rules, attribution guidance, and caching recommendations.
 
 ## Crossref
 
-- Interface: Crossref REST API, used only for DOI reconciliation and missing
-  metadata.
+- Interface: Crossref REST API, used for DOI reconciliation, missing metadata,
+  and narrowly scoped watched-author discovery when a publisher-registered work
+  is not yet indexed by PubMed.
 - Identification: requests use the configured contact email for the polite
   pool.
 - Attribution: Crossref is included in provenance for each field it supplies.
+- Identity safety: author-query results are retained only after exact ORCID or
+  strict full-given-name and affiliation-aware matching against the audited
+  Society roster.
 - Etiquette: <https://www.crossref.org/documentation/retrieve-metadata/rest-api/rest-api-metadata-retrieval/>
 
 ## RSS and Atom

@@ -41,6 +41,11 @@ def test_site_contains_required_controls_and_presets() -> None:
         assert f'data-date-days="{days}"' in html
     for preset in (
         "latest",
+        "mrna",
+        "sirna",
+        "aso",
+        "crispr",
+        "base-editing",
         "clinical",
         "preclinical",
         "delivery",
