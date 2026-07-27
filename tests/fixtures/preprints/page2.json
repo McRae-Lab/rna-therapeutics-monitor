@@ -1,0 +1,19 @@
+{
+  "messages": [{"status": "ok", "cursor": 2, "count": 1, "total": 3}],
+  "collection": [
+    {
+      "doi": "10.1101/2026.07.21.999999",
+      "title": "RNA sequencing of plant roots",
+      "authors": "Meredith Hastings",
+      "author_corresponding": "Meredith Hastings",
+      "author_corresponding_institution": "Agriculture Institute",
+      "date": "2026-07-21",
+      "version": "1",
+      "type": "new results",
+      "license": "cc_by",
+      "category": "plant biology",
+      "abstract": "A transcriptomic profiling study of crop roots.",
+      "published": "NA"
+    }
+  ]
+}

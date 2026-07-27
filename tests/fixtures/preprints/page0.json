@@ -1,0 +1,33 @@
+{
+  "messages": [{"status": "ok", "cursor": 0, "count": 2, "total": 3}],
+  "collection": [
+    {
+      "doi": "10.1101/2026.07.20.123456",
+      "title": "An mRNA therapeutic delivered by lipid nanoparticles",
+      "authors": "Ana Rivera; Li Chen",
+      "author_corresponding": "Ana Rivera",
+      "author_corresponding_institution": "Example University",
+      "date": "2026-07-20",
+      "version": "1",
+      "type": "new results",
+      "license": "cc_by",
+      "category": "bioengineering",
+      "abstract": "We report an mRNA therapeutic platform in mice.",
+      "published": "NA"
+    },
+    {
+      "doi": "10.1101/2026.07.20.123456",
+      "title": "An mRNA therapeutic delivered by lipid nanoparticles",
+      "authors": "Ana Rivera; Li Chen",
+      "author_corresponding": "Ana Rivera",
+      "author_corresponding_institution": "Example University",
+      "date": "2026-07-25",
+      "version": "2",
+      "type": "new results",
+      "license": "cc_by",
+      "category": "bioengineering",
+      "abstract": "We report an updated mRNA therapeutic platform in mice.",
+      "published": "10.1000/JOURNAL.2026.9"
+    }
+  ]
+}

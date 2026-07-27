@@ -5,8 +5,8 @@ preprints, clinical trials, regulatory developments, and selected RSS sources.
 The pipeline normalizes, deduplicates, classifies, scores, and exports records
 for a static GitHub Pages website.
 
-> Work in progress: checkpoints 1-3 establish the typed canonical schema,
-> validated configuration, and an incremental PubMed E-utilities adapter.
+> Work in progress: checkpoints 1-4 establish the typed canonical schema,
+> validated configuration, and incremental publication/preprint adapters.
 
 The default implementation targets Python 3.12 and requires no API keys.
 
@@ -48,3 +48,11 @@ metadata. It combines publication-date and modification-date windows, includes
 the configured `tool` and contact email, preserves partial-date precision, and
 supports records without abstracts or DOIs. Set `RNA_MONITOR_CONTACT_EMAIL` to
 the maintainer address used for NCBI requests.
+
+### bioRxiv and medRxiv
+
+The preprint adapter uses the official date-interval endpoint and follows cursor
+pages for both servers. Keyword scope is applied locally because this endpoint
+is interval based. Different versions retain a single logical DOI-based record,
+with the earliest posting date, newest metadata, revision history, and any
+preprint-to-journal DOI relationship.
