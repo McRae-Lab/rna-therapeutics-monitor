@@ -13,10 +13,10 @@ build/
 !.env.example
 
 cache/
+.cache/
 data/raw/
 data/private/
 *.sqlite
 *.sqlite3
 
 .DS_Store
-

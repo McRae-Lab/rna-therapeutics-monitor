@@ -5,8 +5,8 @@ preprints, clinical trials, regulatory developments, and selected RSS sources.
 The pipeline normalizes, deduplicates, classifies, scores, and exports records
 for a static GitHub Pages website.
 
-> Work in progress: checkpoints 1-10 establish ingestion, deduplication,
-> auditable classification, and transparent relevance scoring.
+> Work in progress: checkpoints 1-11 establish ingestion through an
+> incremental, failure-isolated command-line pipeline.
 
 The default implementation targets Python 3.12 and requires no API keys.
 
@@ -104,3 +104,19 @@ human relevance, clinical changes, regulatory importance, methods, recency, and
 independent-source corroboration. Excluded records remain stored but are capped
 at 15. This is a prioritization score, **not a measure of scientific quality**;
 press-release claims receive no evidence-quality bonus.
+
+## Run an update
+
+```bash
+python -m rna_monitor update --days 14 --no-llm
+python -m rna_monitor update --source pubmed --since 2026-07-01 --dry-run
+python -m rna_monitor classify
+python -m rna_monitor validate
+```
+
+The canonical dataset is `data/records.jsonl`; successful source boundaries are
+stored in `data/state.json`. Each source rechecks a seven-day overlap by
+default. A failed source does not advance its state or remove old records, and
+unchanged content fingerprints prevent retrieval timestamps from causing
+meaningless data diffs. Logs are structured JSON and omit bodies, secrets, and
+environment dumps.
