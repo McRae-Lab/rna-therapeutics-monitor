@@ -1,0 +1,66 @@
+{
+  "protocolSection": {
+    "identificationModule": {
+      "nctId": "NCT07123456",
+      "briefTitle": "LNP mRNA Therapy for Solid Tumors",
+      "officialTitle": "A Phase 1 Study of an LNP-delivered mRNA Therapeutic in Solid Tumors"
+    },
+    "statusModule": {
+      "overallStatus": "RECRUITING",
+      "startDateStruct": {"date": "2026-08"},
+      "primaryCompletionDateStruct": {"date": "2027-12-15"},
+      "completionDateStruct": {"date": "2028-03"},
+      "studyFirstPostDateStruct": {"date": "2026-07-20"},
+      "lastUpdatePostDateStruct": {"date": "2026-07-25"}
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {"name": "Example RNA Therapeutics", "class": "INDUSTRY"},
+      "collaborators": [{"name": "Example Cancer Center", "class": "OTHER"}]
+    },
+    "descriptionModule": {
+      "briefSummary": "This interventional study evaluates an mRNA therapeutic.",
+      "detailedDescription": "Participants receive an mRNA product delivered in lipid nanoparticles."
+    },
+    "conditionsModule": {"conditions": ["Solid Tumor"]},
+    "designModule": {
+      "studyType": "INTERVENTIONAL",
+      "phases": ["PHASE1"],
+      "enrollmentInfo": {"count": 48, "type": "ESTIMATED"}
+    },
+    "armsInterventionsModule": {
+      "interventions": [{
+        "type": "BIOLOGICAL",
+        "name": "EX-RNA-101",
+        "description": "LNP-formulated messenger RNA",
+        "otherNames": ["RNA-101", "EX101"]
+      }]
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [{
+        "measure": "Dose-limiting toxicities",
+        "description": "Number of participants with DLTs",
+        "timeFrame": "28 days"
+      }],
+      "secondaryOutcomes": [{
+        "measure": "Objective response rate",
+        "timeFrame": "24 months"
+      }]
+    },
+    "contactsLocationsModule": {
+      "locations": [
+        {
+          "facility": "Example Cancer Center",
+          "city": "Boston",
+          "state": "Massachusetts",
+          "country": "United States"
+        },
+        {
+          "facility": "Example University Hospital",
+          "city": "Toronto",
+          "country": "Canada"
+        }
+      ]
+    }
+  },
+  "hasResults": false
+}

@@ -5,8 +5,8 @@ preprints, clinical trials, regulatory developments, and selected RSS sources.
 The pipeline normalizes, deduplicates, classifies, scores, and exports records
 for a static GitHub Pages website.
 
-> Work in progress: checkpoints 1-4 establish the typed canonical schema,
-> validated configuration, and incremental publication/preprint adapters.
+> Work in progress: checkpoints 1-5 establish the typed canonical schema,
+> validated configuration, and publication, preprint, and trial adapters.
 
 The default implementation targets Python 3.12 and requires no API keys.
 
@@ -56,3 +56,11 @@ pages for both servers. Keyword scope is applied locally because this endpoint
 is interval based. Different versions retain a single logical DOI-based record,
 with the earliest posting date, newest metadata, revision history, and any
 preprint-to-journal DOI relationship.
+
+### ClinicalTrials.gov
+
+The API v2 adapter searches interventional studies with a last-update window.
+It captures sponsors, collaborators, conditions, intervention aliases, phases,
+status, enrollment, partial-date precision, locations, outcomes, and results
+availability. Tracked changes create an auditable history instead of a second
+trial.
