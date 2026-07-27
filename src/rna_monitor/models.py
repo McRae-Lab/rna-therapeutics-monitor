@@ -177,6 +177,8 @@ class Record(StrictModel):
     institutions: list[str] = Field(default_factory=list)
     keywords: list[str] = Field(default_factory=list)
     mesh_terms: list[str] = Field(default_factory=list)
+    publication_types: list[str] = Field(default_factory=list)
+    date_precision: dict[str, str] = Field(default_factory=dict)
     relevance_score: float = Field(default=0.0, ge=0.0, le=100.0)
     novelty_score: float | None = Field(default=None, ge=0.0, le=100.0)
     evidence_level: str

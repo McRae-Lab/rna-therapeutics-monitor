@@ -5,8 +5,8 @@ preprints, clinical trials, regulatory developments, and selected RSS sources.
 The pipeline normalizes, deduplicates, classifies, scores, and exports records
 for a static GitHub Pages website.
 
-> Work in progress: checkpoints 1-2 establish the typed canonical schema,
-> project quality gates, and strictly validated editable configuration.
+> Work in progress: checkpoints 1-3 establish the typed canonical schema,
+> validated configuration, and an incremental PubMed E-utilities adapter.
 
 The default implementation targets Python 3.12 and requires no API keys.
 
@@ -38,3 +38,13 @@ Validate all three files by loading them:
 ```bash
 python -c "from rna_monitor.config import load_config; load_config()"
 ```
+
+## Implemented sources
+
+### PubMed
+
+The PubMed adapter uses ESearch for discovery and EFetch XML for complete
+metadata. It combines publication-date and modification-date windows, includes
+the configured `tool` and contact email, preserves partial-date precision, and
+supports records without abstracts or DOIs. Set `RNA_MONITOR_CONTACT_EMAIL` to
+the maintainer address used for NCBI requests.

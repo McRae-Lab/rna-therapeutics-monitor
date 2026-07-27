@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">40123456</PMID>
+      <DateCreated><Year>2026</Year><Month>07</Month><Day>20</Day></DateCreated>
+      <DateRevised><Year>2026</Year><Month>07</Month><Day>25</Day></DateRevised>
+      <Article PubModel="Electronic">
+        <Journal>
+          <JournalIssue CitedMedium="Internet"><PubDate><Year>2026</Year><Month>Jul</Month></PubDate></JournalIssue>
+          <Title>Journal of RNA Medicines</Title>
+        </Journal>
+        <ArticleTitle>Extrahepatic delivery of <i>mRNA</i> using selective lipid nanoparticles</ArticleTitle>
+        <ELocationID EIdType="doi">10.1000/RNA.2026.001</ELocationID>
+        <Abstract>
+          <AbstractText Label="BACKGROUND">Delivery outside the liver remains challenging.</AbstractText>
+          <AbstractText Label="RESULTS">The formulation delivered mRNA in mice.</AbstractText>
+        </Abstract>
+        <AuthorList>
+          <Author ValidYN="Y">
+            <LastName>Rivera</LastName><ForeName>Ana M</ForeName><Initials>AM</Initials>
+            <Identifier Source="ORCID">0000-0002-0000-0001</Identifier>
+            <AffiliationInfo><Affiliation>Center for RNA Medicine, Example University, Boston, USA.</Affiliation></AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y"><CollectiveName>RNA Delivery Consortium</CollectiveName></Author>
+        </AuthorList>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic"><Year>2026</Year><Month>07</Month><Day>18</Day></ArticleDate>
+      </Article>
+      <MeshHeadingList><MeshHeading><DescriptorName UI="D000074322">RNA Therapeutics</DescriptorName></MeshHeading></MeshHeadingList>
+      <KeywordList><Keyword>lipid nanoparticle</Keyword><Keyword>extrahepatic delivery</Keyword></KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">40123456</ArticleId>
+        <ArticleId IdType="doi">10.1000/RNA.2026.001</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+  <PubmedArticle>
+    <MedlineCitation Status="PubMed-not-MEDLINE">
+      <PMID Version="1">40999999</PMID>
+      <DateCreated><Year>2026</Year><Month>07</Month><Day>22</Day></DateCreated>
+      <Article PubModel="Print">
+        <Journal>
+          <JournalIssue CitedMedium="Print"><PubDate><MedlineDate>2026 Spring</MedlineDate><Year>2026</Year></PubDate></JournalIssue>
+          <Title>Oligonucleotide Reports</Title>
+        </Journal>
+        <ArticleTitle>An antisense oligonucleotide manufacturing perspective</ArticleTitle>
+        <AuthorList><Author><LastName>Chen</LastName><ForeName>Li</ForeName><Initials>L</Initials></Author></AuthorList>
+        <PublicationTypeList><PublicationType>Review</PublicationType></PublicationTypeList>
+      </Article>
+    </MedlineCitation>
+    <PubmedData><ArticleIdList><ArticleId IdType="pubmed">40999999</ArticleId></ArticleIdList></PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>
