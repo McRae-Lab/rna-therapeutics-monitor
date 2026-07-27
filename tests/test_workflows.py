@@ -57,9 +57,9 @@ def test_pages_workflow_uses_official_actions_and_required_permissions() -> None
         "pages": "write",
         "id-token": "write",
     }
-    assert "actions/configure-pages@v5" in text
-    assert "actions/upload-pages-artifact@v3" in text
-    assert "actions/deploy-pages@v4" in text
+    assert "actions/configure-pages@v6" in text
+    assert "actions/upload-pages-artifact@v5" in text
+    assert "actions/deploy-pages@v5" in text
     assert "path: site" in text
     assert workflow["jobs"]["deploy"]["environment"]["name"] == "github-pages"
     assert "workflow_run" in workflow.get("on", workflow.get(True))
