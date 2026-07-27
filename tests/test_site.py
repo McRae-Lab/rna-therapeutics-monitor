@@ -41,7 +41,6 @@ def test_site_contains_required_controls_and_presets() -> None:
         assert f'data-date-days="{days}"' in html
     assert 'data-date-days="365"' not in html
     for preset in (
-        "latest",
         "mrna",
         "sirna",
         "aso",
@@ -59,6 +58,7 @@ def test_site_contains_required_controls_and_presets() -> None:
         "srt-authors",
     ):
         assert f'data-preset="{preset}"' in html
+    assert 'data-preset="latest"' not in html
 
 
 def test_source_text_is_rendered_without_html_injection() -> None:

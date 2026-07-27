@@ -3,7 +3,7 @@ const state = {
   records: [],
   filtered: [],
   visible: PAGE_SIZE,
-  preset: "latest",
+  preset: "",
   loadedFull: false,
   asOfDate: "",
 };
@@ -351,7 +351,7 @@ function renderCard(record) {
 
 function activeLabels() {
   const labels = [];
-  if (state.preset !== "latest") labels.push(`View: ${state.preset.replace("-", " ")}`);
+  if (state.preset) labels.push(`View: ${state.preset.replace("-", " ")}`);
   if (controls.search.value) labels.push(`Search: ${controls.search.value}`);
   if (controls.dateFrom.value) labels.push(`From ${controls.dateFrom.value}`);
   if (controls.dateTo.value) labels.push(`To ${controls.dateTo.value}`);
@@ -426,9 +426,9 @@ function resetFilters() {
     else if (control === controls.minScore) control.value = "0";
     else control.value = "";
   });
-  state.preset = "latest";
+  state.preset = "";
   state.visible = PAGE_SIZE;
-  document.querySelectorAll(".preset").forEach((button) => button.classList.toggle("active", button.dataset.preset === "latest"));
+  document.querySelectorAll(".preset").forEach((button) => button.classList.remove("active"));
   setDateWindow("30");
 }
 
