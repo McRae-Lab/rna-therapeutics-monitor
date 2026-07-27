@@ -5,8 +5,8 @@ preprints, clinical trials, regulatory developments, and selected RSS sources.
 The pipeline normalizes, deduplicates, classifies, scores, and exports records
 for a static GitHub Pages website.
 
-> Work in progress: checkpoints 1-8 establish source ingestion and conservative,
-> auditable deterministic deduplication.
+> Work in progress: checkpoints 1-9 establish source ingestion, conservative
+> deduplication, and auditable rule-based classification.
 
 The default implementation targets Python 3.12 and requires no API keys.
 
@@ -87,3 +87,11 @@ fallback only: it requires a long near-identical normalized title, matching
 first-author identity, and compatible dates. Matching RNA vocabulary or a
 surname/initial alone is never sufficient. Merge decisions retain a reason and
 confidence, while all source IDs, URLs, provenance, and relationships survive.
+
+## Classification
+
+`config/categories.yml` defines weighted regular expressions, synonyms, field
+weights, and negative patterns. Title and intervention matches outweigh
+abstract or feed-description matches. Every displayed label retains confidence,
+the literal matched phrases, fields, and method; source-provided sponsor and
+affiliation classifications are marked separately as source metadata.

@@ -7,6 +7,7 @@ field_weights:
   mesh_terms: 1.5
   abstract: 1.0
   description: 0.75
+  organizations: 1.5
 
 global_negative_patterns:
   - '\bRNA[- ]?seq(?:uencing)?\b(?!.*\btherap)'
@@ -161,7 +162,7 @@ categories:
     - label: oncology
       patterns:
         - '\bcancer\b'
-        - '\btumou?r\b'
+        - '\btumou?rs?\b'
         - '\boncolog'
       weight: 1.0
       minimum_score: 1.0
@@ -199,5 +200,80 @@ categories:
     - label: RNA purification
       patterns:
         - '\bRNA purification\b'
+      weight: 1.0
+      minimum_score: 1.0
+
+  therapeutic_targets:
+    - label: PCSK9
+      patterns:
+        - '\bPCSK9\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: transthyretin
+      patterns:
+        - '\btransthyretin\b'
+        - '\bTTR\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: KRAS
+      patterns:
+        - '\bKRAS\b'
+      weight: 1.0
+      minimum_score: 1.0
+
+  species:
+    - label: human
+      patterns:
+        - '\bpatients?\b'
+        - '\bparticipants?\b'
+        - '\bhuman(?:s)?\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: mouse
+      patterns:
+        - '\bmice\b'
+        - '\bmouse model'
+        - '\bmurine\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: nonhuman primate
+      patterns:
+        - '\bnon[- ]human primate'
+        - '\bmacaque'
+      weight: 1.0
+      minimum_score: 1.0
+
+  companies:
+    - label: Alnylam Pharmaceuticals
+      patterns:
+        - '\bAlnylam(?: Pharmaceuticals)?\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: Moderna
+      patterns:
+        - '\bModerna\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: Ionis Pharmaceuticals
+      patterns:
+        - '\bIonis(?: Pharmaceuticals)?\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: BioNTech
+      patterns:
+        - '\bBioNTech\b'
+      weight: 1.0
+      minimum_score: 1.0
+
+  institutions:
+    - label: University of British Columbia
+      patterns:
+        - '\bUniversity of British Columbia\b'
+        - '\bUBC\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: Example University
+      patterns:
+        - '\bExample University\b'
       weight: 1.0
       minimum_score: 1.0
