@@ -5,8 +5,8 @@ preprints, clinical trials, regulatory developments, and selected RSS sources.
 The pipeline normalizes, deduplicates, classifies, scores, and exports records
 for a static GitHub Pages website.
 
-> Work in progress: checkpoints 1-14 establish the local system, static site,
-> and secret-free continuous integration.
+> Work in progress: checkpoints 1-15 establish the local system, static site,
+> CI, and daily no-key data update.
 
 The default implementation targets Python 3.12 and requires no API keys.
 
@@ -166,3 +166,12 @@ The push and pull-request workflow uses Python 3.12, exact versions from
 `requirements.lock`, no network-dependent tests, no secrets, strict type and
 style checks, configuration validation, a fixture-backed site build, and
 JavaScript syntax checks.
+
+## Scheduled updates
+
+`.github/workflows/update.yml` runs daily at 11:17 UTC and can also be started
+manually. Concurrency prevents overlapping writers. It restores only HTTP and
+enrichment caches, runs the incremental pipeline with LLM use explicitly off,
+runs targeted tests, builds and validates the site, and commits only changed
+canonical/state/public data. The workflow has `contents: write` and no other
+permission; absent optional secrets do not affect it.

@@ -28,3 +28,19 @@ def test_tests_workflow_has_no_secrets_and_all_quality_gates() -> None:
         "python -m rna_monitor validate",
     ):
         assert command in text
+
+
+def test_update_workflow_is_serialized_minimal_and_no_llm_by_default() -> None:
+    text = (ROOT / ".github" / "workflows" / "update.yml").read_text(encoding="utf-8")
+    workflow = _workflow("update.yml")
+
+    assert workflow["permissions"] == {"contents": "write"}
+    assert workflow["concurrency"]["cancel-in-progress"] is False
+    assert "schedule" in workflow.get("on", workflow.get(True))
+    assert "actions/cache@v5" in text
+    assert "python -m rna_monitor update" in text
+    assert "--no-llm" in text
+    assert "python -m rna_monitor build" in text
+    assert "git diff --cached --quiet" in text
+    assert "data: update RNA therapeutics monitor" in text
+    assert "OPENAI_API_KEY" not in text
