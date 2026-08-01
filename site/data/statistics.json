@@ -1,27 +1,27 @@
 {
-  "average_relevance_score": 30.86,
+  "average_relevance_score": 30.94,
   "by_evidence_level": {
-    "peer-reviewed publication": 465,
+    "peer-reviewed publication": 459,
     "preprint": 16,
-    "trial registration": 94,
+    "trial registration": 93,
     "trial results": 1
   },
   "by_record_type": {
-    "clinical_trial": 95,
+    "clinical_trial": 94,
     "preprint": 16,
-    "publication": 465
+    "publication": 459
   },
   "by_source": {
     "biorxiv": 17,
-    "clinicaltrials": 95,
-    "crossref": 126,
-    "medrxiv": 2,
-    "pubmed": 465
+    "clinicaltrials": 94,
+    "crossref": 143,
+    "medrxiv": 3,
+    "pubmed": 456
   },
-  "excluded_records": 53,
-  "generated_at": "2026-07-31T13:07:25.720602+00:00",
-  "included_records": 523,
+  "excluded_records": 57,
+  "generated_at": "2026-08-01T12:17:32.777502+00:00",
+  "included_records": 512,
   "recently_changed_records": 0,
   "schema_version": 1,
-  "total_records": 576
+  "total_records": 569
 }
