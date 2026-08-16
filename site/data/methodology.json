@@ -2,7 +2,7 @@
   "author_watch_method": "orcid-or-strict-name-and-affiliation-v1",
   "classification_method": "deterministic-rules-v1",
   "disclaimer": "Inclusion does not represent endorsement. Automated classifications and relevance scores can contain errors.",
-  "generated_at": "2026-08-15T11:36:38.104482+00:00",
+  "generated_at": "2026-08-16T11:44:35.702847+00:00",
   "http_cache_ttl_hours": 24,
   "llm_enabled": false,
   "methodology_revision": "2026-07-27",
