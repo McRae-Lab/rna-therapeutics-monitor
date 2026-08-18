@@ -196,9 +196,31 @@
             "in vivo"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.667,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "in vivo"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 0.5,
+          "fields": [
+            "organizations"
+          ],
+          "label": "rare disease",
+          "matched_phrases": [
+            "Rare Disease"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.5,
           "fields": [
@@ -334,6 +356,17 @@
             "CRISPR-Cas9 gene edit"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR-Cas9 gene edit"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
@@ -367,6 +400,28 @@
           "label": "human",
           "matched_phrases": [
             "patient"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "patient"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "mice"
           ],
           "method": "deterministic-rules"
         },
@@ -832,6 +887,28 @@
           "fields": [
             "abstract"
           ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "in vivo"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical in vitro",
+          "matched_phrases": [
+            "in vitro"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
           "label": "preclinical in vitro",
           "matched_phrases": [
             "in vitro"
@@ -910,9 +987,34 @@
             "CRISPR nuclease Cas9, and kayjayguran abengcemeran, an in vivo therap"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR therap",
+            "CRISPR therapeutics can adopt. These include exagamglogene autotemcel, an ex vivo therap",
+            "CRISPR nuclease Cas9, and kayjayguran abengcemeran, an in vivo therap"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "organizations"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Human"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -1444,9 +1546,31 @@
             "CRISPR-Cas Gene therap"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.667,
+          "fields": [
+            "keywords"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR-Cas Gene therap"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.5,
           "fields": [
@@ -1921,6 +2045,17 @@
             "neurological"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "neurological",
+          "matched_phrases": [
+            "neurological"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -1947,9 +2082,31 @@
             "antisense oligonucleotide"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "ASO",
+          "matched_phrases": [
+            "antisense oligonucleotide"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 0.667,
+          "fields": [
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "patients"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.667,
           "fields": [
@@ -2241,6 +2398,28 @@
           "fields": [
             "abstract"
           ],
+          "label": "extracellular vesicle",
+          "matched_phrases": [
+            "exosome"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "lipid nanoparticle"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
           "label": "lipid nanoparticle",
           "matched_phrases": [
             "lipid nanoparticle"
@@ -2281,6 +2460,28 @@
           "label": "CRISPR RNA",
           "matched_phrases": [
             "CRISPR-based methodologies. We also propose a therap"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR-based methodologies. We also propose a therap"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "miRNA",
+          "matched_phrases": [
+            "miRNA mimic"
           ],
           "method": "deterministic-rules"
         },
@@ -2775,6 +2976,17 @@
             "Ionis Pharmaceuticals"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.5,
+          "fields": [
+            "organizations"
+          ],
+          "label": "Ionis Pharmaceuticals",
+          "matched_phrases": [
+            "Ionis Pharmaceuticals"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -2966,9 +3178,32 @@
             "antisense oligonucleotide"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "ASO",
+          "matched_phrases": [
+            "antisense oligonucleotide"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "patient",
+            "patients"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -3562,6 +3797,17 @@
             "in vitro"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.667,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical in vitro",
+          "matched_phrases": [
+            "in vitro"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -3676,6 +3922,17 @@
             "Antisense oligonucleotide"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "ASO",
+          "matched_phrases": [
+            "Antisense oligonucleotide"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
@@ -3688,6 +3945,30 @@
           "matched_phrases": [
             "patients",
             "human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "patients",
+            "human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "mice",
+            "murine"
           ],
           "method": "deterministic-rules"
         },
@@ -4147,6 +4428,33 @@
           "method": "deterministic-rules"
         },
         {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR/Cas System in Antiviral Therap",
+            "CRISPR/Cas system Gene delivery systems Off-target effects Viral genome edit",
+            "CRISPR. This review critically evaluates CRISPR's role in RNA edit",
+            "CRISPR technologies in shaping next-generation antiviral diagnostics and therap"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "RNA editing",
+          "matched_phrases": [
+            "RNA editing"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
           "confidence": 0.333,
           "fields": [
             "abstract"
@@ -4562,6 +4870,17 @@
             "CRISPR gut microbiome phage delivery phage engineering phage therap"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.667,
+          "fields": [
+            "keywords"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR gut microbiome phage delivery phage engineering phage therap"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "topics": [
@@ -4910,6 +5229,20 @@
         }
       ],
       "modalities": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR interference CRISPR-Cas systems Cas effectors Delivery platforms Gene edit",
+            "guide RNA",
+            "CRISPR-Cas systems as next-generation precision therapeutics capable of both treat"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -5941,9 +6274,31 @@
             "lipid nanoparticle"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.667,
+          "fields": [
+            "keywords"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "lipid nanoparticle"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "development_stages": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title"
+          ],
+          "label": "preclinical in vitro",
+          "matched_phrases": [
+            "In Vitro"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -6157,6 +6512,19 @@
         }
       ],
       "species": [
+        {
+          "confidence": 0.833,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans",
+            "human"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.833,
           "fields": [
@@ -6669,6 +7037,18 @@
             "lipid nanoparticle"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "lipid nanoparticle"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -6685,6 +7065,17 @@
         }
       ],
       "modalities": [
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "guide RNA"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.333,
           "fields": [
@@ -7164,9 +7555,31 @@
             "University of British Columbia"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.5,
+          "fields": [
+            "organizations"
+          ],
+          "label": "University of British Columbia",
+          "matched_phrases": [
+            "University of British Columbia"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "modalities": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "guide RNA"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -7588,6 +8001,17 @@
             "antisense oligonucleotide"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "ASO",
+          "matched_phrases": [
+            "antisense oligonucleotide"
+          ],
+          "method": "deterministic-rules"
         }
       ]
     },
@@ -7608,7 +8032,9 @@
       "abstract": "biorxiv",
       "authors": "biorxiv",
       "doi": "biorxiv",
+      "license_url": "crossref",
       "published_date": "biorxiv",
+      "publisher": "crossref",
       "title": "biorxiv"
     },
     "first_date": "2026-08-17",
@@ -7653,10 +8079,49 @@
         "source": "biorxiv",
         "source_id": "10.64898/2026.08.15.744761",
         "url": "https://www.biorxiv.org/content/10.64898/2026.08.15.744761v1"
+      },
+      {
+        "fields": [
+          "title",
+          "abstract",
+          "authors",
+          "published_date",
+          "preprint"
+        ],
+        "retrieved_at": "2026-08-18T16:23:57.105834Z",
+        "source": "biorxiv",
+        "source_id": "10.64898/2026.08.15.744761",
+        "url": "https://www.biorxiv.org/content/10.64898/2026.08.15.744761v1"
+      },
+      {
+        "fields": [
+          "publisher",
+          "license_url"
+        ],
+        "note": "Missing-field DOI enrichment; existing source metadata retained.",
+        "retrieved_at": "2026-08-18T16:24:49.008860Z",
+        "source": "crossref",
+        "source_id": "10.64898/2026.08.15.744761",
+        "url": "https://api.crossref.org/works/10.64898%2F2026.08.15.744761"
+      },
+      {
+        "fields": [
+          "title",
+          "abstract",
+          "authors",
+          "published_date",
+          "preprint"
+        ],
+        "note": "Deterministic merge: exact DOI; preserved all source identifiers.",
+        "retrieved_at": "2026-08-18T11:46:46.122575Z",
+        "source": "biorxiv",
+        "source_id": "10.64898/2026.08.15.744761",
+        "url": "https://www.biorxiv.org/content/10.64898/2026.08.15.744761v1"
       }
     ],
     "publication_types": [],
     "published_date": "2026-08-17",
+    "publisher": "openRxiv",
     "record_type": "preprint",
     "relations": {},
     "relevance_score": 28.0,
@@ -7724,10 +8189,12 @@
       }
     ],
     "source_ids": {
-      "biorxiv": "10.64898/2026.08.15.744761"
+      "biorxiv": "10.64898/2026.08.15.744761",
+      "crossref": "10.64898/2026.08.15.744761"
     },
     "source_types": [
-      "biorxiv"
+      "biorxiv",
+      "crossref"
     ],
     "species": [],
     "therapeutic_targets": [],
@@ -7807,6 +8274,17 @@
             "RNA aptamer"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "aptamer",
+          "matched_phrases": [
+            "RNA aptamer"
+          ],
+          "method": "deterministic-rules"
         }
       ]
     },
@@ -7827,7 +8305,9 @@
       "abstract": "biorxiv",
       "authors": "biorxiv",
       "doi": "biorxiv",
+      "license_url": "crossref",
       "published_date": "biorxiv",
+      "publisher": "crossref",
       "title": "biorxiv"
     },
     "first_date": "2026-08-17",
@@ -7872,10 +8352,49 @@
         "source": "biorxiv",
         "source_id": "10.64898/2026.08.16.745110",
         "url": "https://www.biorxiv.org/content/10.64898/2026.08.16.745110v1"
+      },
+      {
+        "fields": [
+          "title",
+          "abstract",
+          "authors",
+          "published_date",
+          "preprint"
+        ],
+        "retrieved_at": "2026-08-18T16:23:57.106542Z",
+        "source": "biorxiv",
+        "source_id": "10.64898/2026.08.16.745110",
+        "url": "https://www.biorxiv.org/content/10.64898/2026.08.16.745110v1"
+      },
+      {
+        "fields": [
+          "publisher",
+          "license_url"
+        ],
+        "note": "Missing-field DOI enrichment; existing source metadata retained.",
+        "retrieved_at": "2026-08-18T16:24:49.203049Z",
+        "source": "crossref",
+        "source_id": "10.64898/2026.08.16.745110",
+        "url": "https://api.crossref.org/works/10.64898%2F2026.08.16.745110"
+      },
+      {
+        "fields": [
+          "title",
+          "abstract",
+          "authors",
+          "published_date",
+          "preprint"
+        ],
+        "note": "Deterministic merge: exact DOI; preserved all source identifiers.",
+        "retrieved_at": "2026-08-18T11:46:46.122904Z",
+        "source": "biorxiv",
+        "source_id": "10.64898/2026.08.16.745110",
+        "url": "https://www.biorxiv.org/content/10.64898/2026.08.16.745110v1"
       }
     ],
     "publication_types": [],
     "published_date": "2026-08-17",
+    "publisher": "openRxiv",
     "record_type": "preprint",
     "relations": {},
     "relevance_score": 28.0,
@@ -7943,10 +8462,12 @@
       }
     ],
     "source_ids": {
-      "biorxiv": "10.64898/2026.08.16.745110"
+      "biorxiv": "10.64898/2026.08.16.745110",
+      "crossref": "10.64898/2026.08.16.745110"
     },
     "source_types": [
-      "biorxiv"
+      "biorxiv",
+      "crossref"
     ],
     "species": [],
     "therapeutic_targets": [],
@@ -8161,6 +8682,20 @@
             "lipid nanoparticle"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "LNP",
+            "lipid nanoparticle"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "development_stages": [
@@ -8235,6 +8770,28 @@
           "fields": [
             "abstract"
           ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "In vivo"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical in vitro",
+          "matched_phrases": [
+            "In vitro"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
           "label": "preclinical in vitro",
           "matched_phrases": [
             "In vitro"
@@ -8298,6 +8855,17 @@
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "organizations"
+          ],
+          "label": "infectious disease",
+          "matched_phrases": [
+            "Infectious Disease"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -8489,6 +9057,17 @@
         }
       ],
       "species": [
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "mice"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.333,
           "fields": [
@@ -9021,6 +9600,20 @@
             "LNP"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "lipid nanoparticle",
+            "LNPs",
+            "LNP"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -9070,11 +9663,19 @@
       "abstract": "biorxiv",
       "authors": "biorxiv",
       "doi": "biorxiv",
+      "funders": "crossref",
+      "license_url": "crossref",
       "published_date": "biorxiv",
+      "publisher": "crossref",
       "title": "biorxiv"
     },
     "first_date": "2026-08-17",
-    "funders": [],
+    "funders": [
+      {
+        "name": "Deutsche Forschungsgemeinschaft",
+        "organization_type": "funder"
+      }
+    ],
     "id": "doi:10.64898/2026.08.13.741169",
     "institutions": [
       "University of Regensburg"
@@ -9113,10 +9714,50 @@
         "source": "biorxiv",
         "source_id": "10.64898/2026.08.13.741169",
         "url": "https://www.biorxiv.org/content/10.64898/2026.08.13.741169v1"
+      },
+      {
+        "fields": [
+          "title",
+          "abstract",
+          "authors",
+          "published_date",
+          "preprint"
+        ],
+        "retrieved_at": "2026-08-18T16:24:07.786751Z",
+        "source": "biorxiv",
+        "source_id": "10.64898/2026.08.13.741169",
+        "url": "https://www.biorxiv.org/content/10.64898/2026.08.13.741169v1"
+      },
+      {
+        "fields": [
+          "publisher",
+          "funders",
+          "license_url"
+        ],
+        "note": "Missing-field DOI enrichment; existing source metadata retained.",
+        "retrieved_at": "2026-08-18T16:24:48.806365Z",
+        "source": "crossref",
+        "source_id": "10.64898/2026.08.13.741169",
+        "url": "https://api.crossref.org/works/10.64898%2F2026.08.13.741169"
+      },
+      {
+        "fields": [
+          "title",
+          "abstract",
+          "authors",
+          "published_date",
+          "preprint"
+        ],
+        "note": "Deterministic merge: exact DOI; preserved all source identifiers.",
+        "retrieved_at": "2026-08-18T11:46:58.880001Z",
+        "source": "biorxiv",
+        "source_id": "10.64898/2026.08.13.741169",
+        "url": "https://www.biorxiv.org/content/10.64898/2026.08.13.741169v1"
       }
     ],
     "publication_types": [],
     "published_date": "2026-08-17",
+    "publisher": "openRxiv",
     "record_type": "preprint",
     "relations": {},
     "relevance_score": 21.0,
@@ -9184,10 +9825,12 @@
       }
     ],
     "source_ids": {
-      "biorxiv": "10.64898/2026.08.13.741169"
+      "biorxiv": "10.64898/2026.08.13.741169",
+      "crossref": "10.64898/2026.08.13.741169"
     },
     "source_types": [
-      "biorxiv"
+      "biorxiv",
+      "crossref"
     ],
     "species": [],
     "therapeutic_targets": [],
@@ -9243,6 +9886,17 @@
             "tumors"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "tumors"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -9270,6 +9924,19 @@
         }
       ],
       "species": [
+        {
+          "confidence": 0.833,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans",
+            "patients"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.833,
           "fields": [
@@ -9530,6 +10197,17 @@
             "cancer"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.667,
+          "fields": [
+            "abstract"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "cancer"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -9557,6 +10235,17 @@
         }
       ],
       "species": [
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.5,
           "fields": [
@@ -9841,6 +10530,17 @@
             "Cancer"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.5,
+          "fields": [
+            "organizations"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "Cancer"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -9889,6 +10589,30 @@
           "matched_phrases": [
             "Humans",
             "human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans",
+            "human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "Mice"
           ],
           "method": "deterministic-rules"
         },
@@ -10248,6 +10972,18 @@
             "Human"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Human"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "topics": [
@@ -10496,6 +11232,17 @@
     "change_history": [],
     "classification_evidence": {
       "species": [
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "human"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.333,
           "fields": [
@@ -10866,9 +11613,33 @@
             "In vivo"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "In vivo"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 0.833,
+          "fields": [
+            "abstract",
+            "organizations"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "tumor",
+            "Oncolog"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.833,
           "fields": [
@@ -10952,6 +11723,17 @@
         }
       ],
       "species": [
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "Mice"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.333,
           "fields": [
@@ -11302,6 +12084,17 @@
             "GalNAc"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "GalNAc",
+          "matched_phrases": [
+            "GalNAc"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "development_stages": [
@@ -11361,13 +12154,13 @@
           "method": "deterministic-rules"
         },
         {
-          "confidence": 0.333,
+          "confidence": 0.667,
           "fields": [
             "abstract"
           ],
-          "label": "Phase 2",
+          "label": "Phase 1",
           "matched_phrases": [
-            "phase 2"
+            "phase 1"
           ],
           "method": "deterministic-rules"
         },
@@ -11412,6 +12205,39 @@
           "label": "Phase 2",
           "matched_phrases": [
             "phase 2"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "Phase 2",
+          "matched_phrases": [
+            "phase 2"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "Phase 2",
+          "matched_phrases": [
+            "phase 2"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.667,
+          "fields": [
+            "abstract"
+          ],
+          "label": "Phase 3",
+          "matched_phrases": [
+            "phase 3"
           ],
           "method": "deterministic-rules"
         },
@@ -11595,13 +12421,15 @@
           "method": "deterministic-rules"
         },
         {
-          "confidence": 0.333,
+          "confidence": 1.0,
           "fields": [
+            "keywords",
+            "mesh_terms",
             "abstract"
           ],
-          "label": "CRISPR RNA",
+          "label": "ASO",
           "matched_phrases": [
-            "CRISPR/Cas9-based liver gene edit"
+            "Antisense Oligonucleotide"
           ],
           "method": "deterministic-rules"
         },
@@ -11646,6 +12474,39 @@
           "label": "CRISPR RNA",
           "matched_phrases": [
             "CRISPR/Cas9-based liver gene edit"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR/Cas9-based liver gene edit"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR/Cas9-based liver gene edit"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "siRNA",
+          "matched_phrases": [
+            "small interfering RNA"
           ],
           "method": "deterministic-rules"
         },
@@ -11770,9 +12631,33 @@
             "patients"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.833,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans",
+            "patients"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "therapeutic_targets": [
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "PCSK9",
+          "matched_phrases": [
+            "PCSK9"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.333,
           "fields": [
@@ -12254,6 +13139,17 @@
             "extracellular vesicle"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "extracellular vesicle",
+          "matched_phrases": [
+            "extracellular vesicle"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -12313,9 +13209,33 @@
             "miRNA therap"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "miRNA",
+          "matched_phrases": [
+            "miRNA therap"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans",
+            "human"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -12829,6 +13749,17 @@
             "lipid nanoparticle"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "lipid nanoparticle"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -13029,9 +13960,38 @@
             "CRISPR screening platform linking perturbation of 19,114 genes to edit"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR screening identifies cellular factors controlling nonviral genome edit",
+            "CRISPR-Cas Systems Gene Edit",
+            "CRISPR screening platform linking perturbation of 19,114 genes to edit"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans",
+            "Human",
+            "patient"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -13572,6 +14532,30 @@
           "method": "deterministic-rules"
         },
         {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "endosomal escape",
+          "matched_phrases": [
+            "endosomal escape"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "lipid nanoparticle",
+            "LNP"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
           "confidence": 1.0,
           "fields": [
             "keywords",
@@ -13728,9 +14712,33 @@
             "in vivo"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "abstract"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "in vivo"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "oncolog"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.333,
           "fields": [
@@ -13834,6 +14842,17 @@
         }
       ],
       "species": [
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.5,
           "fields": [
@@ -14406,6 +15425,17 @@
             "RNA aptamer"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "aptamer",
+          "matched_phrases": [
+            "RNA aptamer"
+          ],
+          "method": "deterministic-rules"
         }
       ]
     },
@@ -14901,6 +15931,21 @@
             "LNP"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "lipid nanoparticle",
+            "LNPs",
+            "LNP"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -15016,6 +16061,17 @@
         }
       ],
       "modalities": [
+        {
+          "confidence": 0.667,
+          "fields": [
+            "keywords"
+          ],
+          "label": "mRNA",
+          "matched_phrases": [
+            "mRNA therap"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.667,
           "fields": [
@@ -15569,6 +16625,18 @@
             "GalNAc"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "GalNAc",
+          "matched_phrases": [
+            "GalNAc"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -15618,6 +16686,20 @@
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "human",
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -16149,6 +17231,22 @@
         }
       ],
       "modalities": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR Toolkit Enables One-Step High-Efficiency Multiplex Genome Edit",
+            "CRISPR/Cas9 Komagataella phaffii chassis recombineering gene edit",
+            "guide RNA",
+            "CRISPR toolkit - Efficient Multi-Gene Edit"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -16850,9 +17948,37 @@
             "in vivo"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.667,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "in vivo"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "mesh_terms",
+            "abstract",
+            "organizations"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "Cancer",
+            "Tumor",
+            "tumors",
+            "Oncolog"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -17067,6 +18193,31 @@
           "matched_phrases": [
             "Humans",
             "human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans",
+            "human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.833,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "Mice"
           ],
           "method": "deterministic-rules"
         },
@@ -17967,9 +19118,33 @@
             "mouse model"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "mouse model"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "abstract"
+          ],
+          "label": "neurological",
+          "matched_phrases": [
+            "neurodegenerative",
+            "neurological",
+            "central nervous system"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -18755,6 +19930,31 @@
           "label": "human",
           "matched_phrases": [
             "Human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "organizations"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "abstract",
+            "organizations"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "mice",
+            "mouse model",
+            "Murine"
           ],
           "method": "deterministic-rules"
         },
@@ -19564,6 +20764,17 @@
             "neurological"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "neurological",
+          "matched_phrases": [
+            "neurological"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -19591,6 +20802,17 @@
         }
       ],
       "species": [
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "human"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.333,
           "fields": [
@@ -20039,6 +21261,28 @@
           "fields": [
             "abstract"
           ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "in vivo"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical in vitro",
+          "matched_phrases": [
+            "In vitro"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
           "label": "preclinical in vitro",
           "matched_phrases": [
             "In vitro"
@@ -20148,6 +21392,18 @@
         }
       ],
       "species": [
+        {
+          "confidence": 0.667,
+          "fields": [
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "mice",
+            "murine"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.667,
           "fields": [
@@ -20866,9 +22122,31 @@
             "in vivo"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "in vivo"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 0.5,
+          "fields": [
+            "organizations"
+          ],
+          "label": "neurological",
+          "matched_phrases": [
+            "Neurodegenerative"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.5,
           "fields": [
@@ -21034,6 +22312,19 @@
             "antisense oligonucleotide"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "abstract"
+          ],
+          "label": "ASO",
+          "matched_phrases": [
+            "antisense oligonucleotide"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
@@ -21082,6 +22373,29 @@
           "matched_phrases": [
             "patients",
             "human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "patients",
+            "human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "mouse model"
           ],
           "method": "deterministic-rules"
         },
@@ -21498,9 +22812,34 @@
             "exosome"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "extracellular vesicle",
+          "matched_phrases": [
+            "exosome"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "tumor",
+            "oncolog"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -21648,9 +22987,33 @@
             "CRISPR/Cas9-mediated gene edit"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR/Cas9-mediated gene edit"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans",
+            "patients"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -22067,9 +23430,37 @@
             "In vivo"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "In vivo"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "mesh_terms",
+            "abstract",
+            "organizations"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "cancer",
+            "tumor"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -22265,9 +23656,41 @@
             "CRISPR editing platforms and strategies enabling multiplexed edit"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR edit",
+            "CRISPR cancer cell therapy gene editing gene therap",
+            "CRISPR-Cas Systems Genetic Therap",
+            "CRISPR)-based edit",
+            "CRISPR editing platforms and strategies enabling multiplexed edit"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans",
+            "patient",
+            "patients"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -22807,9 +24230,32 @@
             "In vivo"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "In vivo"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "Tumor"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -22979,6 +24425,18 @@
             "RNA Editing"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "RNA editing",
+          "matched_phrases": [
+            "RNA Editing"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
@@ -23045,6 +24503,28 @@
           "label": "human",
           "matched_phrases": [
             "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "Mice"
           ],
           "method": "deterministic-rules"
         },
@@ -23551,9 +25031,36 @@
             "exosome"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.667,
+          "fields": [
+            "keywords"
+          ],
+          "label": "extracellular vesicle",
+          "matched_phrases": [
+            "exosome"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "mesh_terms",
+            "abstract",
+            "organizations"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "Cancer",
+            "Tumor",
+            "Oncolog"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -23752,9 +25259,31 @@
             "RNA aptamer"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.667,
+          "fields": [
+            "abstract"
+          ],
+          "label": "aptamer",
+          "matched_phrases": [
+            "RNA aptamer"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.5,
           "fields": [
@@ -24384,6 +25913,23 @@
             "Oncolog"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "mesh_terms",
+            "abstract",
+            "organizations"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "cancer",
+            "Tumor",
+            "tumors",
+            "Oncolog"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -24476,6 +26022,17 @@
             "CRISPR/Cas9-edit"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR/Cas9-edit"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
@@ -24515,6 +26072,31 @@
           "matched_phrases": [
             "Humans",
             "human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.833,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans",
+            "human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.833,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "Mice"
           ],
           "method": "deterministic-rules"
         },
@@ -25106,6 +26688,18 @@
             "Oncolog"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "organizations"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "Cancer",
+            "Oncolog"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -25341,9 +26935,35 @@
             "CRISPR/Cas9-edit"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR/Cas9-edit"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "mesh_terms",
+            "abstract",
+            "organizations"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans",
+            "patients",
+            "Human"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -25890,9 +27510,35 @@
             "CRISPR/Cas9-edit"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR/Cas9-edit"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Patient",
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -26490,9 +28136,31 @@
             "CRISPR-Cas Systems Microtubules Gene Edit"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR-Cas Systems Microtubules Gene Edit"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.5,
           "fields": [
@@ -27032,9 +28700,32 @@
             "Antisense Oligonucleotide"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "ASO",
+          "matched_phrases": [
+            "Antisense Oligonucleotide"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.5,
           "fields": [
@@ -27482,9 +29173,31 @@
             "lipid nanoparticle"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "lipid nanoparticle"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "development_stages": [
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "Phase 1",
+          "matched_phrases": [
+            "Phase I"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.333,
           "fields": [
@@ -27642,6 +29355,21 @@
             "tumours"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "abstract"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "Cancer",
+            "tumour",
+            "tumours"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -27669,6 +29397,19 @@
         }
       ],
       "species": [
+        {
+          "confidence": 0.833,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans",
+            "patients"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.833,
           "fields": [
@@ -28258,9 +29999,36 @@
             "CRISPR/Cas9 is widely applied for genome edit"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.667,
+          "fields": [
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "guide RNA",
+            "CRISPR/Cas9 is widely applied for genome edit"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "patient",
+            "Humans",
+            "Human"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -29101,6 +30869,17 @@
             "Cancer"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.5,
+          "fields": [
+            "organizations"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "Cancer"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -29358,9 +31137,32 @@
             "antisense oligonucleotide"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "ASO",
+          "matched_phrases": [
+            "antisense oligonucleotide"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "human"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -29819,9 +31621,35 @@
             "RNA editing"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "mesh_terms"
+          ],
+          "label": "RNA editing",
+          "matched_phrases": [
+            "RNA editing"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Patients",
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -30326,6 +32154,30 @@
             "keywords",
             "abstract"
           ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "lipid nanoparticle"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "polymeric nanoparticle",
+          "matched_phrases": [
+            "polymeric nanoparticle"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
           "label": "polymeric nanoparticle",
           "matched_phrases": [
             "polymeric nanoparticle"
@@ -30459,6 +32311,17 @@
             "Infectious Disease"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.5,
+          "fields": [
+            "organizations"
+          ],
+          "label": "infectious disease",
+          "matched_phrases": [
+            "Infectious Disease"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -30519,6 +32382,18 @@
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Human"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -31025,6 +32900,17 @@
         }
       ],
       "modalities": [
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR-Cas systems, base editors, prime edit"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.333,
           "fields": [
@@ -31894,6 +33780,22 @@
             "RNA origami"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "RNA nanostructure",
+          "matched_phrases": [
+            "RNA Nanostructure",
+            "RNA nanotechnolog",
+            "RNA origami"
+          ],
+          "method": "deterministic-rules"
         }
       ]
     },
@@ -32614,6 +34516,22 @@
             "Oncolog"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract",
+            "organizations"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "cancer",
+            "tumors",
+            "tumor",
+            "Oncolog"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -32740,6 +34658,18 @@
         }
       ],
       "modalities": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "ASO",
+          "matched_phrases": [
+            "antisense oligonucleotide"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -33741,6 +35671,19 @@
             "RNA editing"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "RNA editing",
+          "matched_phrases": [
+            "RNA editing"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "topics": [
@@ -34246,6 +36189,21 @@
             "LNP"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "lipid nanoparticle",
+            "LNPs",
+            "LNP"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "development_stages": [
@@ -34292,9 +36250,33 @@
             "in vivo"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "in vivo"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "neurological",
+          "matched_phrases": [
+            "neurodegenerative",
+            "neurological"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -34431,6 +36413,17 @@
           "fields": [
             "organizations"
           ],
+          "label": "University of British Columbia",
+          "matched_phrases": [
+            "University of British Columbia"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "organizations"
+          ],
           "label": "University of British Columbia, Department of Biochemistry and Molecular Biology, 2350 Health Sciences Mall, Vancouver, BC V6T 1Z3, Canada.",
           "matched_phrases": [
             "University of British Columbia, Department of Biochemistry and Molecular Biology, 2350 Health Sciences Mall, Vancouver, BC V6T 1Z3, Canada."
@@ -34461,6 +36454,17 @@
         }
       ],
       "species": [
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "murine"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.333,
           "fields": [
@@ -34916,9 +36920,32 @@
             "LNP"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.667,
+          "fields": [
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "lipid nanoparticle",
+            "LNP"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "development_stages": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "in vivo"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -34999,6 +37026,17 @@
             "mice"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "mice"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "topics": [
@@ -35036,11 +37074,23 @@
       "abstract": "biorxiv",
       "authors": "biorxiv",
       "doi": "biorxiv",
+      "funders": "crossref",
+      "license_url": "crossref",
       "published_date": "biorxiv",
+      "publisher": "crossref",
       "title": "biorxiv"
     },
     "first_date": "2026-08-15",
-    "funders": [],
+    "funders": [
+      {
+        "name": "Australian Research Council",
+        "organization_type": "funder"
+      },
+      {
+        "name": "mRNA Victoria",
+        "organization_type": "funder"
+      }
+    ],
     "id": "doi:10.64898/2026.08.10.741180",
     "institutions": [
       "Monash University"
@@ -35079,10 +37129,50 @@
         "source": "biorxiv",
         "source_id": "10.64898/2026.08.10.741180",
         "url": "https://www.biorxiv.org/content/10.64898/2026.08.10.741180v1"
+      },
+      {
+        "fields": [
+          "title",
+          "abstract",
+          "authors",
+          "published_date",
+          "preprint"
+        ],
+        "retrieved_at": "2026-08-18T16:23:46.848900Z",
+        "source": "biorxiv",
+        "source_id": "10.64898/2026.08.10.741180",
+        "url": "https://www.biorxiv.org/content/10.64898/2026.08.10.741180v1"
+      },
+      {
+        "fields": [
+          "publisher",
+          "funders",
+          "license_url"
+        ],
+        "note": "Missing-field DOI enrichment; existing source metadata retained.",
+        "retrieved_at": "2026-08-18T16:24:48.005159Z",
+        "source": "crossref",
+        "source_id": "10.64898/2026.08.10.741180",
+        "url": "https://api.crossref.org/works/10.64898%2F2026.08.10.741180"
+      },
+      {
+        "fields": [
+          "title",
+          "abstract",
+          "authors",
+          "published_date",
+          "preprint"
+        ],
+        "note": "Deterministic merge: exact DOI; preserved all source identifiers.",
+        "retrieved_at": "2026-08-16T11:44:35.702847Z",
+        "source": "biorxiv",
+        "source_id": "10.64898/2026.08.10.741180",
+        "url": "https://www.biorxiv.org/content/10.64898/2026.08.10.741180v1"
       }
     ],
     "publication_types": [],
     "published_date": "2026-08-15",
+    "publisher": "openRxiv",
     "record_type": "preprint",
     "relations": {},
     "relevance_score": 17.0,
@@ -35150,10 +37240,12 @@
       }
     ],
     "source_ids": {
-      "biorxiv": "10.64898/2026.08.10.741180"
+      "biorxiv": "10.64898/2026.08.10.741180",
+      "crossref": "10.64898/2026.08.10.741180"
     },
     "source_types": [
-      "biorxiv"
+      "biorxiv",
+      "crossref"
     ],
     "species": [
       "mouse"
@@ -35249,6 +37341,17 @@
         }
       ],
       "species": [
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.5,
           "fields": [
@@ -35722,6 +37825,19 @@
             "Cancer"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "Tumor",
+            "Cancer"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -35760,6 +37876,20 @@
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans",
+            "patient",
+            "patients"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -36388,6 +38518,19 @@
             "cancer"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "tumor",
+            "cancer"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
@@ -36440,6 +38583,30 @@
             "patients",
             "patient",
             "human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "patients",
+            "patient",
+            "human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "murine"
           ],
           "method": "deterministic-rules"
         },
@@ -36866,6 +39033,17 @@
             "mouse model"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "mouse model"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -36904,6 +39082,19 @@
         }
       ],
       "species": [
+        {
+          "confidence": 0.833,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "Mice",
+            "mouse model"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.833,
           "fields": [
@@ -37829,9 +40020,32 @@
             "GalNAc"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "GalNAc",
+          "matched_phrases": [
+            "GalNAc"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "development_stages": [
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical in vitro",
+          "matched_phrases": [
+            "in vitro"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.333,
           "fields": [
@@ -38000,6 +40214,17 @@
             "small interfering RNA"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "siRNA",
+          "matched_phrases": [
+            "small interfering RNA"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
@@ -38060,6 +40285,30 @@
           "label": "human",
           "matched_phrases": [
             "human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "nonhuman primate",
+          "matched_phrases": [
+            "non-human primate"
           ],
           "method": "deterministic-rules"
         },
@@ -38540,6 +40789,28 @@
           "fields": [
             "abstract"
           ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "in vivo"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical in vitro",
+          "matched_phrases": [
+            "in vitro"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
           "label": "preclinical in vitro",
           "matched_phrases": [
             "in vitro"
@@ -38886,6 +41157,21 @@
             "CRISPR-induced in vivo editing. The use of CRISPR technology to edit"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR-based Gene Edit",
+            "CRISPR/Cas9 Endothelial dysfunction Gene therapy Genome edit",
+            "CRISPR-induced in vivo editing. The use of CRISPR technology to edit"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
@@ -39018,9 +41304,34 @@
             "human"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans",
+            "human"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "therapeutic_targets": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "PCSK9",
+          "matched_phrases": [
+            "PCSK9"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -39715,6 +42026,17 @@
             "mouse model"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "mouse model"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -39764,6 +42086,19 @@
         }
       ],
       "modalities": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR cadherin-related family member 1 cone-rod dystrophy gene therap",
+            "CRISPR gene edit"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -40051,6 +42386,28 @@
           "label": "human",
           "matched_phrases": [
             "patients"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.667,
+          "fields": [
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "patients"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "mouse model"
           ],
           "method": "deterministic-rules"
         },
@@ -40742,9 +43099,35 @@
             "LNPs"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "Lipid Nanoparticle",
+            "LNP",
+            "LNPs"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "development_stages": [
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "in vivo"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.333,
           "fields": [
@@ -40880,6 +43263,28 @@
           "method": "deterministic-rules"
         },
         {
+          "confidence": 0.5,
+          "fields": [
+            "organizations"
+          ],
+          "label": "infectious disease",
+          "matched_phrases": [
+            "Infectious Disease"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "organizations"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "Cancer"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
           "confidence": 1.0,
           "fields": [
             "organizations"
@@ -41004,6 +43409,17 @@
         }
       ],
       "modalities": [
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "mRNA",
+          "matched_phrases": [
+            "mRNA medicine"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.333,
           "fields": [
@@ -41763,9 +44179,35 @@
             "LNP"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "lipid nanoparticle",
+            "LNPs",
+            "LNP"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "development_stages": [
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "nonhuman primate"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.333,
           "fields": [
@@ -41869,6 +44311,33 @@
           "matched_phrases": [
             "central nervous system",
             "neurological"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "neurological",
+          "matched_phrases": [
+            "central nervous system",
+            "neurological"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "organizations"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "Cancer",
+            "Oncolog"
           ],
           "method": "deterministic-rules"
         },
@@ -42088,9 +44557,32 @@
             "mRNA therap"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title"
+          ],
+          "label": "mRNA",
+          "matched_phrases": [
+            "mRNA therap"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "Mice"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -42685,9 +45177,37 @@
             "CRISPR-Cas therap"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR Multidrug-resistant Phage-deliver",
+            "CRISPR-Cas Systems Drug Resistance, Multiple, Bacterial Bacteria Humans Phage Therap",
+            "CRISPR-Cas systems to edit",
+            "CRISPR-armed bacteriophages, which utilize bacteriophages as deliver",
+            "CRISPR-Cas therap"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.5,
           "fields": [
@@ -43148,9 +45668,35 @@
             "CRISPR-Cas systems, phage therap"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR/Cas9 Livestock Nanotechnology Phage therap",
+            "CRISPR-Cas systems, phage therap"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans",
+            "human"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -43759,9 +46305,33 @@
             "CRISPR-Cas gene editing enables new therap"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.833,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR-Cas Systems Gene Edit",
+            "CRISPR-Cas gene editing enables new therap"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.5,
           "fields": [
@@ -44302,6 +46872,28 @@
           "fields": [
             "abstract"
           ],
+          "label": "extracellular vesicle",
+          "matched_phrases": [
+            "exosome"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "lipid nanoparticle"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
           "label": "lipid nanoparticle",
           "matched_phrases": [
             "lipid nanoparticle"
@@ -44365,6 +46957,18 @@
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "neurological",
+          "matched_phrases": [
+            "Neurodegenerative"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -44529,6 +47133,23 @@
         }
       ],
       "modalities": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR Deliver",
+            "CRISPR Cas System CRISPR Delivery Systems Genome Edit",
+            "CRISPR has emerged as a next-generation gene-edit",
+            "CRISPR-based technologies, including Cas9, Cas12, base editing, prime edit",
+            "CRISPR-based treat"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -45490,6 +48111,19 @@
             "LNP"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "lipid nanoparticle",
+            "LNP"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -45965,9 +48599,34 @@
             "mRNA vaccin"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "mRNA",
+          "matched_phrases": [
+            "mRNA vaccin"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "mice",
+            "mouse model"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -47058,9 +49717,32 @@
             "Moderna"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.5,
+          "fields": [
+            "organizations"
+          ],
+          "label": "Moderna",
+          "matched_phrases": [
+            "Moderna"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "delivery_systems": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "Lipid Nanoparticle"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -47177,9 +49859,37 @@
             "phase I"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "Phase 1",
+          "matched_phrases": [
+            "phase I"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "mesh_terms",
+            "abstract",
+            "organizations"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "Tumor",
+            "Tumors",
+            "cancer",
+            "Oncolog"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -47390,6 +50100,22 @@
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Patients",
+            "Human",
+            "Humans",
+            "patient"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -47823,9 +50549,34 @@
             "CRISPR-based approaches may enable durable lipid regulation but remain constrained by deliver"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR-Cas9 Gene therap",
+            "CRISPR-based approaches may enable durable lipid regulation but remain constrained by deliver"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "therapeutic_targets": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "PCSK9",
+          "matched_phrases": [
+            "PCSK9"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -48320,6 +51071,17 @@
             "Oncolog"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "organizations"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "Oncolog"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -48427,9 +51189,32 @@
             "self-amplifying RNA"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "saRNA",
+          "matched_phrases": [
+            "self-amplifying RNA"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 0.5,
+          "fields": [
+            "organizations"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Human"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.5,
           "fields": [
@@ -49015,9 +51800,36 @@
             "in vivo"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "in vivo"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract",
+            "organizations"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "tumor",
+            "cancer",
+            "Tumors",
+            "Oncolog"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -49306,6 +52118,18 @@
         }
       ],
       "modalities": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "RNA editing",
+          "matched_phrases": [
+            "RNA editing"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -49855,6 +52679,18 @@
             "In vitro"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "preclinical in vitro",
+          "matched_phrases": [
+            "In vitro"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -49893,6 +52729,19 @@
         }
       ],
       "modalities": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "Guide RNA",
+            "CRISPR/Cas9-RNP platform for DNA-free genome edit"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -51039,6 +53888,17 @@
             "guide RNA"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "guide RNA"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "topics": [
@@ -51575,9 +54435,31 @@
             "in vivo"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "in vivo"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 0.5,
+          "fields": [
+            "organizations"
+          ],
+          "label": "infectious disease",
+          "matched_phrases": [
+            "Infectious Disease"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.5,
           "fields": [
@@ -51703,6 +54585,19 @@
         }
       ],
       "species": [
+        {
+          "confidence": 0.833,
+          "fields": [
+            "abstract",
+            "organizations"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "patients",
+            "Human"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.833,
           "fields": [
@@ -52362,6 +55257,17 @@
             "in vivo"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "in vivo"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -52572,6 +55478,19 @@
           ],
           "label": "human",
           "matched_phrases": [
+            "patient"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.833,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans",
             "patient"
           ],
           "method": "deterministic-rules"
@@ -53212,6 +56131,19 @@
             "mouse model"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "abstract"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "mouse model"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -53445,6 +56377,32 @@
           "label": "human",
           "matched_phrases": [
             "Human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "organizations"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "mouse model",
+            "Mice"
           ],
           "method": "deterministic-rules"
         },
@@ -54110,6 +57068,29 @@
           "method": "deterministic-rules"
         },
         {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "infectious disease",
+          "matched_phrases": [
+            "infectious disease"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "abstract"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "cancer",
+            "tumor"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
           "confidence": 1.0,
           "fields": [
             "abstract"
@@ -54283,9 +57264,31 @@
             "patients"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "patients"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "therapeutic_targets": [
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "KRAS",
+          "matched_phrases": [
+            "KRAS"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.333,
           "fields": [
@@ -54723,6 +57726,17 @@
         }
       ],
       "species": [
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "patients"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.333,
           "fields": [
@@ -55269,6 +58283,31 @@
           "method": "deterministic-rules"
         },
         {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract",
+            "organizations"
+          ],
+          "label": "neurological",
+          "matched_phrases": [
+            "neurological",
+            "central nervous system"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.5,
+          "fields": [
+            "organizations"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "Oncolog"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
           "confidence": 0.5,
           "fields": [
             "organizations"
@@ -55685,9 +58724,35 @@
             "patient"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "patients",
+            "patient"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "therapeutic_targets": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "abstract"
+          ],
+          "label": "transthyretin",
+          "matched_phrases": [
+            "transthyretin",
+            "TTR"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -56238,6 +59303,17 @@
             "Lipid nanoparticle"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.667,
+          "fields": [
+            "keywords"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "Lipid nanoparticle"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -56665,6 +59741,19 @@
             "lipid nanoparticle"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "LNP",
+            "lipid nanoparticle"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -56769,6 +59858,18 @@
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "Mice"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -58144,13 +61245,51 @@
     "field_sources": {
       "authors": "crossref",
       "doi": "crossref",
+      "funders": "crossref",
       "journal_or_source": "crossref",
+      "license_url": "crossref",
       "published_date": "crossref",
       "publisher": "crossref",
       "title": "crossref"
     },
     "first_date": "2026-08-14",
-    "funders": [],
+    "funders": [
+      {
+        "name": "Departamento Administrativo de Ciencia, Tecnología e Innovación (COLCIENCIAS)",
+        "organization_type": "funder",
+        "ror_id": "https://doi.org/10.13039/100007637"
+      },
+      {
+        "name": "Vetenskapsrådet",
+        "organization_type": "funder",
+        "ror_id": "https://doi.org/10.13039/501100004359"
+      },
+      {
+        "name": "Novo Nordisk",
+        "organization_type": "funder",
+        "ror_id": "https://doi.org/10.13039/501100004191"
+      },
+      {
+        "name": "Swedish Cancer Foundation",
+        "organization_type": "funder",
+        "ror_id": "https://doi.org/10.13039/100012538"
+      },
+      {
+        "name": "H2020 Marie Sklodowska-Curie Actions",
+        "organization_type": "funder",
+        "ror_id": "https://doi.org/10.13039/100010665"
+      },
+      {
+        "name": "Stiftelsen för Strategisk Forskning",
+        "organization_type": "funder",
+        "ror_id": "https://doi.org/10.13039/501100001729"
+      },
+      {
+        "name": "H2020 European Research Council",
+        "organization_type": "funder",
+        "ror_id": "https://doi.org/10.13039/100010663"
+      }
+    ],
     "id": "doi:10.1021/acsomega.6c04146",
     "institutions": [
       "AstraZeneca , , ,",
@@ -58204,6 +61343,47 @@
           "doi"
         ],
         "note": "Discovered by a strict Society watched-author Crossref query.",
+        "retrieved_at": "2026-08-15T11:36:38.104482Z",
+        "source": "crossref",
+        "source_id": "10.1021/acsomega.6c04146",
+        "url": "https://api.crossref.org/works/10.1021%2Facsomega.6c04146"
+      },
+      {
+        "fields": [
+          "title",
+          "authors",
+          "journal_or_source",
+          "publisher",
+          "published_date",
+          "doi"
+        ],
+        "note": "Discovered by a strict Society watched-author Crossref query.",
+        "retrieved_at": "2026-08-18T16:24:36.271866Z",
+        "source": "crossref",
+        "source_id": "10.1021/acsomega.6c04146",
+        "url": "https://api.crossref.org/works/10.1021%2Facsomega.6c04146"
+      },
+      {
+        "fields": [
+          "funders",
+          "license_url"
+        ],
+        "note": "Missing-field DOI enrichment; existing source metadata retained.",
+        "retrieved_at": "2026-08-18T16:24:50.006731Z",
+        "source": "crossref",
+        "source_id": "10.1021/acsomega.6c04146",
+        "url": "https://api.crossref.org/works/10.1021%2Facsomega.6c04146"
+      },
+      {
+        "fields": [
+          "title",
+          "authors",
+          "journal_or_source",
+          "publisher",
+          "published_date",
+          "doi"
+        ],
+        "note": "Deterministic merge: exact DOI; preserved all source identifiers.",
         "retrieved_at": "2026-08-15T11:36:38.104482Z",
         "source": "crossref",
         "source_id": "10.1021/acsomega.6c04146",
@@ -58412,6 +61592,17 @@
             "FDA approv"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "approved",
+          "matched_phrases": [
+            "FDA approv"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -58521,9 +61712,32 @@
             "antisense oligonucleotide"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "ASO",
+          "matched_phrases": [
+            "antisense oligonucleotide"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "patients"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -59181,9 +62395,33 @@
             "LNP"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "lipid nanoparticle",
+            "LNP"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "development_stages": [
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical in vitro",
+          "matched_phrases": [
+            "in vitro"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.333,
           "fields": [
@@ -59452,6 +62690,17 @@
         }
       ],
       "methods": [
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "in vitro transcription",
+          "matched_phrases": [
+            "in vitro transcription"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.333,
           "fields": [
@@ -59981,6 +63230,19 @@
             "mRNA Vaccin"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "abstract"
+          ],
+          "label": "mRNA",
+          "matched_phrases": [
+            "mRNA Vaccin"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
@@ -60223,6 +63485,28 @@
           "label": "human",
           "matched_phrases": [
             "human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "mice"
           ],
           "method": "deterministic-rules"
         },
@@ -61156,6 +64440,21 @@
             "LNPs"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "Lipid Nanoparticle",
+            "LNP",
+            "LNPs"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "development_stages": [
@@ -61189,6 +64488,28 @@
           "label": "preclinical animal",
           "matched_phrases": [
             "in vivo"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "in vivo"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical in vitro",
+          "matched_phrases": [
+            "in vitro"
           ],
           "method": "deterministic-rules"
         },
@@ -61300,6 +64621,19 @@
             "mRNA vaccin"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "mRNA",
+          "matched_phrases": [
+            "mRNA vaccin"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
@@ -61333,6 +64667,28 @@
           "label": "human",
           "matched_phrases": [
             "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "Mice"
           ],
           "method": "deterministic-rules"
         },
@@ -61972,6 +65328,19 @@
             "LNP"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "lipid nanoparticle",
+            "LNP"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "development_stages": [
@@ -62172,9 +65541,31 @@
             "in vitro"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.667,
+          "fields": [
+            "keywords"
+          ],
+          "label": "preclinical in vitro",
+          "matched_phrases": [
+            "in vitro"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 0.667,
+          "fields": [
+            "keywords"
+          ],
+          "label": "infectious disease",
+          "matched_phrases": [
+            "infectious disease"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.667,
           "fields": [
@@ -62654,9 +66045,33 @@
             "mRNA Vaccin"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "mRNA",
+          "matched_phrases": [
+            "mRNA Vaccin"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.5,
           "fields": [
@@ -63407,6 +66822,17 @@
             "phase 1"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.667,
+          "fields": [
+            "abstract"
+          ],
+          "label": "Phase 1",
+          "matched_phrases": [
+            "phase 1"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -63598,9 +67024,34 @@
             "antisense oligonucleotide"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title"
+          ],
+          "label": "ASO",
+          "matched_phrases": [
+            "antisense oligonucleotide"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract",
+            "organizations"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "patients",
+            "Human"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -64095,9 +67546,34 @@
             "LNP"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "lipid nanoparticle",
+          "matched_phrases": [
+            "lipid nanoparticle",
+            "LNPs",
+            "LNP"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 0.5,
+          "fields": [
+            "organizations"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "Cancer"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.5,
           "fields": [
@@ -64202,6 +67678,28 @@
           "method": "deterministic-rules"
         },
         {
+          "confidence": 0.667,
+          "fields": [
+            "keywords"
+          ],
+          "label": "mRNA",
+          "matched_phrases": [
+            "mRNA therap"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title"
+          ],
+          "label": "saRNA",
+          "matched_phrases": [
+            "Self-Amplifying RNA"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
           "confidence": 1.0,
           "fields": [
             "title"
@@ -64244,6 +67742,29 @@
           "label": "human",
           "matched_phrases": [
             "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.833,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "Mice"
           ],
           "method": "deterministic-rules"
         },
@@ -64832,9 +68353,31 @@
             "in vitro"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.667,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical in vitro",
+          "matched_phrases": [
+            "in vitro"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "organizations"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "Cancer"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -65421,6 +68964,17 @@
             "in vitro transcription"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "in vitro transcription",
+          "matched_phrases": [
+            "in vitro transcription"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "modalities": [
@@ -65731,9 +69285,34 @@
             "mRNA vaccin"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "abstract"
+          ],
+          "label": "mRNA",
+          "matched_phrases": [
+            "mRNA therap",
+            "mRNA vaccin"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.5,
           "fields": [
@@ -66655,6 +70234,17 @@
             "endosomal escape"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "endosomal escape",
+          "matched_phrases": [
+            "endosomal escape"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -66925,6 +70515,17 @@
           "method": "deterministic-rules"
         },
         {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR-Cas13 RNA editors, guide RNAs, chemically modified RNAs, edit"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
           "confidence": 1.0,
           "fields": [
             "title",
@@ -66941,6 +70542,19 @@
           "fields": [
             "title",
             "keywords"
+          ],
+          "label": "RNA editing",
+          "matched_phrases": [
+            "RNA Editing"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "keywords",
+            "mesh_terms"
           ],
           "label": "RNA editing",
           "matched_phrases": [
@@ -67210,6 +70824,17 @@
         }
       ],
       "species": [
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.5,
           "fields": [
@@ -68091,6 +71716,30 @@
           "method": "deterministic-rules"
         },
         {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "In Vivo",
+            "mouse model"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical in vitro",
+          "matched_phrases": [
+            "In vitro"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
           "confidence": 0.333,
           "fields": [
             "abstract"
@@ -68313,6 +71962,17 @@
             "CRISPR-Cas Systems Genetic Therap"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR-Cas Systems Genetic Therap"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
@@ -68390,6 +72050,31 @@
           "label": "human",
           "matched_phrases": [
             "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "Mice",
+            "mouse model"
           ],
           "method": "deterministic-rules"
         },
@@ -69288,6 +72973,19 @@
             "N-acetylgalactosamine"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "GalNAc",
+          "matched_phrases": [
+            "GalNAc",
+            "N-acetylgalactosamine"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "institutions": [
@@ -69348,6 +73046,19 @@
         }
       ],
       "modalities": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "siRNA",
+          "matched_phrases": [
+            "siRNA therap",
+            "small interfering RNA"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -69779,6 +73490,29 @@
           "label": "human",
           "matched_phrases": [
             "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.5,
+          "fields": [
+            "mesh_terms"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Humans"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.833,
+          "fields": [
+            "mesh_terms",
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "Mice"
           ],
           "method": "deterministic-rules"
         },
@@ -70710,6 +74444,28 @@
           "fields": [
             "abstract"
           ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "in vivo"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical in vitro",
+          "matched_phrases": [
+            "in vitro"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
           "label": "preclinical in vitro",
           "matched_phrases": [
             "in vitro"
@@ -70872,6 +74628,20 @@
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 1.0,
+          "fields": [
+            "abstract",
+            "organizations"
+          ],
+          "label": "oncology",
+          "matched_phrases": [
+            "tumor",
+            "Cancer",
+            "Oncolog"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 1.0,
           "fields": [
@@ -71331,9 +75101,32 @@
             "RNA editing"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "keywords",
+            "abstract"
+          ],
+          "label": "RNA editing",
+          "matched_phrases": [
+            "RNA editing"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "patient"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.333,
           "fields": [
@@ -72366,6 +76159,28 @@
           "fields": [
             "abstract"
           ],
+          "label": "preclinical animal",
+          "matched_phrases": [
+            "in vivo"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "preclinical in vitro",
+          "matched_phrases": [
+            "in vitro"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
           "label": "preclinical in vitro",
           "matched_phrases": [
             "in vitro"
@@ -72517,6 +76332,17 @@
         }
       ],
       "disease_areas": [
+        {
+          "confidence": 0.5,
+          "fields": [
+            "organizations"
+          ],
+          "label": "infectious disease",
+          "matched_phrases": [
+            "Infectious Disease"
+          ],
+          "method": "deterministic-rules"
+        },
         {
           "confidence": 0.5,
           "fields": [
@@ -72982,6 +76808,17 @@
             "CRISPR-based gene edit"
           ],
           "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "CRISPR RNA",
+          "matched_phrases": [
+            "CRISPR-based gene edit"
+          ],
+          "method": "deterministic-rules"
         }
       ],
       "species": [
@@ -73150,6 +76987,29 @@
           "label": "human",
           "matched_phrases": [
             "Human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 1.0,
+          "fields": [
+            "title",
+            "abstract"
+          ],
+          "label": "human",
+          "matched_phrases": [
+            "Human"
+          ],
+          "method": "deterministic-rules"
+        },
+        {
+          "confidence": 0.333,
+          "fields": [
+            "abstract"
+          ],
+          "label": "mouse",
+          "matched_phrases": [
+            "mice"
           ],
           "method": "deterministic-rules"
         },
