@@ -61,7 +61,7 @@ notes.
 
 ## SRT author watchlist
 
-`config/people.yml` contains 20 audited SRT board, member, and staff identities,
+`config/people.yml` contains 36 audited SRT board, member, and staff identities,
 including ORCIDs where confirmed. PubMed discovery combines topical queries with
 the configured author queries. This matters for profiles such as Pieter R.
 Cullis (`0000-0001-9586-2508`), where a valid ORCID may expose no works.

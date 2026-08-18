@@ -17,7 +17,7 @@ def test_repository_configuration_loads() -> None:
     assert config.sources.pubmed.requests_per_second == 3
     assert set(config.sources.preprints.servers) == {"biorxiv", "medrxiv"}
     assert "modalities_high_precision" in config.queries.groups
-    assert len(config.people.people) == 20
+    assert len(config.people.people) == 36
     assert config.people.people[2].orcid == "0000-0001-9586-2508"
     assert config.categories.field_weights["title"] > config.categories.field_weights["abstract"]
 

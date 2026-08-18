@@ -1,5 +1,5 @@
 schema_version: 1
-roster_checked_at: "2026-07-27"
+roster_checked_at: "2026-08-18"
 
 # The editable author watchlist inherited from the Society for RNA Therapeutics
 # roster audit. ORCID is preferred, but PubMed searches remain necessary because
@@ -79,12 +79,11 @@ people:
     display_name: John J. Rossi
     role: board
     organization: City of Hope
-    orcid:
+    orcid: 0000-0003-1238-9335
     aliases: [John J Rossi, John Rossi]
     pubmed_query: 'Rossi JJ[Author] AND ("City of Hope"[Affiliation] OR Beckman[Affiliation])'
     affiliation_terms: [City of Hope, Beckman]
     require_affiliation: true
-    note: No confirmed ORCID; bibliographic identity checks are mandatory.
 
   - id: srt-0009
     display_name: Bruce A. Sullenger
@@ -198,3 +197,166 @@ people:
     aliases: [Pascal Viguié, Pascal Viguie]
     pubmed_query: '(Viguié P[Author] OR Viguie P[Author])'
     affiliation_terms: [bYoRNA]
+
+  - id: srt-0021
+    display_name: Kristopher W. Brannan
+    role: member
+    organization: Houston Methodist Research Institute
+    orcid: 0000-0002-0316-898X
+    aliases: [Kristopher W Brannan, Kristopher Brannan]
+    pubmed_query: 'Brannan KW[Author] AND ("Houston Methodist"[Affiliation] OR UCSD[Affiliation])'
+    affiliation_terms: [Houston Methodist, UCSD, University of California San Diego]
+    require_affiliation: true
+
+  - id: srt-0022
+    display_name: Nilüfer Ertekin-Taner
+    role: member
+    organization: Mayo Clinic
+    orcid: 0000-0003-4436-8889
+    aliases: [Nilüfer Ertekin-Taner, Nilufer Ertekin-Taner, Nilufer Taner]
+    pubmed_query: '(Ertekin-Taner N[Author] OR Taner N[Author]) AND Mayo[Affiliation]'
+    affiliation_terms: [Mayo Clinic, Mayo]
+    require_affiliation: true
+
+  - id: srt-0023
+    display_name: Justin Karpas
+    role: member
+    organization: Karpas Clinical Advisory
+    orcid:
+    aliases: [Justin Karpas]
+    pubmed_query: 'Karpas J[Author]'
+    affiliation_terms: [Karpas Clinical Advisory]
+    require_affiliation: true
+    note: No confirmed ORCID or unambiguous bibliographic profile located.
+
+  - id: srt-0024
+    display_name: Timothy R. Mercer
+    role: member
+    organization: The University of Queensland
+    orcid: 0000-0001-8780-894X
+    aliases: [Timothy R Mercer, Timothy Mercer, Tim R Mercer]
+    pubmed_query: 'Mercer TR[Author] AND (Queensland[Affiliation] OR Garvan[Affiliation] OR UNSW[Affiliation])'
+    affiliation_terms: [Queensland, Garvan, UNSW]
+    require_affiliation: true
+
+  - id: srt-0025
+    display_name: Shobha Vasudevan
+    role: member
+    organization: UNC Chapel Hill / A*STAR GIS
+    orcid: 0000-0001-5938-8335
+    aliases: [Shobha Vasudevan]
+    pubmed_query: 'Vasudevan S[Author] AND ("Chapel Hill"[Affiliation] OR A*STAR[Affiliation] OR "Massachusetts General"[Affiliation] OR Harvard[Affiliation])'
+    affiliation_terms: [Chapel Hill, UNC, A*STAR, Genome Institute of Singapore, Massachusetts General, Harvard]
+    require_affiliation: true
+
+  - id: srt-0026
+    display_name: Gautham Yepuri
+    role: member
+    organization: NYU Grossman School of Medicine
+    orcid: 0000-0002-6846-0295
+    aliases: [Gautham Yepuri]
+    pubmed_query: 'Yepuri G[Author] AND (NYU[Affiliation] OR "New York University"[Affiliation] OR "Houston Methodist"[Affiliation])'
+    affiliation_terms: [NYU, New York University, Houston Methodist]
+    require_affiliation: true
+
+  - id: srt-0027
+    display_name: Murilo Tadeu Domingues Bueno
+    role: member
+    organization: Houston Methodist Research Institute
+    orcid: 0009-0005-4137-8864
+    aliases: [Murilo Tadeu Domingues Bueno, Murilo T Bueno, Murilo Bueno]
+    pubmed_query: 'Bueno MT[Author] AND ("Houston Methodist"[Affiliation] OR UTEP[Affiliation])'
+    affiliation_terms: [Houston Methodist, UTEP, University of Texas at El Paso]
+    require_affiliation: true
+
+  - id: srt-0028
+    display_name: Nada Bejar
+    role: member
+    organization: Houston Methodist Research Institute
+    orcid: 0000-0002-0980-5951
+    aliases: [Nada Bejar]
+    pubmed_query: 'Bejar N[Author] AND ("Houston Methodist"[Affiliation] OR "University of Houston"[Affiliation])'
+    affiliation_terms: [Houston Methodist, University of Houston]
+    require_affiliation: true
+
+  - id: srt-0029
+    display_name: Mai Komori
+    role: member
+    organization: Houston Methodist Research Institute
+    orcid:
+    aliases: [Mai Komori]
+    pubmed_query: 'Komori M[Author] AND ("Houston Methodist"[Affiliation] OR Okayama[Affiliation])'
+    affiliation_terms: [Houston Methodist, Okayama]
+    require_affiliation: true
+
+  - id: srt-0030
+    display_name: Shalaka Lotlikar
+    role: member
+    organization: Houston Methodist Research Institute
+    orcid: 0000-0003-1403-6904
+    aliases: [Shalaka Lotlikar]
+    pubmed_query: 'Lotlikar S[Author] AND ("Houston Methodist"[Affiliation] OR "MD Anderson"[Affiliation])'
+    affiliation_terms: [Houston Methodist, MD Anderson]
+    require_affiliation: true
+    note: No confirmed ORCID located; retain strict affiliation matching.
+
+  - id: srt-0031
+    display_name: Tulsi Ram Damase
+    role: member
+    organization: Houston Methodist Research Institute
+    orcid: 0000-0002-6758-9038
+    aliases: [Tulsi Ram Damase, Tulsi R Damase, Tulsi Damase]
+    pubmed_query: 'Damase T[Author] AND ("Houston Methodist"[Affiliation] OR Idaho[Affiliation])'
+    affiliation_terms: [Houston Methodist, University of Idaho, Idaho]
+    require_affiliation: true
+
+  - id: srt-0032
+    display_name: Yanshu Shi
+    role: member
+    organization: Massachusetts Institute of Technology
+    orcid:
+    aliases: [Yanshu Shi]
+    pubmed_query: 'Shi Y[Author] AND (MIT[Affiliation] OR "Massachusetts Institute of Technology"[Affiliation])'
+    affiliation_terms: [MIT, Massachusetts Institute of Technology, Koch Institute]
+    require_affiliation: true
+
+  - id: srt-0033
+    display_name: W. Samuel Fagg
+    role: member
+    organization: University of Texas Medical Branch
+    orcid: 0000-0003-2909-1666
+    aliases: [W Samuel Fagg, William Samuel Fagg, William Fagg, Sam Fagg]
+    pubmed_query: 'Fagg WS[Author] AND (UTMB[Affiliation] OR "Texas Medical Branch"[Affiliation])'
+    affiliation_terms: [UTMB, University of Texas Medical Branch, Texas Medical Branch]
+    require_affiliation: true
+
+  - id: srt-0034
+    display_name: Brad A. Amendt
+    role: member
+    organization: University of Iowa
+    orcid: 0000-0001-6524-1006
+    aliases: [Brad A Amendt, Brad Amendt]
+    pubmed_query: 'Amendt BA[Author] AND Iowa[Affiliation]'
+    affiliation_terms: [University of Iowa, Iowa]
+    require_affiliation: true
+
+  - id: srt-0035
+    display_name: Magdalena M. Żak
+    role: member
+    organization: Icahn School of Medicine at Mount Sinai
+    orcid: 0000-0002-8625-7274
+    aliases: [Magdalena M Żak, Magdalena M Zak, Magdalena Zak]
+    pubmed_query: '(Zak MM[Author] OR Żak MM[Author]) AND ("Mount Sinai"[Affiliation] OR Icahn[Affiliation])'
+    affiliation_terms: [Mount Sinai, Icahn]
+    require_affiliation: true
+
+  - id: srt-0036
+    display_name: Seong-Wook Lee
+    role: member
+    organization: Dankook University / Rznomics Inc.
+    orcid: 0000-0003-1718-7601
+    aliases: [Seong-Wook Lee, Seong Wook Lee]
+    pubmed_query: 'Lee SW[Author] AND (Dankook[Affiliation] OR Rznomics[Affiliation])'
+    affiliation_terms: [Dankook, Rznomics]
+    require_affiliation: true
+    note: Same-name ORCID results belonged to other institutions; none was accepted.
