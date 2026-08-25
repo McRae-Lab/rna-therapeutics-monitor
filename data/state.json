@@ -7,14 +7,14 @@
       "raw_count": 734
     },
     "crossref_authors": {
-      "last_retrieved_at": "2026-08-24T11:45:32.500302Z",
-      "last_successful_until": "2026-08-24",
-      "raw_count": 13351
+      "last_retrieved_at": "2026-08-25T11:46:33.265119Z",
+      "last_successful_until": "2026-08-25",
+      "raw_count": 15241
     },
     "preprints": {
-      "last_retrieved_at": "2026-08-24T11:45:32.500302Z",
-      "last_successful_until": "2026-08-24",
-      "raw_count": 2446
+      "last_retrieved_at": "2026-08-25T11:46:33.265119Z",
+      "last_successful_until": "2026-08-25",
+      "raw_count": 2836
     },
     "pubmed": {
       "last_retrieved_at": "2026-08-18T11:43:30.744519Z",
@@ -22,8 +22,8 @@
       "raw_count": 2775
     },
     "rss": {
-      "last_retrieved_at": "2026-08-24T11:45:32.500302Z",
-      "last_successful_until": "2026-08-24",
+      "last_retrieved_at": "2026-08-25T11:46:33.265119Z",
+      "last_successful_until": "2026-08-25",
       "raw_count": 54
     }
   }
