@@ -2,6 +2,7 @@
 
 from datetime import UTC, date, datetime
 from pathlib import Path
+from urllib.parse import parse_qsl
 
 import httpx
 
@@ -118,6 +119,13 @@ def test_srt_identity_matching_rejects_similar_given_names() -> None:
     assert match_watched_people(michelle, people) == ["Michelle L. Hastings"]
 
 
+def _request_field(request: httpx.Request, name: str) -> str:
+    """Read one request field, whether it rode in the URL or the body."""
+    if request.url.params.get(name):
+        return str(request.url.params[name])
+    return str(dict(parse_qsl(request.content.decode()))[name])
+
+
 def test_pubmed_adapter_esearch_then_efetch() -> None:
     config = load_config(ROOT / "config")
     fixture = FIXTURE.read_text(encoding="utf-8")
@@ -149,9 +157,10 @@ def test_pubmed_adapter_esearch_then_efetch() -> None:
         "esearch.fcgi",
         "efetch.fcgi",
     ]
-    search_params = dict(requests[0].url.params)
-    assert search_params["tool"] == "rna_therapeutics_monitor"
-    assert search_params["email"]
+    assert _request_field(requests[0], "tool") == "rna_therapeutics_monitor"
+    assert _request_field(requests[0], "email")
+    assert requests[0].method == "POST"
+    assert "term" not in requests[0].url.params
 
 
 def test_pubmed_splits_windows_above_esearch_result_ceiling() -> None:
@@ -159,7 +168,7 @@ def test_pubmed_splits_windows_above_esearch_result_ceiling() -> None:
     search_windows: list[str] = []
 
     def handler(request: httpx.Request) -> httpx.Response:
-        term = dict(request.url.params)["term"]
+        term = _request_field(request, "term")
         search_windows.append(term)
         if '"2026/01/01"[PDAT] : "2026/12/31"[PDAT]' in term:
             result = {"count": "10001", "idlist": ["discarded-root-page"]}
