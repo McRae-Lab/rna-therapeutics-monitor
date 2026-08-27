@@ -86,3 +86,12 @@ def test_post_cache_distinguishes_bodies(tmp_path: Path) -> None:
         "term": "alpha"
     }
     assert calls == ["alpha", "beta"]
+
+
+def test_user_agent_names_project_and_library() -> None:
+    # ClinicalTrials.gov refuses httpx requests whose User-Agent names anything else
+    with HttpClient(_settings(), "rna-therapeutics-monitor/0.1") as http:
+        agent = http.client.headers["user-agent"]
+
+    assert agent.startswith("rna-therapeutics-monitor/0.1")
+    assert "python-httpx/" in agent

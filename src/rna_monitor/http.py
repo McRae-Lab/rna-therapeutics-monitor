@@ -20,6 +20,14 @@ LOGGER = logging.getLogger(__name__)
 TRANSIENT_STATUS_CODES = {408, 425, 429, 500, 502, 503, 504}
 
 
+def _identify(user_agent: str) -> str:
+    """Name this project and the library carrying its requests."""
+
+    with httpx.Client() as probe:
+        library = probe.headers["user-agent"]
+    return f"{user_agent} {library}"
+
+
 class HttpRequestError(RuntimeError):
     """A bounded HTTP request failed."""
 
@@ -53,7 +61,10 @@ class HttpClient:
         )
         self.client = client or httpx.Client(
             timeout=timeout,
-            headers={"User-Agent": user_agent, "Accept": "application/json, application/xml"},
+            headers={
+                "User-Agent": _identify(user_agent),
+                "Accept": "application/json, application/xml",
+            },
             follow_redirects=True,
         )
 
