@@ -6,9 +6,9 @@
     },
     "delivery_systems": {
       "GalNAc": 4,
-      "endosomal escape": 4,
+      "endosomal escape": 6,
       "extracellular vesicle": 6,
-      "lipid nanoparticle": 51,
+      "lipid nanoparticle": 53,
       "polymeric nanoparticle": 1,
       "virus-like particle": 2
     },
@@ -27,7 +27,7 @@
     },
     "evidence_levels": {
       "news or announcement": 2,
-      "peer-reviewed publication": 193,
+      "peer-reviewed publication": 197,
       "preprint": 29
     },
     "institutions": {
@@ -1224,7 +1224,7 @@
       "Zhejiang Hisun Pharmaceutical Co., Ltd., Taizhou, 318000, Zhejiang, China. xun.li@hisunpharm.com.": 1
     },
     "modalities": {
-      "ASO": 34,
+      "ASO": 35,
       "CRISPR RNA": 47,
       "RNA editing": 6,
       "RNA nanostructure": 1,
@@ -1240,7 +1240,7 @@
     },
     "source_types": {
       "biorxiv": 27,
-      "crossref": 191,
+      "crossref": 195,
       "journal": 3,
       "medrxiv": 2,
       "pubmed": 183,
@@ -1250,7 +1250,7 @@
       "CRISPR": 104,
       "base editing": 9,
       "clinical development": 10,
-      "delivery": 66,
+      "delivery": 67,
       "efficacy": 43,
       "gene editing": 34,
       "manufacturing": 20,
@@ -1259,11 +1259,12 @@
     },
     "trial_statuses": {},
     "watched_people": {
-      "Adrian Krainer": 2,
+      "Adrian Krainer": 3,
       "Anna Marie Pyle": 2,
-      "Dan Peer": 1,
+      "Dan Peer": 3,
       "Drew Weissman": 5,
       "Ewan McRae": 1,
+      "Michelle L. Hastings": 1,
       "Nilüfer Ertekin-Taner": 1,
       "Pieter R. Cullis": 2,
       "Quentin Vicentini": 1,
