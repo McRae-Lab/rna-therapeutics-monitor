@@ -2,6 +2,7 @@
 
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
+from urllib.parse import parse_qsl
 
 import httpx
 
@@ -61,3 +62,36 @@ def test_fresh_cache_reused_and_stale_cache_refetched(tmp_path: Path) -> None:
     current[0] += timedelta(hours=25)
     assert http.get("https://example.test/records", params={"page": 1}).json() == {"call": 2}
     assert calls == 2
+
+
+def test_post_cache_distinguishes_bodies(tmp_path: Path) -> None:
+    calls: list[str] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        body = dict(parse_qsl(request.content.decode()))
+        calls.append(body["term"])
+        return httpx.Response(200, json={"term": body["term"]}, request=request)
+
+    client = httpx.Client(transport=httpx.MockTransport(handler))
+    http = HttpClient(_settings(), "agent/1.0", client=client, cache_dir=tmp_path)
+
+    assert http.post("https://example.test/search", data={"term": "alpha"}).json() == {
+        "term": "alpha"
+    }
+    assert http.post("https://example.test/search", data={"term": "beta"}).json() == {
+        "term": "beta"
+    }
+    # the repeat is served from cache, so the server sees each body exactly once
+    assert http.post("https://example.test/search", data={"term": "alpha"}).json() == {
+        "term": "alpha"
+    }
+    assert calls == ["alpha", "beta"]
+
+
+def test_user_agent_names_project_and_library() -> None:
+    # ClinicalTrials.gov refuses httpx requests whose User-Agent names anything else
+    with HttpClient(_settings(), "rna-therapeutics-monitor/0.1") as http:
+        agent = http.client.headers["user-agent"]
+
+    assert agent.startswith("rna-therapeutics-monitor/0.1")
+    assert "python-httpx/" in agent
