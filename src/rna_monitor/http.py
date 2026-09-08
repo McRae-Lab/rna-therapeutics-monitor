@@ -20,6 +20,14 @@ LOGGER = logging.getLogger(__name__)
 TRANSIENT_STATUS_CODES = {408, 425, 429, 500, 502, 503, 504}
 
 
+def _identify(user_agent: str) -> str:
+    """Name this project and the library carrying its requests."""
+
+    with httpx.Client() as probe:
+        library = probe.headers["user-agent"]
+    return f"{user_agent} {library}"
+
+
 class HttpRequestError(RuntimeError):
     """A bounded HTTP request failed."""
 
@@ -53,7 +61,10 @@ class HttpClient:
         )
         self.client = client or httpx.Client(
             timeout=timeout,
-            headers={"User-Agent": user_agent, "Accept": "application/json, application/xml"},
+            headers={
+                "User-Agent": _identify(user_agent),
+                "Accept": "application/json, application/xml",
+            },
             follow_redirects=True,
         )
 
@@ -67,11 +78,22 @@ class HttpClient:
             self._sleeper(minimum_interval - (now - last))
         self._last_request[service] = self._monotonic()
 
-    def _cache_path(self, url: str, params: dict[str, Any] | None) -> Path | None:
+    def _cache_path(
+        self,
+        method: str,
+        url: str,
+        params: dict[str, Any] | None,
+        data: dict[str, Any] | None = None,
+    ) -> Path | None:
         if self.cache_dir is None or self.settings.cache_ttl_hours <= 0:
             return None
         key = json.dumps(
-            {"url": url, "params": sorted((params or {}).items())},
+            {
+                "method": method,
+                "url": url,
+                "params": sorted((params or {}).items()),
+                "data": sorted((data or {}).items()),
+            },
             ensure_ascii=True,
             separators=(",", ":"),
             default=str,
@@ -81,6 +103,7 @@ class HttpClient:
     def _read_cache(
         self,
         path: Path | None,
+        method: str,
         url: str,
         params: dict[str, Any] | None,
     ) -> httpx.Response | None:
@@ -94,7 +117,7 @@ class HttpClient:
             age = self._clock() - stored_at
             if age < timedelta(0) or age > timedelta(hours=self.settings.cache_ttl_hours):
                 return None
-            request = httpx.Request("GET", url, params=params)
+            request = httpx.Request(method, url, params=params)
             return httpx.Response(
                 int(payload["status_code"]),
                 content=bytes.fromhex(payload["content_hex"]),
@@ -128,14 +151,29 @@ class HttpClient:
     def get(self, url: str, *, params: dict[str, Any] | None = None) -> httpx.Response:
         """GET one URL, retrying only transport and documented transient failures."""
 
-        cache_path = self._cache_path(url, params)
-        cached = self._read_cache(cache_path, url, params)
+        return self._request("GET", url, params=params)
+
+    def post(self, url: str, *, data: dict[str, Any] | None = None) -> httpx.Response:
+        """POST one URL, with the same bounded retry and caching as `get`."""
+
+        return self._request("POST", url, data=data)
+
+    def _request(
+        self,
+        method: str,
+        url: str,
+        *,
+        params: dict[str, Any] | None = None,
+        data: dict[str, Any] | None = None,
+    ) -> httpx.Response:
+        cache_path = self._cache_path(method, url, params, data)
+        cached = self._read_cache(cache_path, method, url, params)
         if cached is not None:
             return cached
         last_error: Exception | None = None
         for attempt in range(1, self.settings.max_attempts + 1):
             try:
-                response = self.client.get(url, params=params)
+                response = self.client.request(method, url, params=params, data=data)
                 if response.status_code not in TRANSIENT_STATUS_CODES:
                     response.raise_for_status()
                     self._write_cache(cache_path, response)

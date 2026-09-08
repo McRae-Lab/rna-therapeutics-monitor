@@ -296,8 +296,8 @@ class PubMedAdapter:
                 "term": query,
             }
             self.http.pace("ncbi", self.settings.requests_per_second)
-            payload = self.http.get(
-                str(self.settings.base_url) + "esearch.fcgi", params=params
+            payload = self.http.post(
+                str(self.settings.base_url) + "esearch.fcgi", data=params
             ).json()
             result = payload.get("esearchresult", {})
             page = [str(value) for value in result.get("idlist", [])]
@@ -338,7 +338,7 @@ class PubMedAdapter:
                 "id": ",".join(batch),
             }
             self.http.pace("ncbi", self.settings.requests_per_second)
-            response = self.http.get(str(self.settings.base_url) + "efetch.fcgi", params=params)
+            response = self.http.post(str(self.settings.base_url) + "efetch.fcgi", data=params)
             parsed = parse_pubmed_xml(response.text)
             for record in parsed:
                 record.watched_people = match_watched_people(record, self.people)
