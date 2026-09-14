@@ -226,9 +226,10 @@ evidence-quality bonus.
 ## Static website
 
 `site/` contains only plain HTML, CSS, JavaScript, and JSON. It provides
-normalized token search, date/facet/score filters, preset views, deterministic
+normalized token search, date/facet filters, preset views, deterministic
 sorting, progressive loading, expandable provenance and rationale, and
-browser-only CSV/JSON downloads. All links and fetches are relative, so the site
+browser-only CSV/JSON downloads. The interface and filtered downloads omit relevance
+scores; results sort by date and title, or alphabetically, without score tie-breaks. All links and fetches are relative, so the site
 works at `/rna-therapeutics-monitor/` rather than requiring a domain root.
 
 For a local preview:

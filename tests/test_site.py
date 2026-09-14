@@ -33,7 +33,6 @@ def test_site_contains_required_controls_and_presets() -> None:
         "watched-person",
         "review-status",
         "trial-status",
-        "min-score",
         "reset-filters",
     ):
         assert f'id="{identifier}"' in html
@@ -77,9 +76,25 @@ def test_methodology_covers_required_limitations() -> None:
         "Query scope and exclusions",
         "Deduplication",
         "Classification",
-        "Relevance scoring",
+        "Result ordering and date windows",
         "Optional LLM enrichment",
         "Known limitations",
     ):
         assert heading in html
     assert "Inclusion does not represent endorsement" in html
+
+
+def test_interface_has_no_relevance_ranking() -> None:
+    html = (SITE / "index.html").read_text(encoding="utf-8")
+    for removed in ('id="min-score"', 'value="score-desc"', 'id="score-output"'):
+        assert removed not in html
+    script = (SITE / "assets" / "app.js").read_text(encoding="utf-8")
+    assert "score-badge" not in script
+    assert "Scoring breakdown" not in script
+    assert "record.relevance_score" not in script
+
+
+def test_hidden_attribute_overrides_component_display() -> None:
+    css = (SITE / "assets" / "styles.css").read_text(encoding="utf-8")
+    # Component display rules must not keep hidden loading/menus/buttons visible.
+    assert "[hidden] { display: none !important; }" in css

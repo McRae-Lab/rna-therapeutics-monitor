@@ -69,7 +69,7 @@
         </div>
 
         <details open>
-          <summary>Date and score</summary>
+          <summary>Date</summary>
           <div class="date-shortcuts" role="group" aria-label="Date window">
             <button type="button" data-date-days="7">Last week</button>
             <button type="button" data-date-days="30" class="active">Last month</button>
@@ -78,14 +78,6 @@
           <div class="filter-body two-column">
             <label>From <input id="date-from" type="date"></label>
             <label>To <input id="date-to" type="date"></label>
-          </div>
-          <div class="filter-body">
-            <label for="min-score">Minimum relevance <output id="score-output">0</output></label>
-            <input id="min-score" type="range" min="0" max="100" step="5" value="0">
-            <p class="filter-note">
-              A transparent priority score, not a measure of scientific quality.
-              <a href="./methodology.html#scoring">How scoring works</a>
-            </p>
           </div>
         </details>
 
@@ -146,7 +138,6 @@
             <label>Sort
               <select id="sort">
                 <option value="date-desc">Newest first</option>
-                <option value="score-desc">Highest relevance</option>
                 <option value="title-asc">Title A–Z</option>
               </select>
             </label>

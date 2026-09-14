@@ -13,7 +13,6 @@ const controls = {
   search: byId("search"),
   dateFrom: byId("date-from"),
   dateTo: byId("date-to"),
-  minScore: byId("min-score"),
   technology: byId("technology"),
   modality: byId("modality"),
   delivery: byId("delivery"),
@@ -196,7 +195,6 @@ function presetMatch(record) {
 
 function applyFilters() {
   const terms = normalize(controls.search.value).split(" ").filter(Boolean);
-  const minimum = Number(controls.minScore.value);
   state.filtered = state.records.filter((record) => {
     if (record.excluded) return false;
     const haystack = searchable(record);
@@ -204,7 +202,6 @@ function applyFilters() {
       terms.every((term) => haystack.includes(term)) &&
       (!controls.dateFrom.value || recordDate(record) >= controls.dateFrom.value) &&
       (!controls.dateTo.value || recordDate(record) <= controls.dateTo.value) &&
-      Number(record.relevance_score || 0) >= minimum &&
       technologyMatch(record, controls.technology.value) &&
       contains(record, "modalities", controls.modality.value) &&
       contains(record, "delivery_systems", controls.delivery.value) &&
@@ -220,9 +217,8 @@ function applyFilters() {
   });
   const sorter = controls.sort.value;
   state.filtered.sort((a, b) => {
-    if (sorter === "score-desc") return (b.relevance_score || 0) - (a.relevance_score || 0) || recordDate(b).localeCompare(recordDate(a)) || a.id.localeCompare(b.id);
     if (sorter === "title-asc") return a.title.localeCompare(b.title) || a.id.localeCompare(b.id);
-    return recordDate(b).localeCompare(recordDate(a)) || (b.relevance_score || 0) - (a.relevance_score || 0) || a.id.localeCompare(b.id);
+    return recordDate(b).localeCompare(recordDate(a)) || a.title.localeCompare(b.title) || a.id.localeCompare(b.id);
   });
   render();
 }
@@ -291,15 +287,6 @@ function renderDetails(record) {
     });
   });
   if (rationale.length) grid.append(detailSection("Classification rationale", list(rationale)));
-  if ((record.score_components || []).length) {
-    const score = element("div");
-    record.score_components.forEach((item) => {
-      const row = element("div", "score-row");
-      row.append(element("span", "", item.name), element("strong", "", `${item.points}/${item.maximum}`), element("span", "", item.reason));
-      score.append(row);
-    });
-    grid.append(detailSection("Scoring breakdown", score));
-  }
   if ((record.provenance || []).length) {
     const values = record.provenance.map((item) => `${item.source} · ${item.source_id} · retrieved ${new Date(item.retrieved_at).toLocaleString()}`);
     grid.append(detailSection("Provenance", list(values)));
@@ -320,10 +307,6 @@ function renderCard(record) {
   top.append(element("span", "", (record.source_types || []).join(" + ")));
   if ((record.change_history || []).length) top.append(element("span", "changed", "Recently changed"));
   card.append(top);
-  const score = element("div", "score-badge");
-  score.title = "Relevance priority score; not scientific quality";
-  score.append(element("strong", "", Math.round(record.relevance_score || 0)), document.createTextNode("/100"));
-  card.append(score);
   const heading = element("h3", "card-title");
   heading.append(link(record.url, record.title));
   card.append(heading);
@@ -355,7 +338,6 @@ function activeLabels() {
   if (controls.search.value) labels.push(`Search: ${controls.search.value}`);
   if (controls.dateFrom.value) labels.push(`From ${controls.dateFrom.value}`);
   if (controls.dateTo.value) labels.push(`To ${controls.dateTo.value}`);
-  if (Number(controls.minScore.value)) labels.push(`Score ≥ ${controls.minScore.value}`);
   const names = {
     technology: "Technology", modality: "Modality", delivery: "Delivery",
     disease: "Disease", stage: "Stage",
@@ -370,7 +352,6 @@ function activeLabels() {
 
 function render() {
   byId("result-count").textContent = state.filtered.length.toLocaleString();
-  byId("score-output").textContent = controls.minScore.value;
   const chips = byId("active-filters");
   chips.replaceChildren(...activeLabels().map((text) => element("span", "filter-chip", text)));
   const listNode = byId("result-list");
@@ -423,7 +404,6 @@ function populateFacets(records) {
 function resetFilters() {
   Object.values(controls).forEach((control) => {
     if (control === controls.sort) control.value = "date-desc";
-    else if (control === controls.minScore) control.value = "0";
     else control.value = "";
   });
   state.preset = "";
@@ -433,20 +413,23 @@ function resetFilters() {
 }
 
 function download(format) {
-  const records = state.filtered.map((record) => ({ ...record }));
+  const records = state.filtered.map((record) => {
+    const { relevance_score, score_components, ...exported } = record;
+    return exported;
+  });
   let content;
   let type;
   if (format === "json") {
     content = JSON.stringify(records, null, 2);
     type = "application/json";
   } else {
-    const columns = ["date", "title", "url", "evidence_level", "modalities", "delivery_systems", "disease_areas", "development_stages", "watched_people", "relevance_score", "doi", "pmid", "nct_id"];
+    const columns = ["date", "title", "url", "evidence_level", "modalities", "delivery_systems", "disease_areas", "development_stages", "watched_people", "doi", "pmid", "nct_id"];
     const escape = (value) => `"${String(value ?? "").replaceAll('"', '""')}"`;
     const rows = records.map((record) => [
       recordDate(record), record.title, record.url, record.evidence_level,
       (record.modalities || []).join("; "), (record.delivery_systems || []).join("; "),
       (record.disease_areas || []).join("; "), (record.development_stages || []).join("; "),
-      (record.watched_people || []).join("; "), record.relevance_score,
+      (record.watched_people || []).join("; "),
       record.doi, record.pmid, record.nct_id,
     ].map(escape).join(","));
     content = [columns.join(","), ...rows].join("\n");
@@ -498,8 +481,8 @@ function bindEvents() {
 }
 
 async function load() {
-  bindEvents();
   try {
+    bindEvents();
     const [latestResponse, statisticsResponse, updatedResponse] = await Promise.all([
       fetch("./data/latest.json"),
       fetch("./data/statistics.json"),
