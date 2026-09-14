@@ -1,5 +1,5 @@
 schema_version: 1
-roster_checked_at: "2026-08-18"
+roster_checked_at: "2026-09-14"
 
 # The editable author watchlist inherited from the Society for RNA Therapeutics
 # roster audit. ORCID is preferred, but PubMed searches remain necessary because
@@ -360,3 +360,59 @@ people:
     affiliation_terms: [Dankook, Rznomics]
     require_affiliation: true
     note: Same-name ORCID results belonged to other institutions; none was accepted.
+
+  - id: srt-0037
+    display_name: John C Bell
+    role: member
+    organization: Ottawa Hospital Research Institute
+    aliases:
+    - John C Bell
+    pubmed_query: '"bell jc"[Author] AND "ottawa hospital research institute"[Affiliation]'
+    affiliation_terms:
+    - Ottawa Hospital Research Institute
+    require_affiliation: true
+    note: Member form import; no verified ORCID supplied. Strict affiliation matching.
+  - id: srt-0038
+    display_name: Jay Hesselberth
+    role: member
+    organization: University of Colorado School of Medicine
+    aliases:
+    - Jay Hesselberth
+    pubmed_query: '"hesselberth j"[Author] AND "university of colorado school of medicine"[Affiliation]'
+    affiliation_terms:
+    - University of Colorado School of Medicine
+    require_affiliation: true
+    note: Member form import; no verified ORCID supplied. Strict affiliation matching.
+  - id: srt-0039
+    display_name: Smita Nair
+    role: member
+    organization: Duke University School of Medicine
+    aliases:
+    - Smita Nair
+    pubmed_query: '"nair s"[Author] AND "duke university school of medicine"[Affiliation]'
+    affiliation_terms:
+    - Duke University School of Medicine
+    require_affiliation: true
+    note: Member form import; no verified ORCID supplied. Strict affiliation matching.
+  - id: srt-0040
+    display_name: Wonil Kim
+    role: member
+    organization: Aston Sci. Inc.
+    aliases:
+    - Wonil Kim
+    pubmed_query: '"kim w"[Author] AND "aston sci inc"[Affiliation]'
+    affiliation_terms:
+    - Aston Sci. Inc.
+    require_affiliation: true
+    note: Member form import; no verified ORCID supplied. Strict affiliation matching.
+  - id: srt-0041
+    display_name: Michelle Kim
+    role: member
+    organization: Johns Hopkins University RNA Innovation Center
+    aliases:
+    - Michelle Kim
+    pubmed_query: '"kim m"[Author] AND "johns hopkins university rna innovation center"[Affiliation]'
+    affiliation_terms:
+    - Johns Hopkins University RNA Innovation Center
+    require_affiliation: true
+    note: Member form import; no verified ORCID supplied. Strict affiliation matching.

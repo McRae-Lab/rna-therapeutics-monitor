@@ -61,8 +61,9 @@ notes.
 
 ## SRT author watchlist
 
-`config/people.yml` contains 36 audited SRT board, member, and staff identities,
-including ORCIDs where confirmed. PubMed discovery combines topical queries with
+`config/people.yml` contains SRT board, member, and staff identities,
+including ORCIDs where confirmed. New membership-form entries use conservative
+name and affiliation matching until bibliographic identities are verified. PubMed discovery combines topical queries with
 the configured author queries. This matters for profiles such as Pieter R.
 Cullis (`0000-0001-9586-2508`), where a valid ORCID may expose no works.
 Recent Crossref author queries provide a second route for publisher-registered
@@ -73,6 +74,47 @@ Record attribution requires exact ORCID or conservative bibliographic identity.
 Initials or surname overlap alone is insufficient; ambiguous people require
 matching full given name and configured affiliation. Regression tests explicitly
 reject Michelle/Meredith Hastings and Timothy/Tianlun Yu collisions.
+
+### Import an updated membership spreadsheet
+
+Keep the original Excel export in `data/private/`, which is ignored by Git.
+The importer supports a single-sheet `.xlsx` membership-form export with these
+headers: `First Name`, `Last Name`, and `Institution or organization`. It reads
+only these fields; email, country, position, and submission date are not copied
+into the watchlist or reports. The export does not supply verified ORCIDs or
+membership status.
+
+From the repository root in the monitor's Python environment, preview an import:
+
+```bash
+python -m rna_monitor.roster "data/private/members.xlsx"
+```
+
+This writes `data/private/roster-import/people.candidate.yml` and `report.json`.
+The report lists additions, exact name/alias matches, institution differences,
+duplicates, and existing members absent from the spreadsheet. Matching allows
+accent and punctuation differences but does not guess aliases from initials.
+Ambiguous identities and conflicting duplicate rows stop the import.
+
+Apply the additive update with:
+
+```bash
+python -m rna_monitor.roster "data/private/members.xlsx" --apply
+python -m rna_monitor validate
+```
+
+Use your actual filename in both commands. Existing IDs, roles, ORCIDs, aliases,
+affiliations, active status, and PubMed queries are preserved. New members get
+stable IDs and conservative author-plus-affiliation queries; ORCIDs are not
+inferred. Missing members are retained, and institution/status differences are
+reported for manual review. Each changed config gets a private backup. Repeating
+an import with the same `--checked-at YYYY-MM-DD` date makes no further changes.
+
+For future exports, repeat this command pair after uploading the file. This
+performs the local conversion and validation; it does not watch the folder,
+push to GitHub, or retrieve new publications. Review the config diff before
+publishing it. The existing daily GitHub updater uses the new watchlist after
+it reaches `main`; existing page data is not changed by the importer itself.
 
 ## Local setup
 
