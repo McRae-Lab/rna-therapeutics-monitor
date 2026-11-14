@@ -2,14 +2,14 @@
   "schema_version": 1,
   "sources": {
     "clinicaltrials": {
-      "last_retrieved_at": "2026-11-13T18:32:54.716326Z",
-      "last_successful_until": "2026-11-13",
-      "raw_count": 49
+      "last_retrieved_at": "2026-11-14T17:10:33.649607Z",
+      "last_successful_until": "2026-11-14",
+      "raw_count": 46
     },
     "crossref_authors": {
-      "last_retrieved_at": "2026-11-13T18:32:54.716326Z",
-      "last_successful_until": "2026-11-13",
-      "raw_count": 20192
+      "last_retrieved_at": "2026-11-14T17:10:33.649607Z",
+      "last_successful_until": "2026-11-14",
+      "raw_count": 19054
     },
     "preprints": {
       "last_retrieved_at": "2026-11-02T20:55:32.479760Z",
@@ -17,14 +17,14 @@
       "raw_count": 2408
     },
     "pubmed": {
-      "last_retrieved_at": "2026-11-13T18:32:54.716326Z",
-      "last_successful_until": "2026-11-13",
-      "raw_count": 1473
+      "last_retrieved_at": "2026-11-14T17:10:33.649607Z",
+      "last_successful_until": "2026-11-14",
+      "raw_count": 1157
     },
     "rss": {
-      "last_retrieved_at": "2026-11-13T18:32:54.716326Z",
-      "last_successful_until": "2026-11-13",
-      "raw_count": 59
+      "last_retrieved_at": "2026-11-14T17:10:33.649607Z",
+      "last_successful_until": "2026-11-14",
+      "raw_count": 60
     }
   }
 }
